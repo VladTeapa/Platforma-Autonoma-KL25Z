@@ -118,6 +118,7 @@
 /**********************Matematica*********************/
 
 #define COEFFICIENT_PIXELI_CUT		2
+#define 
 
 /**********************Pini UART**********************/
 
@@ -129,3 +130,7 @@
 /********************Valori UART**********************/
 
 #define BUS_CLOCK									DEFAULT_SYSTEM_CLOCK
+
+/***********************Debug************************/
+
+#define CAMERA_DEBUG							0

@@ -7,95 +7,53 @@
 static int cameraState=0;
 static int clockCycles=0;
 
-static volatile uint16_t tempPixels[128];
-static volatile uint16_t max;
-static volatile uint16_t min;
+static volatile uint8_t tempPixels[128];
+static volatile uint8_t max;
+static volatile uint8_t min;
 
 
 uint8_t cameraPixels[128];
 uint8_t linie=63;
 uint8_t thresholdLinie = 200;
 
-uint8_t cautaLinie(uint8_t threshold)
+uint8_t cautaLinie()
 {
-	threshold = cameraPixels[64];
-	uint8_t i;
-	uint8_t side = 0;
-	uint8_t min;
-	for(i=0;i<55;i++)
-	{
-		if(cameraPixels[64+i]<threshold)
-		{
-			break;
-		}
-		if(cameraPixels[63-i]<threshold)
-		{
-			side = 1;
-			break;
-		}
-	}
-	min = i;
-	if(i==55)
-		return 64;
-	if(side == 1)
-	{
-		for(;i<64;i++)
-		{
-			if(cameraPixels[63-i]!=cameraPixels[63-min])
-				return (min + i-1)/2;
-		}
-	}
-	else
-	{
-		for(;i<64;i++)
-		{
-			if(cameraPixels[64+i]!=cameraPixels[64+min])
-				return (min + i-1)/2;
-		}
-	}
-	int8_t aux = min-linie;
-	if(aux<0)
-		threshold = -threshold;
-	if(aux > threshold)
-		return linie;
-	return min;
+
 }
 
 void copiereVector(void)
 {
 	uint8_t tempMax=(max-min)/COEFFICIENT_PIXELI_CUT + min;
-	//uint8_t tempMax = max/COEFFICIENT_PIXELI_CUT;
-	register int i=0;
+	register uint8_t i=0;
 	for(;i<128;i++)
 	{
-		tempMax = tempMax;
-		//cameraPixels[i]=tempPixels[i];
 		if(tempPixels[i]<tempMax)
 			cameraPixels[i]=20;
 		else
 			cameraPixels[i]=60;
 	}
-
-	cameraPixels[0]=0xFF;
-	cameraPixels[127] = 0xFF;
-	//linie = cautaLinie(100);
-	for(i=0;i<128;i++)
-		trimiteDate(cameraPixels[i]);
-
+	if(CAMERA_DEBUG == 0)
+	{
+		cameraPixels[0]=0xFF;
+		cameraPixels[127] = 0xFF;
+		//linie = cautaLinie(100);
+		for(i=0;i<128;i++)
+			trimiteDate(cameraPixels[i]);
+	}
 }
 
 void ADC0_IRQHandler(void)
 {
-	unsigned int value;
+	uint8_t value;
 	ADCCameraSC1A &= ~ADC_SC1_AIEN_MASK;
-	value = ADCCameraResult;
+	value =(uint8_t)ADCCameraResult;
 	if(clockCycles < NumberOfClocks)
 	{	
-		tempPixels[clockCycles/2] = (uint16_t)value;
-		if((uint16_t)value>max)
-			max = (uint16_t)value;
-		if((uint16_t)value<min)
-			min = (uint16_t)value;
+		tempPixels[clockCycles/2] = (uint8_t)value;
+		if((uint8_t)value>max)
+			max = (uint8_t)value;
+		if((uint8_t)value<min)
+			min = (uint8_t)value;
 	}
 }
 
