@@ -84,11 +84,11 @@ void InitializarePiniParteMecanica(void){
 	
 	//Setare factor de umplere
 	
-	TPM0->CONTROLS[4].CnV = ServoMinVal+(ServoMaxVal-ServoMinVal)/2;
+	TPM0->CONTROLS[4].CnV = ServoMaxCount*0.075f;
 	
-	TPM0->CONTROLS[2].CnV = MotorMaxCount;
+	TPM0->CONTROLS[2].CnV = MotorMaxCount/10;
 	
-	TPM0->CONTROLS[1].CnV = MotorMaxCount;
+	TPM0->CONTROLS[1].CnV = MotorMaxCount/10;
 	
 	//Activare TPM
 	TPM0->SC |= TPM_SC_CMOD(1);
@@ -106,7 +106,7 @@ void SetareSens(int sens)
 	} //Daca nu este niciuna dintre ele nu se modifica sensul
 }
 
-void SetareViteza(float vitezaMotor)
+void SetareViteza(double vitezaMotor)
 {
 	if(vitezaMotor<0 || vitezaMotor>1) // Se verifica daca valoarea vitezei este setata corect
 		return;
@@ -117,7 +117,7 @@ void SetareViteza(float vitezaMotor)
 	
 }
 
-void SetareUnghi(float unghi)
+void SetareUnghi(double unghi)
 {
 	if(unghi<-1 || unghi>1) // Se verifica daca valoarea unghilui este setata corect
 		return;

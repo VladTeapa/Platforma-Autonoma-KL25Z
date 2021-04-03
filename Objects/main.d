@@ -5,4 +5,5 @@
   P:\Keil\ARM\CMSIS\Include\core_cmInstr.h \
   P:\Keil\ARM\CMSIS\Include\core_cmFunc.h \
   RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h Motoare.h Defines.h \
-  PortsSetup.h Camera.h SistemDecizional.h Uart.h
+  PortsSetup.h Camera.h SistemDecizional.h Uart.h \
+  P:\Keil\ARM\ARMCLANG\Bin\..\include\math.h

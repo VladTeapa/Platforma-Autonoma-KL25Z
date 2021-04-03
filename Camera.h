@@ -13,5 +13,6 @@ void ADC0_IRQHandler(void); // Intrerupere ADC
 void PIT_IRQHandler(void); // Intrerupere pit pentru camera
 
 void copiereVector(void); // Copiere din vector temporar in vectorul care va fi folosit pentru decizie
+void trimiteLinie(uint8_t c);
 
-uint8_t cautaLinie(uint8_t threshold);
+uint8_t cautaLinie(void);

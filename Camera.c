@@ -1,65 +1,60 @@
 #include "Camera.h"
 #include "Uart.h"
+#include "SistemDecizional.h"
+#include "Motoare.h"
+
 
 static int cameraState=0;
 static int clockCycles=0;
 
-static uint8_t tempPixels[128];
+static volatile uint8_t tempPixels[128];
+static volatile uint8_t max;
+static volatile uint8_t min;
+
 
 uint8_t cameraPixels[128];
+uint8_t linie=63;
+uint8_t thresholdLinie = 200;
 
-uint8_t cautaLinie(uint8_t threshold)
+uint8_t cautaLinie()
 {
-	uint8_t i;
-	uint8_t side = 0;
-	uint8_t min;
-	for(i=0;i<64;i++)
-	{
-		if(cameraPixels[64+i]<threshold)
-		{
-			break;
-		}
-		if(cameraPixels[63-i]<threshold)
-		{
-			side = 1;
-			break;
-		}
-	}
-	min = i;
-	if(side == 1)
-	{
-		for(;i<64;i++)
-		{
-			if(cameraPixels[63-i]!=cameraPixels[63-min])
-				return (min + i-1)/2;
-		}
-	}
-	else
-	{
-		for(;i<64;i++)
-		{
-			if(cameraPixels[64+i]!=cameraPixels[64+min])
-				return (min + i-1)/2;
-		}
-	}
-	return min;
+
 }
 
 void copiereVector(void)
 {
-	register int i=0;
+	uint8_t tempMax=(max-min)/COEFFICIENT_PIXELI_CUT + min;
+	register uint8_t i=0;
 	for(;i<128;i++)
-		cameraPixels[i]=tempPixels[i];
+	{
+		if(tempPixels[i]<tempMax)
+			cameraPixels[i]=20;
+		else
+			cameraPixels[i]=60;
+	}
+	if(CAMERA_DEBUG == 0)
+	{
+		cameraPixels[0]=0xFF;
+		cameraPixels[127] = 0xFF;
+		//linie = cautaLinie(100);
+		for(i=0;i<128;i++)
+			trimiteDate(cameraPixels[i]);
+	}
 }
 
 void ADC0_IRQHandler(void)
 {
-	unsigned int value;
+	uint8_t value;
 	ADCCameraSC1A &= ~ADC_SC1_AIEN_MASK;
-	value = ADCCameraResult;
+	value =(uint8_t)ADCCameraResult;
 	if(clockCycles < NumberOfClocks)
+	{	
 		tempPixels[clockCycles/2] = (uint8_t)value;
-	ADCCameraSC1A |= ADC_SC1_AIEN_MASK;
+		if((uint8_t)value>max)
+			max = (uint8_t)value;
+		if((uint8_t)value<min)
+			min = (uint8_t)value;
+	}
 }
 
 void PIT_IRQHandler(void)
@@ -78,6 +73,8 @@ void PIT_IRQHandler(void)
 				clockCycles = 1;
 				cameraState = CAMERA_SET_CLK;
 				PIT->CHANNEL[0].LDVAL = PITQuarterClock;
+				max = 0;
+				min = 0xFF;
 				break;
 			case CAMERA_SET_CLK:
 				GPIOSCLKCamera |= 1<<GPIOPinCLKCamera;
@@ -101,8 +98,11 @@ void PIT_IRQHandler(void)
 	}
 	else if(PIT->CHANNEL[1].TFLG & PIT_TFLG_TIF_MASK)
 	{
+		if(clockCycles%2 == 0)
+			ADCCameraSC1A = ADC_SC1_ADCH(8) | ADC_SC1_AIEN_MASK;	
 		PIT->CHANNEL[1].TFLG &= PIT_TFLG_TIF_MASK;
 		GPIOTCLKCamera |= 1<<GPIOPinCLKCamera;
+		clockCycles++;
 	}
 }
 void startCamera(void)
