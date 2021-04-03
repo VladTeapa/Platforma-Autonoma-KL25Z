@@ -24,8 +24,8 @@ int main (void) {
 	viteza = 1;
 	double x = 0;
 	while(1){
-		/*directie = decideDirectia(linie);
-		SetareUnghi(directie);*/
+		directie = decideDirectia(linie);
+		SetareUnghi(directie);
 		/*SetareUnghi(sin(x));
 		x+=0.0001;*/
 	}

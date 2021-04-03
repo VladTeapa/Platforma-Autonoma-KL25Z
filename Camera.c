@@ -3,7 +3,6 @@
 #include "SistemDecizional.h"
 #include "Motoare.h"
 
-
 static int cameraState=0;
 static int clockCycles=0;
 
@@ -14,29 +13,87 @@ static volatile uint8_t min;
 
 uint8_t cameraPixels[128];
 uint8_t linie=63;
-uint8_t thresholdLinie = 200;
+uint8_t linieStatus = 1;
+uint8_t primaImagine = CAMERA_FIRST_IMAGE_TRUE;
 
-uint8_t cautaLinie()
+static uint8_t cautaLinieLocal(uint8_t punct)
 {
-
+	uint8_t i=punct;
+	uint8_t l,r;
+	l=r=i;
+	while(l>CAMERA_IGNORE_EDGE_VAL)
+	{
+		if(cameraPixels[l] == PIXELI_CUT_HIGH_VAL;
+			break;
+		l--;
+	}
+	while(r<128-CAMERA_IGNORE_EDGE_VAL)
+	{
+		if(cameraPixels[r] == PIXELI_CUT_HIGH_VAL;
+			break;
+		r++;
+	}
+	return (r+l)/2;
 }
 
-void copiereVector(void)
+uint8_t cautaLinie(void)
 {
+	uint8_t linieTemp = linie;
+	uint8_t i,left,right;
+	uint8_t flag = 0;
+	for(i=0;i<127;i++)
+	{
+		flag = 0;
+		left = linieTemp - i;
+		right = linieTemp + i;
+		if(left>CAMERA_IGNORE_EDGE_VAL)
+		{
+			if(cameraPixels[left] == PIXELI_CUT_LOW_VAL)
+			{
+				return cautaLinieLocal(left);
+			}
+		}
+		else
+			flag++;
+		if(right<128-CAMERA_IGNORE_EDGE_VAL)
+		{
+			if(cameraPixels[right] == PIXELI_CUT_LOW_VAL)
+			{
+				return cautaLinieLocal(right);
+			}
+		}
+		else
+			flag++;
+		if(flag == 2)
+			return linie;
+		
+	}
+	return linie;
+}
+
+void prelucrareImagine(void)
+{
+	/*if(primaImagine == CAMERA_FIRST_IMAGE_TRUE)
+	{
+		primaImagine = CAMERA_FIRST_IMAGE_FALSE;
+		return;
+	}*/
 	uint8_t tempMax=(max-min)/COEFFICIENT_PIXELI_CUT + min;
 	register uint8_t i=0;
-	for(;i<128;i++)
+	for(i=0;i<128;i++)
 	{
-		if(tempPixels[i]<tempMax)
-			cameraPixels[i]=20;
+		if(tempPixels[i]>tempMax)
+			cameraPixels[i]=PIXELI_CUT_HIGH_VAL;
 		else
-			cameraPixels[i]=60;
+			cameraPixels[i]=PIXELI_CUT_LOW_VAL;
 	}
-	if(CAMERA_DEBUG == 0)
+	if(CAMERA_DEBUG == 1)
 	{
-		cameraPixels[0]=0xFF;
-		cameraPixels[127] = 0xFF;
-		//linie = cautaLinie(100);
+		cameraPixels[0] = CAMERA_EDGE_VAL;
+		cameraPixels[127] = CAMERA_EDGE_VAL;
+		cameraPixels[CAMERA_IGNORE_EDGE_VAL] = CAMERA_EDGE_VAL-0x10;
+		cameraPixels[127-CAMERA_IGNORE_EDGE_VAL] = CAMERA_EDGE_VAL-0x10;
+		linie = cautaLinie();
 		for(i=0;i<128;i++)
 			trimiteDate(cameraPixels[i]);
 	}
@@ -50,9 +107,9 @@ void ADC0_IRQHandler(void)
 	if(clockCycles < NumberOfClocks)
 	{	
 		tempPixels[clockCycles/2] = (uint8_t)value;
-		if((uint8_t)value>max)
+		if((uint8_t)value>max && clockCycles/2>CAMERA_IGNORE_EDGE_VAL && clockCycles/2<127-CAMERA_IGNORE_EDGE_VAL)
 			max = (uint8_t)value;
-		if((uint8_t)value<min)
+		if((uint8_t)value<min && clockCycles/2>CAMERA_IGNORE_EDGE_VAL && clockCycles/2<127-CAMERA_IGNORE_EDGE_VAL)
 			min = (uint8_t)value;
 	}
 }
@@ -68,7 +125,7 @@ void PIT_IRQHandler(void)
 		{
 			case CAMERA_START:
 				GPIOCCLKCamera = 1<<GPIOPinCLKCamera;
-				copiereVector();
+				prelucrareImagine();
 				GPIOSSICamera = 1<<GPIOPinSICamera;
 				clockCycles = 1;
 				cameraState = CAMERA_SET_CLK;

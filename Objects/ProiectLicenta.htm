@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\ProiectLicenta.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\ProiectLicenta.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6150002: Last Updated: Sat Apr  3 23:41:50 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6150002: Last Updated: Sun Apr  4 01:14:24 2021
 <BR><P>
 <H3>Maximum Stack Usage =         72 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -445,7 +445,9 @@ Global Symbols
 
 <P><STRONG><a name="[85]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, indicate_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[15]"></a>ADC0_IRQHandler</STRONG> (Thumb, 60 bytes, Stack size 0 bytes, camera.o(.text.ADC0_IRQHandler))
+<P><STRONG><a name="[15]"></a>ADC0_IRQHandler</STRONG> (Thumb, 72 bytes, Stack size 8 bytes, camera.o(.text.ADC0_IRQHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = ADC0_IRQHandler
+</UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_mkl25z4.o(RESET)
 </UL>
 <P><STRONG><a name="[43]"></a>InitializarePiniParteMecanica</STRONG> (Thumb, 244 bytes, Stack size 16 bytes, motoare.o(.text.InitializarePiniParteMecanica))
@@ -459,14 +461,14 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[1c]"></a>PIT_IRQHandler</STRONG> (Thumb, 276 bytes, Stack size 24 bytes, camera.o(.text.PIT_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = PIT_IRQHandler &rArr; copiereVector
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = PIT_IRQHandler &rArr; prelucrareImagine
 </UL>
-<BR>[Calls]<UL><LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;copiereVector
+<BR>[Calls]<UL><LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prelucrareImagine
 <LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_ClearPendingIRQ
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_mkl25z4.o(RESET)
 </UL>
-<P><STRONG><a name="[55]"></a>SIMSetup</STRONG> (Thumb, 80 bytes, Stack size 8 bytes, portssetup.o(.text.SIMSetup))
+<P><STRONG><a name="[54]"></a>SIMSetup</STRONG> (Thumb, 80 bytes, Stack size 8 bytes, portssetup.o(.text.SIMSetup))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = SIMSetup
 </UL>
 <BR>[Called By]<UL><LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -496,36 +498,28 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[51]"></a>calibrareADC</STRONG> (Thumb, 136 bytes, Stack size 16 bytes, camera.o(.text.calibrareADC))
+<P><STRONG><a name="[50]"></a>calibrareADC</STRONG> (Thumb, 136 bytes, Stack size 16 bytes, camera.o(.text.calibrareADC))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = calibrareADC
 </UL>
-<BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializareCamera
+<BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializareCamera
 </UL>
 
-<P><STRONG><a name="[48]"></a>copiereVector</STRONG> (Thumb, 92 bytes, Stack size 16 bytes, camera.o(.text.copiereVector))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = copiereVector
-</UL>
-<BR>[Calls]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;trimiteDate
-</UL>
-<BR>[Called By]<UL><LI><a href="#[1c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PIT_IRQHandler
-</UL>
-
-<P><STRONG><a name="[50]"></a>initializareCamera</STRONG> (Thumb, 156 bytes, Stack size 8 bytes, camera.o(.text.initializareCamera))
+<P><STRONG><a name="[4f]"></a>initializareCamera</STRONG> (Thumb, 156 bytes, Stack size 8 bytes, camera.o(.text.initializareCamera))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = initializareCamera &rArr; calibrareADC
 </UL>
-<BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calibrareADC
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_SetPriority
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_EnableIRQ
+<BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calibrareADC
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_SetPriority
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_EnableIRQ
 <LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_ClearPendingIRQ
 </UL>
 <BR>[Called By]<UL><LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[54]"></a>initializarePIT</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, camera.o(.text.initializarePIT))
+<P><STRONG><a name="[53]"></a>initializarePIT</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, camera.o(.text.initializarePIT))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = initializarePIT
 </UL>
-<BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_SetPriority
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_EnableIRQ
+<BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_SetPriority
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_EnableIRQ
 <LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_ClearPendingIRQ
 </UL>
 <BR>[Called By]<UL><LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -534,22 +528,30 @@ Global Symbols
 <P><STRONG><a name="[33]"></a>main</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, main.o(.text.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = main &rArr; initializareCamera &rArr; calibrareADC
 </UL>
-<BR>[Calls]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startCamera
-<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializarePIT
-<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializareCamera
+<BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startCamera
+<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializarePIT
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializareCamera
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UartInit
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIMSetup
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIMSetup
 <LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitializarePiniParteMecanica
 </UL>
 <BR>[Called By]<UL><LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[56]"></a>startCamera</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, camera.o(.text.startCamera))
+<P><STRONG><a name="[48]"></a>prelucrareImagine</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, camera.o(.text.prelucrareImagine))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = prelucrareImagine
+</UL>
+<BR>[Calls]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;trimiteDate
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PIT_IRQHandler
+</UL>
+
+<P><STRONG><a name="[55]"></a>startCamera</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, camera.o(.text.startCamera))
 <BR><BR>[Called By]<UL><LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[4f]"></a>trimiteDate</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, uart.o(.text.trimiteDate))
-<BR><BR>[Called By]<UL><LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;copiereVector
+<P><STRONG><a name="[56]"></a>trimiteDate</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, uart.o(.text.trimiteDate))
+<BR><BR>[Called By]<UL><LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prelucrareImagine
 </UL>
 
 <P><STRONG><a name="[4e]"></a>__aeabi_uidiv</STRONG> (Thumb, 68 bytes, Stack size 0 bytes, aeabi_sdivfast.o(.text_divfast))
@@ -575,18 +577,18 @@ Local Symbols
 
 <P><STRONG><a name="[47]"></a>NVIC_ClearPendingIRQ</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, camera.o(.text.NVIC_ClearPendingIRQ))
 <BR><BR>[Called By]<UL><LI><a href="#[1c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PIT_IRQHandler
-<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializarePIT
-<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializareCamera
+<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializarePIT
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializareCamera
 </UL>
 
-<P><STRONG><a name="[53]"></a>NVIC_EnableIRQ</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, camera.o(.text.NVIC_EnableIRQ))
-<BR><BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializarePIT
-<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializareCamera
+<P><STRONG><a name="[52]"></a>NVIC_EnableIRQ</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, camera.o(.text.NVIC_EnableIRQ))
+<BR><BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializarePIT
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializareCamera
 </UL>
 
-<P><STRONG><a name="[52]"></a>NVIC_SetPriority</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, camera.o(.text.NVIC_SetPriority))
-<BR><BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializarePIT
-<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializareCamera
+<P><STRONG><a name="[51]"></a>NVIC_SetPriority</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, camera.o(.text.NVIC_SetPriority))
+<BR><BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializarePIT
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializareCamera
 </UL>
 <P>
 <H3>
