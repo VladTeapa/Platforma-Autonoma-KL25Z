@@ -114,11 +114,16 @@
 #define	CAMERA_SET_CLK						1
 #define CAMERA_CLEAR_SI						2
 #define CAMERA_FINAL							3
+#define CAMERA_FIRST_IMAGE_TRUE		1
+#define CAMERA_FIRST_IMAGE_FALSE	1
+#define CAMERA_IGNORE_EDGE_VAL		40
 
 /**********************Matematica*********************/
 
 #define COEFFICIENT_PIXELI_CUT		2
-#define 
+#define PIXELI_CUT_LOW_VAL				20
+#define PIXELI_CUT_HIGH_VAL				40
+#define LINE_MAX_ERROR_MID				4
 
 /**********************Pini UART**********************/
 
@@ -133,4 +138,5 @@
 
 /***********************Debug************************/
 
-#define CAMERA_DEBUG							0
+#define CAMERA_DEBUG							1
+#define CAMERA_EDGE_VAL						0xFF
