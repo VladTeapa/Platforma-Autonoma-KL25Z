@@ -115,6 +115,10 @@
 #define CAMERA_CLEAR_SI						2
 #define CAMERA_FINAL							3
 
+/**********************Matematica*********************/
+
+#define COEFFICIENT_PIXELI_CUT		2
+
 /**********************Pini UART**********************/
 
 #define PortUartRX								PORTA->PCR[1]
