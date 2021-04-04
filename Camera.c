@@ -23,13 +23,13 @@ static uint8_t cautaLinieLocal(uint8_t punct)
 	l=r=i;
 	while(l>CAMERA_IGNORE_EDGE_VAL)
 	{
-		if(cameraPixels[l] == PIXELI_CUT_HIGH_VAL;
+		if(cameraPixels[l] == PIXELI_CUT_HIGH_VAL)
 			break;
 		l--;
 	}
 	while(r<128-CAMERA_IGNORE_EDGE_VAL)
 	{
-		if(cameraPixels[r] == PIXELI_CUT_HIGH_VAL;
+		if(cameraPixels[r] == PIXELI_CUT_HIGH_VAL)
 			break;
 		r++;
 	}
