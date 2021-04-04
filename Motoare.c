@@ -49,7 +49,7 @@ void InitializarePiniParteMecanica(void){
 	
 	GPIOSMotorDreapta |= 1<<GPIOPinMotorDreapta;
 	GPIOSMotorStanga |= 1<<GPIOPinMotorStanga;
-	GPIOSSensMotor |= 1<<GPIOPinSensMotor;
+	GPIOCSensMotor |= 1<<GPIOPinSensMotor;
 	
 	//Setare divizor frecventa
 	TPM0->SC |= TPM_SC_PS(TPMDivider);
@@ -86,9 +86,9 @@ void InitializarePiniParteMecanica(void){
 	
 	TPM0->CONTROLS[4].CnV = ServoMaxCount*0.075f;
 	
-	TPM0->CONTROLS[2].CnV = MotorMaxCount/10;
+	TPM0->CONTROLS[2].CnV = MotorMaxCount/4;
 	
-	TPM0->CONTROLS[1].CnV = MotorMaxCount/10;
+	TPM0->CONTROLS[1].CnV = MotorMaxCount/4;
 	
 	//Activare TPM
 	TPM0->SC |= TPM_SC_CMOD(1);
@@ -119,9 +119,11 @@ void SetareViteza(double vitezaMotor)
 
 void SetareUnghi(double unghi)
 {
-	if(unghi<-1 || unghi>1) // Se verifica daca valoarea unghilui este setata corect
+	if(unghi<-0.9 || unghi>0.9) // Se verifica daca valoarea unghilui este setata corect
 		return;
 	unghi++;	// Se aduce valoarea la intervalul 0-2
 	unghi /= 2;	// Se aduce valoarea la intervalul 0-1
+	unghi*=0.8;
+	unghi+=0.1;
 	TPM0->CONTROLS[4].CnV = (ServoMaxVal-ServoMinVal)*unghi + ServoMinVal;
 }

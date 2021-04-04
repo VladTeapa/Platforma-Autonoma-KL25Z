@@ -140,3 +140,10 @@
 
 #define CAMERA_DEBUG							1
 #define CAMERA_EDGE_VAL						0xFF
+
+/***********************Stari************************/
+
+#define NO_OBSTACLE_STRAIGHT			0
+#define NO_OBSTACLE_CURVE					1
+#define OBSTACLE_LEFT							2
+#define OBSTACLE_RIGHT						3

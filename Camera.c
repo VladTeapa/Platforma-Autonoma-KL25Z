@@ -93,10 +93,11 @@ void prelucrareImagine(void)
 		cameraPixels[127] = CAMERA_EDGE_VAL;
 		cameraPixels[CAMERA_IGNORE_EDGE_VAL] = CAMERA_EDGE_VAL-0x10;
 		cameraPixels[127-CAMERA_IGNORE_EDGE_VAL] = CAMERA_EDGE_VAL-0x10;
-		linie = cautaLinie();
+	
 		for(i=0;i<128;i++)
 			trimiteDate(cameraPixels[i]);
 	}
+	linie = cautaLinie();
 }
 
 void ADC0_IRQHandler(void)
