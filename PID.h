@@ -9,4 +9,4 @@ typedef struct PID{
 
 struct PID initializarePID(double TS, double KP, double KI, double KD);
 
-double getNextPid(struct PID pid, double referinta, double output, double semnalComanda);
+double getNextPid(struct PID pid, double referinta, double output, long double semnalComanda);

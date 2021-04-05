@@ -106,14 +106,14 @@
 #define NumberOfClocks						256
 #define PITHalfClock							0x8FF
 #define PITQuarterClock						PITHalfClock/2
-#define PITSIClock								PITHalfClock*(256+8)
+#define PITSIClock								PITHalfClock*(256+20)
 #define CAMERA_START							0
 #define	CAMERA_SET_CLK						1
 #define CAMERA_CLEAR_SI						2
 #define CAMERA_FINAL							3
 #define CAMERA_FIRST_IMAGE_TRUE		1
 #define CAMERA_FIRST_IMAGE_FALSE	1
-#define CAMERA_IGNORE_EDGE_VAL		40
+#define CAMERA_IGNORE_EDGE_VAL		30
 
 /**********************Matematica*********************/
 
@@ -122,14 +122,17 @@
 #define COEFFICIENT_PIXELI_CUT		2
 #define PIXELI_CUT_LOW_VAL				20
 #define PIXELI_CUT_HIGH_VAL				40
-#define LINE_MAX_ERROR_MID				4
+#define LINE_MAX_ERROR_MID				5
 
 //--------------------Motoare--------------------
 
-#define MOTOARE_VITEZA_MAXIMA			0.5
+#define MOTOARE_VITEZA_MAXIMA_SIG 0.5L
 #define MOTOARE_SENS_INAITE				1
 #define MOTOARE_SENS_SPATE				-1
-#define MOTOARE_VITEZA_MAX_MS			2
+#define MOTOARE_VITEZA_MAX_MS			1
+#define MOTOARE_VITEZA_FRANARE_MS	0.25L
+#define SERVOMOTOR_STRAIGHT_ERR		-0.02L
+#define SERVOMOTOR_THRESHOLD			30
 
 //----------------------PID----------------------
 

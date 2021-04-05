@@ -1,13 +1,12 @@
 #include "SistemDecizional.h"
 
-extern uint8_t cameraPixels[128];
 
-uint8_t unghiThreshold = 30;
+uint8_t unghiThreshold = SERVOMOTOR_THRESHOLD;
 
 
-double decideDirectiaDrumSimplu(uint8_t linie) //Se va modifica pentru obstacole si curbe
+long double decideDirectiaDrumSimplu(uint8_t linie) //Se va modifica pentru obstacole si curbe
 {
-	double temp;
+	long double temp;
 	if(linie<63)
 	{
 		if(linie<unghiThreshold)
@@ -48,6 +47,6 @@ double decideVitezaDrumSimplu(uint8_t linie)
 		temp = linie-63;
 		temp = (temp/(127-unghiThreshold-63));
 	}
-	temp *= MOTOARE_VITEZA_MAXIMA;
+	temp *= MOTOARE_VITEZA_MAX_MS;
 	return temp;
 }

@@ -1,12 +1,18 @@
 #include "Motoare.h"
 #include "Uart.h"
+#include "PID.h"
 
-double motoareInputCurent = 0;
-double vitezaCurenta = 0;
-uint8_t numberOfTimes = 0;
+struct PID pid;
+
+long double vitezaCurenta = 0;
+
+long double volatile viteza=0;
+
+long double semnal=0;
+
+int8_t volatile sens=MOTOARE_SENS_INAITE;
 
 uint32_t nrInput = 0;
-uint32_t debug;
 
 void TPM0_IRQHandler(void)
 {
@@ -15,14 +21,34 @@ void TPM0_IRQHandler(void)
 			nrInput++;
 			TPM0->CONTROLS[0].CnSC |= TPM_CnSC_CHF_MASK;
 	}
-	debug = TPM0->CONTROLS[0].CnSC;
 	if((TPM0_SC & TPM_SC_TOF_MASK))
 	{
-			vitezaCurenta = (1.0f * nrInput/NUMBER_OF_MAGNETS) * PI * DIAMETER_OF_WHEEL / COEFFICIENT_MEASURE_TIME;
+			vitezaCurenta = (1.0L * nrInput/NUMBER_OF_MAGNETS) * PI * DIAMETER_OF_WHEEL / COEFFICIENT_MEASURE_TIME;
 			if(VITEZA_DEBUG_VITEZA_CUR == 1)
 				trimiteDate(vitezaCurenta);
 			nrInput = 0;
 			TPM0_SC |= TPM_SC_TOF_MASK;
+			semnal = getNextPid(pid, viteza, vitezaCurenta, semnal);
+			if(semnal < 0)
+			{
+				if(sens == MOTOARE_SENS_INAITE)
+				{
+					SetareViteza(0);
+					SetareSens(MOTOARE_SENS_SPATE);
+					sens = MOTOARE_SENS_SPATE;
+				}
+				SetareViteza(semnal);
+			}
+			else
+			{
+				if(sens == MOTOARE_SENS_SPATE)
+				{
+					SetareViteza(0);
+					SetareSens(MOTOARE_SENS_INAITE);
+					sens = MOTOARE_SENS_INAITE;
+				}
+				SetareViteza(semnal);
+			}
 	}
 }
 
