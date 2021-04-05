@@ -413,6 +413,11 @@
               <FileType>1</FileType>
               <FilePath>.\Uart.c</FilePath>
             </File>
+            <File>
+              <FileName>PID.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\PID.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -447,6 +452,11 @@
               <FileName>Uart.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Uart.h</FilePath>
+            </File>
+            <File>
+              <FileName>PID.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\PID.h</FilePath>
             </File>
           </Files>
         </Group>

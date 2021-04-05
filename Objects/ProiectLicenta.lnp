@@ -5,6 +5,7 @@
 ".\objects\camera.o"
 ".\objects\sistemdecizional.o"
 ".\objects\uart.o"
+".\objects\pid.o"
 ".\objects\retarget_io.o"
 ".\objects\startup_mkl25z4.o"
 ".\objects\system_mkl25z4.o"

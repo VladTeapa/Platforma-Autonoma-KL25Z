@@ -87,7 +87,7 @@ void prelucrareImagine(void)
 		else
 			cameraPixels[i]=PIXELI_CUT_LOW_VAL;
 	}
-	if(CAMERA_DEBUG == 1)
+	if(CAMERA_DEBUG_LINE_SCAN == 1)
 	{
 		cameraPixels[0] = CAMERA_EDGE_VAL;
 		cameraPixels[127] = CAMERA_EDGE_VAL;
@@ -98,6 +98,10 @@ void prelucrareImagine(void)
 			trimiteDate(cameraPixels[i]);
 	}
 	linie = cautaLinie();
+	if(CAMERA_DEBUG_LINE == 1)
+	{
+		trimiteDate(linie);
+	}
 }
 
 void ADC0_IRQHandler(void)

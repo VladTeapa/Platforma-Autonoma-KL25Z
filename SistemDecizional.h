@@ -3,5 +3,5 @@
 #include "Motoare.h"
 
 void decidePas(void); // Functie care va lua decizia urmatoare
-double decideDirectia(uint8_t linie); // Functie care ia decizia pentru servomotor
-void decideViteza(void); // Functie care ia decizia pentru motoare
+double decideDirectiaDrumSimplu(uint8_t linie); // Functie care ia decizia pentru servomotor
+double decideVitezaDrumSimplu(uint8_t linie); // Functie care ia decizia pentru motoare

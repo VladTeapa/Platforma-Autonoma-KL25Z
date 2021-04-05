@@ -44,9 +44,6 @@
 #define PortMotorActivareStangaM	1
 #define PortSensMotorMux					1
 
-#define SensMotorInainte					1
-#define SensMotorInSpate					-1
-
 #define MotorMaxCount							0xEA60
 
 /********************Pini ServoMotor******************/
@@ -120,10 +117,26 @@
 
 /**********************Matematica*********************/
 
+//--------------------Camera---------------------
+
 #define COEFFICIENT_PIXELI_CUT		2
 #define PIXELI_CUT_LOW_VAL				20
 #define PIXELI_CUT_HIGH_VAL				40
 #define LINE_MAX_ERROR_MID				4
+
+//--------------------Motoare--------------------
+
+#define MOTOARE_VITEZA_MAXIMA			0.5
+#define MOTOARE_SENS_INAITE				1
+#define MOTOARE_SENS_SPATE				-1
+#define MOTOARE_VITEZA_MAX_MS			2
+
+//----------------------PID----------------------
+
+#define PID_TS										200
+#define PID_KP										1
+#define PID_KI										1
+#define PID_KD										1
 
 /**********************Pini UART**********************/
 
@@ -138,12 +151,19 @@
 
 /***********************Debug************************/
 
-#define CAMERA_DEBUG							1
+#define CAMERA_DEBUG_LINE_SCAN		1
+#define CAMERA_DEBUG_LINE					0
+#define VITEZA_DEBUG_VITEZA_CUR		0
+#define TURATIE_DEBUG_FUNCTIE_TR	0
 #define CAMERA_EDGE_VAL						0xFF
+
 
 /***********************Stari************************/
 
-#define NO_OBSTACLE_STRAIGHT			0
-#define NO_OBSTACLE_CURVE					1
-#define OBSTACLE_LEFT							2
-#define OBSTACLE_RIGHT						3
+#define STATE_DRUM_DREPT					0
+#define STATE_DRUM_CURBA					1
+#define STATE_DRUM_CURBATODREPT		2
+#define STATE_OBSTACOL_DREAPTA		3
+#define STATE_OBSTACOL_STANGA			4
+#define	STATE_START								5
+#define STATE_DRUM_DREPTTOCURBA		6

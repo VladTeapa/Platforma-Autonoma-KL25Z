@@ -1,9 +1,10 @@
 #include "Motoare.h"
+#include "Uart.h"
 
 double motoareInputCurent = 0;
 double vitezaCurenta = 0;
 uint8_t numberOfTimes = 0;
-double viteza;
+
 uint32_t nrInput = 0;
 uint32_t debug;
 
@@ -18,6 +19,8 @@ void TPM0_IRQHandler(void)
 	if((TPM0_SC & TPM_SC_TOF_MASK))
 	{
 			vitezaCurenta = (1.0f * nrInput/NUMBER_OF_MAGNETS) * PI * DIAMETER_OF_WHEEL / COEFFICIENT_MEASURE_TIME;
+			if(VITEZA_DEBUG_VITEZA_CUR == 1)
+				trimiteDate(vitezaCurenta);
 			nrInput = 0;
 			TPM0_SC |= TPM_SC_TOF_MASK;
 	}
@@ -86,9 +89,9 @@ void InitializarePiniParteMecanica(void){
 	
 	TPM0->CONTROLS[4].CnV = ServoMaxCount*0.075f;
 	
-	TPM0->CONTROLS[2].CnV = MotorMaxCount/4;
+	TPM0->CONTROLS[2].CnV = 0;
 	
-	TPM0->CONTROLS[1].CnV = MotorMaxCount/4;
+	TPM0->CONTROLS[1].CnV = 0;
 	
 	//Activare TPM
 	TPM0->SC |= TPM_SC_CMOD(1);
@@ -96,20 +99,22 @@ void InitializarePiniParteMecanica(void){
 
 void SetareSens(int sens)
 {
-	if(sens == SensMotorInainte) // Setare sens inainte
-	{
-		GPIOSSensMotor |= 1<<GPIOPinSensMotor;
-	}
-	else if(sens == SensMotorInSpate) // Setare sens inapoi
+	if(sens == MOTOARE_SENS_INAITE) // Setare sens inainte
 	{
 		GPIOCSensMotor |= 1<<GPIOPinSensMotor;
+	}
+	else if(sens == MOTOARE_SENS_SPATE) // Setare sens inapoi
+	{
+		GPIOSSensMotor |= 1<<GPIOPinSensMotor;
 	} //Daca nu este niciuna dintre ele nu se modifica sensul
 }
 
 void SetareViteza(double vitezaMotor)
 {
-	if(vitezaMotor<0 || vitezaMotor>1) // Se verifica daca valoarea vitezei este setata corect
-		return;
+	if(vitezaMotor < 0)
+		vitezaMotor = 0;
+	if(vitezaMotor > 1)
+		vitezaMotor = 1;
 	
 	TPM0->CONTROLS[2].CnV = MotorMaxCount*vitezaMotor;
 	

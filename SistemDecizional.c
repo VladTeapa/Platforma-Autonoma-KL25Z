@@ -5,7 +5,7 @@ extern uint8_t cameraPixels[128];
 uint8_t unghiThreshold = 30;
 
 
-double decideDirectia(uint8_t linie) //Se va modifica pentru obstacole si curbe
+double decideDirectiaDrumSimplu(uint8_t linie) //Se va modifica pentru obstacole si curbe
 {
 	double temp;
 	if(linie<63)
@@ -27,7 +27,27 @@ double decideDirectia(uint8_t linie) //Se va modifica pentru obstacole si curbe
 		return (temp/(127-unghiThreshold-63));
 	}
 }
-void decideViteza(void)
+double decideVitezaDrumSimplu(uint8_t linie)
 {
-	//Se va modifica pentru obstacole
+	double temp;
+	if(linie<63)
+	{
+		if(linie<unghiThreshold)
+		{	
+			return 0;
+		}
+		temp = linie-unghiThreshold;
+		temp = (temp/(63-unghiThreshold));
+	}
+	else
+	{
+		if(linie>127-unghiThreshold)
+		{	
+			return 0;
+		}
+		temp = linie-63;
+		temp = (temp/(127-unghiThreshold-63));
+	}
+	temp *= MOTOARE_VITEZA_MAXIMA;
+	return temp;
 }
