@@ -418,6 +418,11 @@
               <FileType>1</FileType>
               <FilePath>.\PID.c</FilePath>
             </File>
+            <File>
+              <FileName>SenzoriDistanta.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\SenzoriDistanta.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -457,6 +462,11 @@
               <FileName>PID.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\PID.h</FilePath>
+            </File>
+            <File>
+              <FileName>SenzoriDistanta.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\SenzoriDistanta.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -19,17 +19,26 @@ extern int8_t volatile sens;
 
 static volatile uint8_t stare = STATE_START;
 
-int main (void) {
 
-	long double directie;
+
+int main (void) {
 	
+	long double directie;
+
+	for(int i=0;i<100000000;i++)
+		{i=i+1;
+			directie = i;
+		}
+	directie = 0;
 	pid = initializarePID(PID_TS, PID_KP, PID_KI, PID_KD);
 	SIMSetup();
 	InitializarePiniParteMecanica();
 	initializareCamera();
 	initializarePIT();
 	startCamera();
-	UartInit(115200);
+	UartInit(9900);
+	int aux=0;
+	SetareUnghi(SERVOMOTOR_STRAIGHT_ERR);
 	while(1){
 		if(linie>=63 - LINE_MAX_ERROR_MID || linie<=64+LINE_MAX_ERROR_MID)
 		{

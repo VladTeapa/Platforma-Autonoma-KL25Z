@@ -2,15 +2,15 @@
 
 /****************Pini Senzor Turatie******************/
 
-#define PortSenzorTuratie					PORTC->PCR[1] //FTM0_CH0
-#define	PortSenzorTuratieMux			4
+#define PortSenzorTuratie					PORTE->PCR[30] //FTM0_CH3
+#define	PortSenzorTuratieMux			3
 
 /**************Valori Senzor Turatie******************/
 
-#define NUMBER_OF_MAGNETS					6
+#define NUMBER_OF_MAGNETS					4
 #define DIAMETER_OF_WHEEL					0.05
 #define PI												3.14
-#define COEFFICIENT_MEASURE_TIME	0.2
+#define COEFFICIENT_MEASURE_TIME	0.02
 
 /********************Pini Motor***********************/
 
@@ -53,10 +53,10 @@
 #define PortServoMux							4
 
 #define ServoMaxCount							0xEA60
-#define	ServoMinVal								ServoMaxCount*0.025
-#define	ServoMaxVal								ServoMaxCount*0.125
+#define	ServoMinVal								0x5DC
+#define	ServoMaxVal								0x1D4C
 
-/********************Pini TPM*************************/
+/********************Valori TPM*************************/
 
 #define TPMDivider								4
 
@@ -131,7 +131,7 @@
 #define MOTOARE_SENS_SPATE				-1
 #define MOTOARE_VITEZA_MAX_MS			1
 #define MOTOARE_VITEZA_FRANARE_MS	0.25L
-#define SERVOMOTOR_STRAIGHT_ERR		-0.02L
+#define SERVOMOTOR_STRAIGHT_ERR		-0.07
 #define SERVOMOTOR_THRESHOLD			30
 
 //----------------------PID----------------------
@@ -148,18 +148,29 @@
 #define PortUartRXMux							2
 #define PortUartTXMux							2
 
+/******************Senzori Distanta*******************/
+
+#define PortSenzorDistStangaTR
+#define PortSenzorDistDreaptaTR
+#define PortSenzorDistMijlocTR
+
+#define PortSenzorDistStangaOUT
+#define PortSenzorDistDreaptaOUT
+#define PortSenzorDistMijlocOUT
+
+
 /********************Valori UART**********************/
 
 #define BUS_CLOCK									DEFAULT_SYSTEM_CLOCK
 
 /***********************Debug************************/
 
-#define CAMERA_DEBUG_LINE_SCAN		1
+#define CAMERA_DEBUG_LINE_SCAN		0
 #define CAMERA_DEBUG_LINE					0
-#define VITEZA_DEBUG_VITEZA_CUR		0
+#define VITEZA_DEBUG_VITEZA_CUR		1
 #define TURATIE_DEBUG_FUNCTIE_TR	0
 #define CAMERA_EDGE_VAL						0xFF
-
+#define VITEZA_SEMNAL_TIME_DEBUG	200
 
 /***********************Stari************************/
 

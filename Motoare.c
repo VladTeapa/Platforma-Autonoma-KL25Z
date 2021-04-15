@@ -4,6 +4,11 @@
 
 struct PID pid;
 
+long double vitezaSemnal;
+
+long double vitezaSemnalDebug=0;
+uint8_t vitezaSemnalTimesDebug=0;
+
 long double vitezaCurenta = 0;
 
 long double volatile viteza=0;
@@ -16,19 +21,38 @@ uint32_t nrInput = 0;
 
 void TPM0_IRQHandler(void)
 {
-	if(TPM0->CONTROLS[0].CnSC & TPM_CnSC_CHF_MASK)
+	NVIC_ClearPendingIRQ(TPM0_IRQn);
+	if(TPM0->CONTROLS[3].CnSC & TPM_CnSC_CHF_MASK)
 	{
 			nrInput++;
-			TPM0->CONTROLS[0].CnSC |= TPM_CnSC_CHF_MASK;
+			TPM0->CONTROLS[3].CnSC |= TPM_CnSC_CHF_MASK;
 	}
 	if((TPM0_SC & TPM_SC_TOF_MASK))
 	{
 			vitezaCurenta = (1.0L * nrInput/NUMBER_OF_MAGNETS) * PI * DIAMETER_OF_WHEEL / COEFFICIENT_MEASURE_TIME;
-			if(VITEZA_DEBUG_VITEZA_CUR == 1)
-				trimiteDate(vitezaCurenta);
-			nrInput = 0;
 			TPM0_SC |= TPM_SC_TOF_MASK;
-			semnal = getNextPid(pid, viteza, vitezaCurenta, semnal);
+			if(VITEZA_DEBUG_VITEZA_CUR == 1)
+			{
+				if(vitezaSemnalTimesDebug == VITEZA_SEMNAL_TIME_DEBUG)
+				{
+					vitezaSemnalDebug += 0.1L;
+					if(vitezaSemnalDebug >= 0.5L)
+						vitezaSemnalDebug = 0;
+				
+					vitezaSemnalTimesDebug = 0;
+				}
+				else
+				{
+					vitezaSemnalTimesDebug++;
+				}
+				SetareViteza(vitezaSemnalDebug);
+				trimiteDate(vitezaCurenta + 11);
+				trimiteDate(vitezaSemnalDebug*10.0L+0.1);
+			}
+			nrInput = 0;
+			/*semnal = getNextPid(pid, viteza, vitezaCurenta, semnal);
+			if(TURATIE_DEBUG_FUNCTIE_TR == 1)
+				return;
 			if(semnal < 0)
 			{
 				if(sens == MOTOARE_SENS_INAITE)
@@ -48,7 +72,7 @@ void TPM0_IRQHandler(void)
 					sens = MOTOARE_SENS_INAITE;
 				}
 				SetareViteza(semnal);
-			}
+			}*/
 	}
 }
 
@@ -59,6 +83,8 @@ void InitializarePiniParteMecanica(void){
 	PortMotorStanga |= PORT_PCR_MUX(PortMotorStangaMux);
 	
 	PortSenzorTuratie |= PORT_PCR_MUX(PortSenzorTuratieMux);
+	PortSenzorTuratie |= PORT_PCR_PE(1) & (~PORT_PCR_PS(1));
+	
 	
 	PortMotorActivareDreapta |= PORT_PCR_MUX(PortMotorActivareDreaptaM);
 	PortMotorActivareStanga |= PORT_PCR_MUX(PortMotorActivareStangaM);
@@ -101,7 +127,7 @@ void InitializarePiniParteMecanica(void){
 	TPM0->CONTROLS[1].CnSC = TPM_CnSC_MSB_MASK | TPM_CnSC_ELSB_MASK;
 	
 	//Setare mod input capture
-	TPM0->CONTROLS[0].CnSC = TPM_CnSC_ELSA_MASK | TPM_CnSC_CHIE_MASK;
+	TPM0->CONTROLS[3].CnSC = TPM_CnSC_ELSA_MASK | TPM_CnSC_CHIE_MASK;
 	
 	//Activare intrerupere
 	NVIC_SetPriority(TPM0_IRQn, 128);
@@ -122,6 +148,8 @@ void InitializarePiniParteMecanica(void){
 	//Activare TPM
 	TPM0->SC |= TPM_SC_CMOD(1);
 }
+
+
 
 void SetareSens(int sens)
 {
@@ -148,13 +176,25 @@ void SetareViteza(double vitezaMotor)
 	
 }
 
-void SetareUnghi(double unghi)
+
+void SetareUnghi(long double unghi)
 {
-	if(unghi<-0.9 || unghi>0.9) // Se verifica daca valoarea unghilui este setata corect
+	if(unghi == 0)
+	{
+		TPM0->CONTROLS[4].CnV = (ServoMaxVal + ServoMinVal)/2;
 		return;
+	}
+	if(unghi<-0.95) // Se verifica daca valoarea unghilui este setata corect
+	{
+		unghi = -0.95;
+	}
+	else if (unghi > 0.95)
+	{
+		unghi = 0.95;
+	}
 	unghi++;	// Se aduce valoarea la intervalul 0-2
 	unghi /= 2;	// Se aduce valoarea la intervalul 0-1
-	unghi*=0.8;
-	unghi+=0.1;
-	TPM0->CONTROLS[4].CnV = (ServoMaxVal-ServoMinVal)*unghi + ServoMinVal;
+	unghi = (ServoMaxVal-ServoMinVal)*unghi;
+	unghi = unghi + ServoMinVal;
+	TPM0->CONTROLS[4].CnV = unghi;
 }
