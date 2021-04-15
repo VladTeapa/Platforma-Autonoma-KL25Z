@@ -1,25 +1,78 @@
 #include "Motoare.h"
+#include "Uart.h"
+#include "PID.h"
 
-double motoareInputCurent = 0;
-double vitezaCurenta = 0;
-uint8_t numberOfTimes = 0;
-double viteza;
+struct PID pid;
+
+long double vitezaSemnal;
+
+long double vitezaSemnalDebug=0;
+uint8_t vitezaSemnalTimesDebug=0;
+
+long double vitezaCurenta = 0;
+
+long double volatile viteza=0;
+
+long double semnal=0;
+
+int8_t volatile sens=MOTOARE_SENS_INAITE;
+
 uint32_t nrInput = 0;
-uint32_t debug;
 
 void TPM0_IRQHandler(void)
 {
-	if(TPM0->CONTROLS[0].CnSC & TPM_CnSC_CHF_MASK)
+	NVIC_ClearPendingIRQ(TPM0_IRQn);
+	if(TPM0->CONTROLS[3].CnSC & TPM_CnSC_CHF_MASK)
 	{
 			nrInput++;
-			TPM0->CONTROLS[0].CnSC |= TPM_CnSC_CHF_MASK;
+			TPM0->CONTROLS[3].CnSC |= TPM_CnSC_CHF_MASK;
 	}
-	debug = TPM0->CONTROLS[0].CnSC;
 	if((TPM0_SC & TPM_SC_TOF_MASK))
 	{
-			vitezaCurenta = (1.0f * nrInput/NUMBER_OF_MAGNETS) * PI * DIAMETER_OF_WHEEL / COEFFICIENT_MEASURE_TIME;
-			nrInput = 0;
+			vitezaCurenta = (1.0L * nrInput/NUMBER_OF_MAGNETS) * PI * DIAMETER_OF_WHEEL / COEFFICIENT_MEASURE_TIME;
 			TPM0_SC |= TPM_SC_TOF_MASK;
+			if(VITEZA_DEBUG_VITEZA_CUR == 1)
+			{
+				if(vitezaSemnalTimesDebug == VITEZA_SEMNAL_TIME_DEBUG)
+				{
+					vitezaSemnalDebug += 0.1L;
+					if(vitezaSemnalDebug >= 0.5L)
+						vitezaSemnalDebug = 0;
+				
+					vitezaSemnalTimesDebug = 0;
+				}
+				else
+				{
+					vitezaSemnalTimesDebug++;
+				}
+				SetareViteza(vitezaSemnalDebug);
+				trimiteDate(vitezaCurenta + 11);
+				trimiteDate(vitezaSemnalDebug*10.0L+0.1);
+			}
+			nrInput = 0;
+			/*semnal = getNextPid(pid, viteza, vitezaCurenta, semnal);
+			if(TURATIE_DEBUG_FUNCTIE_TR == 1)
+				return;
+			if(semnal < 0)
+			{
+				if(sens == MOTOARE_SENS_INAITE)
+				{
+					SetareViteza(0);
+					SetareSens(MOTOARE_SENS_SPATE);
+					sens = MOTOARE_SENS_SPATE;
+				}
+				SetareViteza(semnal);
+			}
+			else
+			{
+				if(sens == MOTOARE_SENS_SPATE)
+				{
+					SetareViteza(0);
+					SetareSens(MOTOARE_SENS_INAITE);
+					sens = MOTOARE_SENS_INAITE;
+				}
+				SetareViteza(semnal);
+			}*/
 	}
 }
 
@@ -30,6 +83,8 @@ void InitializarePiniParteMecanica(void){
 	PortMotorStanga |= PORT_PCR_MUX(PortMotorStangaMux);
 	
 	PortSenzorTuratie |= PORT_PCR_MUX(PortSenzorTuratieMux);
+	PortSenzorTuratie |= PORT_PCR_PE(1) & (~PORT_PCR_PS(1));
+	
 	
 	PortMotorActivareDreapta |= PORT_PCR_MUX(PortMotorActivareDreaptaM);
 	PortMotorActivareStanga |= PORT_PCR_MUX(PortMotorActivareStangaM);
@@ -49,7 +104,7 @@ void InitializarePiniParteMecanica(void){
 	
 	GPIOSMotorDreapta |= 1<<GPIOPinMotorDreapta;
 	GPIOSMotorStanga |= 1<<GPIOPinMotorStanga;
-	GPIOSSensMotor |= 1<<GPIOPinSensMotor;
+	GPIOCSensMotor |= 1<<GPIOPinSensMotor;
 	
 	//Setare divizor frecventa
 	TPM0->SC |= TPM_SC_PS(TPMDivider);
@@ -72,7 +127,7 @@ void InitializarePiniParteMecanica(void){
 	TPM0->CONTROLS[1].CnSC = TPM_CnSC_MSB_MASK | TPM_CnSC_ELSB_MASK;
 	
 	//Setare mod input capture
-	TPM0->CONTROLS[0].CnSC = TPM_CnSC_ELSA_MASK | TPM_CnSC_CHIE_MASK;
+	TPM0->CONTROLS[3].CnSC = TPM_CnSC_ELSA_MASK | TPM_CnSC_CHIE_MASK;
 	
 	//Activare intrerupere
 	NVIC_SetPriority(TPM0_IRQn, 128);
@@ -86,30 +141,34 @@ void InitializarePiniParteMecanica(void){
 	
 	TPM0->CONTROLS[4].CnV = ServoMaxCount*0.075f;
 	
-	TPM0->CONTROLS[2].CnV = MotorMaxCount/10;
+	TPM0->CONTROLS[2].CnV = 0;
 	
-	TPM0->CONTROLS[1].CnV = MotorMaxCount/10;
+	TPM0->CONTROLS[1].CnV = 0;
 	
 	//Activare TPM
 	TPM0->SC |= TPM_SC_CMOD(1);
 }
 
+
+
 void SetareSens(int sens)
 {
-	if(sens == SensMotorInainte) // Setare sens inainte
-	{
-		GPIOSSensMotor |= 1<<GPIOPinSensMotor;
-	}
-	else if(sens == SensMotorInSpate) // Setare sens inapoi
+	if(sens == MOTOARE_SENS_INAITE) // Setare sens inainte
 	{
 		GPIOCSensMotor |= 1<<GPIOPinSensMotor;
+	}
+	else if(sens == MOTOARE_SENS_SPATE) // Setare sens inapoi
+	{
+		GPIOSSensMotor |= 1<<GPIOPinSensMotor;
 	} //Daca nu este niciuna dintre ele nu se modifica sensul
 }
 
 void SetareViteza(double vitezaMotor)
 {
-	if(vitezaMotor<0 || vitezaMotor>1) // Se verifica daca valoarea vitezei este setata corect
-		return;
+	if(vitezaMotor < 0)
+		vitezaMotor = 0;
+	if(vitezaMotor > 1)
+		vitezaMotor = 1;
 	
 	TPM0->CONTROLS[2].CnV = MotorMaxCount*vitezaMotor;
 	
@@ -117,11 +176,25 @@ void SetareViteza(double vitezaMotor)
 	
 }
 
-void SetareUnghi(double unghi)
+
+void SetareUnghi(long double unghi)
 {
-	if(unghi<-1 || unghi>1) // Se verifica daca valoarea unghilui este setata corect
+	if(unghi == 0)
+	{
+		TPM0->CONTROLS[4].CnV = (ServoMaxVal + ServoMinVal)/2;
 		return;
+	}
+	if(unghi<-0.95) // Se verifica daca valoarea unghilui este setata corect
+	{
+		unghi = -0.95;
+	}
+	else if (unghi > 0.95)
+	{
+		unghi = 0.95;
+	}
 	unghi++;	// Se aduce valoarea la intervalul 0-2
 	unghi /= 2;	// Se aduce valoarea la intervalul 0-1
-	TPM0->CONTROLS[4].CnV = (ServoMaxVal-ServoMinVal)*unghi + ServoMinVal;
+	unghi = (ServoMaxVal-ServoMinVal)*unghi;
+	unghi = unghi + ServoMinVal;
+	TPM0->CONTROLS[4].CnV = unghi;
 }

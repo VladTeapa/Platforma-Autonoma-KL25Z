@@ -22,19 +22,20 @@ Dialog DLL:      TARMCM1.DLL V1.14.3.0
  
 <h2>Project:</h2>
 P:\Facultate\Licenta\ProiectGitHub\Keil\ProiectLicenta.uvprojx
-Project File Date:  03/15/2021
+Project File Date:  04/09/2021
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.15', folder: 'P:\Keil\ARM\ARMCLANG\Bin'
 Rebuild target 'Target 1'
-compiling retarget_io.c...
-PortsSetup.c(1): warning: In file included from...
+Motoare.c(1): warning: In file included from...
+./Motoare.h(1): warning: In file included from...
 C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
 P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(147): warning: In file included from...
 P:/Keil/ARM/CMSIS/Include\core_cmInstr.h(435): warning: implicit conversion changes signedness: 'uint32_t' (aka 'unsigned int') to 'int32_t' (aka 'int') [-Wsign-conversion]
   return(result);
   ~~~~~~ ^~~~~~
-PortsSetup.c(1): warning: In file included from...
+Motoare.c(1): warning: In file included from...
+./Motoare.h(1): warning: In file included from...
 C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
 P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(716): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
     SCB->SHP[_SHP_IDX(IRQn)] = (SCB->SHP[_SHP_IDX(IRQn)] & ~(0xFF << _BIT_SHIFT(IRQn))) |
@@ -45,13 +46,115 @@ P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(719): warning: implicit conversion chan
 P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(750): warning: function 'NVIC_SystemReset' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
 {
 ^
-PortsSetup.c(2): warning: In file included from...
-./PortsSetup.h(2): warning: In file included from...
-./Defines.h(142): warning: no newline at end of file [-Wnewline-eof]
-#define CAMERA_EDGE_VAL                                         0xFF
-                                                                    ^
-5 warnings generated.
-compiling PortsSetup.c...
+Motoare.c(1): warning: In file included from...
+./Motoare.h(2): warning: In file included from...
+./Defines.h(183): warning: no newline at end of file [-Wnewline-eof]
+#define STATE_DRUM_DREPTTOCURBA         6
+                                         ^
+Motoare.c(2): warning: In file included from...
+./Uart.h(1): warning: In file included from...
+./Defines.h(183): warning: no newline at end of file [-Wnewline-eof]
+#define STATE_DRUM_DREPTTOCURBA         6
+                                         ^
+Motoare.c(2): warning: In file included from...
+./Uart.h(7): warning: no newline at end of file [-Wnewline-eof]
+void UartInit(uint32_t baud);
+                             ^
+Motoare.c(3): warning: In file included from...
+./PID.h(1): warning: In file included from...
+./Defines.h(183): warning: no newline at end of file [-Wnewline-eof]
+#define STATE_DRUM_DREPTTOCURBA         6
+                                         ^
+Motoare.c(3): warning: In file included from...
+./PID.h(12): warning: no newline at end of file [-Wnewline-eof]
+double getNextPid(struct PID pid, double referinta, double output, long double semnalComanda);
+                                                                                              ^
+Motoare.c(9): warning: no previous extern declaration for non-static variable 'vitezaSemnalDebug' [-Wmissing-variable-declarations]
+long double vitezaSemnalDebug=0;
+            ^
+Motoare.c(9): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+long double vitezaSemnalDebug=0;
+^
+Motoare.c(10): warning: no previous extern declaration for non-static variable 'vitezaSemnalTimesDebug' [-Wmissing-variable-declarations]
+uint8_t vitezaSemnalTimesDebug=0;
+        ^
+Motoare.c(10): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t vitezaSemnalTimesDebug=0;
+^
+Motoare.c(12): warning: no previous extern declaration for non-static variable 'vitezaCurenta' [-Wmissing-variable-declarations]
+long double vitezaCurenta = 0;
+            ^
+Motoare.c(12): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+long double vitezaCurenta = 0;
+^
+Motoare.c(14): warning: no previous extern declaration for non-static variable 'viteza' [-Wmissing-variable-declarations]
+long double volatile viteza=0;
+                     ^
+Motoare.c(14): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+long double volatile viteza=0;
+^
+Motoare.c(16): warning: no previous extern declaration for non-static variable 'semnal' [-Wmissing-variable-declarations]
+long double semnal=0;
+            ^
+Motoare.c(16): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+long double semnal=0;
+^
+Motoare.c(18): warning: no previous extern declaration for non-static variable 'sens' [-Wmissing-variable-declarations]
+int8_t volatile sens=MOTOARE_SENS_INAITE;
+                ^
+Motoare.c(18): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int8_t volatile sens=MOTOARE_SENS_INAITE;
+^
+Motoare.c(20): warning: no previous extern declaration for non-static variable 'nrInput' [-Wmissing-variable-declarations]
+uint32_t nrInput = 0;
+         ^
+Motoare.c(20): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint32_t nrInput = 0;
+^
+Motoare.c(49): warning: implicit conversion turns floating-point number into integer: 'long double' to 'uint8_t' (aka 'unsigned char') [-Wfloat-conversion]
+                                trimiteDate(vitezaCurenta + 11);
+                                ~~~~~~~~~~~ ~~~~~~~~~~~~~~^~~~
+Motoare.c(50): warning: implicit conversion turns floating-point number into integer: 'long double' to 'uint8_t' (aka 'unsigned char') [-Wfloat-conversion]
+                                trimiteDate(vitezaSemnalDebug*10.0L+0.1);
+                                ~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~^~~~
+Motoare.c(142): warning: implicit conversion turns floating-point number into integer: 'float' to 'uint32_t' (aka 'unsigned int') [-Wfloat-conversion]
+        TPM0->CONTROLS[4].CnV = ServoMaxCount*0.075f;
+                              ~ ~~~~~~~~~~~~~^~~~~~~
+Motoare.c(152): warning: declaration shadows a variable in the global scope [-Wshadow]
+void SetareSens(int sens)
+                    ^
+Motoare.c(18): note: previous declaration is here
+int8_t volatile sens=MOTOARE_SENS_INAITE;
+                ^
+Motoare.c(171): warning: implicit conversion turns floating-point number into integer: 'double' to 'uint32_t' (aka 'unsigned int') [-Wfloat-conversion]
+        TPM0->CONTROLS[2].CnV = MotorMaxCount*vitezaMotor;
+                              ~ ~~~~~~~~~~~~~^~~~~~~~~~~~
+Motoare.c(173): warning: implicit conversion turns floating-point number into integer: 'double' to 'uint32_t' (aka 'unsigned int') [-Wfloat-conversion]
+        TPM0->CONTROLS[1].CnV = MotorMaxCount*vitezaMotor;
+                              ~ ~~~~~~~~~~~~~^~~~~~~~~~~~
+Motoare.c(180): warning: comparing floating point with == or != is unsafe [-Wfloat-equal]
+        if(unghi == 0)
+           ~~~~~ ^  ~
+Motoare.c(197): warning: implicit conversion turns floating-point number into integer: 'long double' to 'uint32_t' (aka 'unsigned int') [-Wfloat-conversion]
+        TPM0->CONTROLS[4].CnV = unghi;
+                              ~ ^~~~~
+Motoare.c(198): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+Motoare.c(5): warning: no previous extern declaration for non-static variable 'pid' [-Wmissing-variable-declarations]
+struct PID pid;
+           ^
+Motoare.c(5): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+struct PID pid;
+^
+Motoare.c(7): warning: no previous extern declaration for non-static variable 'vitezaSemnal' [-Wmissing-variable-declarations]
+long double vitezaSemnal;
+            ^
+Motoare.c(7): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+long double vitezaSemnal;
+^
+27 warnings generated.
+compiling Motoare.c...
 Uart.c(1): warning: In file included from...
 ./Uart.h(1): warning: In file included from...
 ./Defines.h(1): warning: In file included from...
@@ -75,9 +178,9 @@ P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(750): warning: function 'NVIC_SystemRes
 ^
 Uart.c(1): warning: In file included from...
 ./Uart.h(1): warning: In file included from...
-./Defines.h(142): warning: no newline at end of file [-Wnewline-eof]
-#define CAMERA_EDGE_VAL                                         0xFF
-                                                                    ^
+./Defines.h(183): warning: no newline at end of file [-Wnewline-eof]
+#define STATE_DRUM_DREPTTOCURBA         6
+                                         ^
 Uart.c(1): warning: In file included from...
 ./Uart.h(7): warning: no newline at end of file [-Wnewline-eof]
 void UartInit(uint32_t baud);
@@ -102,89 +205,6 @@ uint8_t temp;
 ^
 9 warnings generated.
 compiling Uart.c...
-Motoare.c(1): warning: In file included from...
-./Motoare.h(1): warning: In file included from...
-C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
-P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(147): warning: In file included from...
-P:/Keil/ARM/CMSIS/Include\core_cmInstr.h(435): warning: implicit conversion changes signedness: 'uint32_t' (aka 'unsigned int') to 'int32_t' (aka 'int') [-Wsign-conversion]
-  return(result);
-  ~~~~~~ ^~~~~~
-Motoare.c(1): warning: In file included from...
-./Motoare.h(1): warning: In file included from...
-C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
-P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(716): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-    SCB->SHP[_SHP_IDX(IRQn)] = (SCB->SHP[_SHP_IDX(IRQn)] & ~(0xFF << _BIT_SHIFT(IRQn))) |
-                                                         ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~
-P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(719): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-    NVIC->IP[_IP_IDX(IRQn)] = (NVIC->IP[_IP_IDX(IRQn)] & ~(0xFF << _BIT_SHIFT(IRQn))) |
-                                                       ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~
-P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(750): warning: function 'NVIC_SystemReset' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
-{
-^
-Motoare.c(1): warning: In file included from...
-./Motoare.h(2): warning: In file included from...
-./Defines.h(142): warning: no newline at end of file [-Wnewline-eof]
-#define CAMERA_EDGE_VAL                                         0xFF
-                                                                    ^
-Motoare.c(3): warning: no previous extern declaration for non-static variable 'motoareInputCurent' [-Wmissing-variable-declarations]
-double motoareInputCurent = 0;
-       ^
-Motoare.c(3): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-double motoareInputCurent = 0;
-^
-Motoare.c(4): warning: no previous extern declaration for non-static variable 'vitezaCurenta' [-Wmissing-variable-declarations]
-double vitezaCurenta = 0;
-       ^
-Motoare.c(4): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-double vitezaCurenta = 0;
-^
-Motoare.c(5): warning: no previous extern declaration for non-static variable 'numberOfTimes' [-Wmissing-variable-declarations]
-uint8_t numberOfTimes = 0;
-        ^
-Motoare.c(5): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint8_t numberOfTimes = 0;
-^
-Motoare.c(7): warning: no previous extern declaration for non-static variable 'nrInput' [-Wmissing-variable-declarations]
-uint32_t nrInput = 0;
-         ^
-Motoare.c(7): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint32_t nrInput = 0;
-^
-Motoare.c(20): warning: implicit conversion increases floating-point precision: 'float' to 'double' [-Wdouble-promotion]
-                        vitezaCurenta = (1.0f * nrInput/NUMBER_OF_MAGNETS) * PI * DIAMETER_OF_WHEEL / COEFFICIENT_MEASURE_TIME;
-                                         ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~  ~
-Motoare.c(20): warning: implicit conversion from 'uint32_t' (aka 'unsigned int') to 'float' may lose precision [-Wimplicit-int-float-conversion]
-                        vitezaCurenta = (1.0f * nrInput/NUMBER_OF_MAGNETS) * PI * DIAMETER_OF_WHEEL / COEFFICIENT_MEASURE_TIME;
-                                              ~ ^~~~~~~
-Motoare.c(87): warning: implicit conversion turns floating-point number into integer: 'float' to 'uint32_t' (aka 'unsigned int') [-Wfloat-conversion]
-        TPM0->CONTROLS[4].CnV = ServoMaxCount*0.075f;
-                              ~ ~~~~~~~~~~~~~^~~~~~~
-Motoare.c(114): warning: implicit conversion turns floating-point number into integer: 'double' to 'uint32_t' (aka 'unsigned int') [-Wfloat-conversion]
-        TPM0->CONTROLS[2].CnV = MotorMaxCount*vitezaMotor;
-                              ~ ~~~~~~~~~~~~~^~~~~~~~~~~~
-Motoare.c(116): warning: implicit conversion turns floating-point number into integer: 'double' to 'uint32_t' (aka 'unsigned int') [-Wfloat-conversion]
-        TPM0->CONTROLS[1].CnV = MotorMaxCount*vitezaMotor;
-                              ~ ~~~~~~~~~~~~~^~~~~~~~~~~~
-Motoare.c(126): warning: implicit conversion turns floating-point number into integer: 'double' to 'uint32_t' (aka 'unsigned int') [-Wfloat-conversion]
-        TPM0->CONTROLS[4].CnV = (ServoMaxVal-ServoMinVal)*unghi + ServoMinVal;
-                              ~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
-Motoare.c(127): warning: no newline at end of file [-Wnewline-eof]
-}
- ^
-Motoare.c(6): warning: no previous extern declaration for non-static variable 'viteza' [-Wmissing-variable-declarations]
-double viteza;
-       ^
-Motoare.c(6): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-double viteza;
-^
-Motoare.c(8): warning: no previous extern declaration for non-static variable 'debug' [-Wmissing-variable-declarations]
-uint32_t debug;
-         ^
-Motoare.c(8): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint32_t debug;
-^
-18 warnings generated.
-compiling Motoare.c...
 SistemDecizional.c(1): warning: In file included from...
 ./SistemDecizional.h(1): warning: In file included from...
 C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
@@ -206,30 +226,89 @@ P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(750): warning: function 'NVIC_SystemRes
 ^
 SistemDecizional.c(1): warning: In file included from...
 ./SistemDecizional.h(2): warning: In file included from...
-./Defines.h(142): warning: no newline at end of file [-Wnewline-eof]
-#define CAMERA_EDGE_VAL                                         0xFF
-                                                                    ^
+./Defines.h(183): warning: no newline at end of file [-Wnewline-eof]
+#define STATE_DRUM_DREPTTOCURBA         6
+                                         ^
 SistemDecizional.c(1): warning: In file included from...
 ./SistemDecizional.h(3): warning: In file included from...
 ./Motoare.h(2): warning: In file included from...
-./Defines.h(142): warning: no newline at end of file [-Wnewline-eof]
-#define CAMERA_EDGE_VAL                                         0xFF
-                                                                    ^
+./Defines.h(183): warning: no newline at end of file [-Wnewline-eof]
+#define STATE_DRUM_DREPTTOCURBA         6
+                                         ^
 SistemDecizional.c(1): warning: In file included from...
-./SistemDecizional.h(7): warning: no newline at end of file [-Wnewline-eof]
-void decideViteza(void); // Functie care ia decizia pentru motoare
-                                                                  ^
-SistemDecizional.c(5): warning: no previous extern declaration for non-static variable 'unghiThreshold' [-Wmissing-variable-declarations]
-uint8_t unghiThreshold = 30;
+./SistemDecizional.h(6): warning: no newline at end of file [-Wnewline-eof]
+double decideVitezaDrumSimplu(uint8_t linie); // Functie care ia decizia pentru motoare
+                                                                                       ^
+SistemDecizional.c(4): warning: no previous extern declaration for non-static variable 'unghiThreshold' [-Wmissing-variable-declarations]
+uint8_t unghiThreshold = SERVOMOTOR_THRESHOLD;
         ^
-SistemDecizional.c(5): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint8_t unghiThreshold = 30;
+SistemDecizional.c(4): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t unghiThreshold = SERVOMOTOR_THRESHOLD;
 ^
-SistemDecizional.c(33): warning: no newline at end of file [-Wnewline-eof]
+SistemDecizional.c(52): warning: no newline at end of file [-Wnewline-eof]
 }
  ^
 9 warnings generated.
 compiling SistemDecizional.c...
+PortsSetup.c(1): warning: In file included from...
+C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
+P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(147): warning: In file included from...
+P:/Keil/ARM/CMSIS/Include\core_cmInstr.h(435): warning: implicit conversion changes signedness: 'uint32_t' (aka 'unsigned int') to 'int32_t' (aka 'int') [-Wsign-conversion]
+  return(result);
+  ~~~~~~ ^~~~~~
+PortsSetup.c(1): warning: In file included from...
+C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
+P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(716): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    SCB->SHP[_SHP_IDX(IRQn)] = (SCB->SHP[_SHP_IDX(IRQn)] & ~(0xFF << _BIT_SHIFT(IRQn))) |
+                                                         ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(719): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    NVIC->IP[_IP_IDX(IRQn)] = (NVIC->IP[_IP_IDX(IRQn)] & ~(0xFF << _BIT_SHIFT(IRQn))) |
+                                                       ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(750): warning: function 'NVIC_SystemReset' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+{
+^
+PortsSetup.c(2): warning: In file included from...
+./PortsSetup.h(2): warning: In file included from...
+./Defines.h(183): warning: no newline at end of file [-Wnewline-eof]
+#define STATE_DRUM_DREPTTOCURBA         6
+                                         ^
+5 warnings generated.
+compiling PortsSetup.c...
+PID.c(1): warning: In file included from...
+./PID.h(1): warning: In file included from...
+./Defines.h(1): warning: In file included from...
+C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
+P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(147): warning: In file included from...
+P:/Keil/ARM/CMSIS/Include\core_cmInstr.h(435): warning: implicit conversion changes signedness: 'uint32_t' (aka 'unsigned int') to 'int32_t' (aka 'int') [-Wsign-conversion]
+  return(result);
+  ~~~~~~ ^~~~~~
+PID.c(1): warning: In file included from...
+./PID.h(1): warning: In file included from...
+./Defines.h(1): warning: In file included from...
+C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
+P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(716): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    SCB->SHP[_SHP_IDX(IRQn)] = (SCB->SHP[_SHP_IDX(IRQn)] & ~(0xFF << _BIT_SHIFT(IRQn))) |
+                                                         ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(719): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    NVIC->IP[_IP_IDX(IRQn)] = (NVIC->IP[_IP_IDX(IRQn)] & ~(0xFF << _BIT_SHIFT(IRQn))) |
+                                                       ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(750): warning: function 'NVIC_SystemReset' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+{
+^
+PID.c(1): warning: In file included from...
+./PID.h(1): warning: In file included from...
+./Defines.h(183): warning: no newline at end of file [-Wnewline-eof]
+#define STATE_DRUM_DREPTTOCURBA         6
+                                         ^
+PID.c(1): warning: In file included from...
+./PID.h(12): warning: no newline at end of file [-Wnewline-eof]
+double getNextPid(struct PID pid, double referinta, double output, long double semnalComanda);
+                                                                                              ^
+PID.c(99): warning: no newline at end of file [-Wnewline-eof]
+                }*/
+                   ^
+7 warnings generated.
+compiling PID.c...
 Camera.c(1): warning: In file included from...
 ./Camera.h(3): warning: In file included from...
 C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
@@ -251,79 +330,55 @@ P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(750): warning: function 'NVIC_SystemRes
 ^
 Camera.c(1): warning: In file included from...
 ./Camera.h(4): warning: In file included from...
-./Defines.h(142): warning: no newline at end of file [-Wnewline-eof]
-#define CAMERA_EDGE_VAL                                         0xFF
-                                                                    ^
+./Defines.h(183): warning: no newline at end of file [-Wnewline-eof]
+#define STATE_DRUM_DREPTTOCURBA         6
+                                         ^
 Camera.c(1): warning: In file included from...
 ./Camera.h(18): warning: no newline at end of file [-Wnewline-eof]
 uint8_t cautaLinie(void);
                          ^
 Camera.c(2): warning: In file included from...
 ./Uart.h(1): warning: In file included from...
-./Defines.h(142): warning: no newline at end of file [-Wnewline-eof]
-#define CAMERA_EDGE_VAL                                         0xFF
-                                                                    ^
+./Defines.h(183): warning: no newline at end of file [-Wnewline-eof]
+#define STATE_DRUM_DREPTTOCURBA         6
+                                         ^
 Camera.c(2): warning: In file included from...
 ./Uart.h(7): warning: no newline at end of file [-Wnewline-eof]
 void UartInit(uint32_t baud);
                              ^
 Camera.c(3): warning: In file included from...
 ./SistemDecizional.h(2): warning: In file included from...
-./Defines.h(142): warning: no newline at end of file [-Wnewline-eof]
-#define CAMERA_EDGE_VAL                                         0xFF
-                                                                    ^
+./Defines.h(183): warning: no newline at end of file [-Wnewline-eof]
+#define STATE_DRUM_DREPTTOCURBA         6
+                                         ^
 Camera.c(3): warning: In file included from...
 ./SistemDecizional.h(3): warning: In file included from...
 ./Motoare.h(2): warning: In file included from...
-./Defines.h(142): warning: no newline at end of file [-Wnewline-eof]
-#define CAMERA_EDGE_VAL                                         0xFF
-                                                                    ^
+./Defines.h(183): warning: no newline at end of file [-Wnewline-eof]
+#define STATE_DRUM_DREPTTOCURBA         6
+                                         ^
 Camera.c(3): warning: In file included from...
-./SistemDecizional.h(7): warning: no newline at end of file [-Wnewline-eof]
-void decideViteza(void); // Functie care ia decizia pentru motoare
-                                                                  ^
+./SistemDecizional.h(6): warning: no newline at end of file [-Wnewline-eof]
+double decideVitezaDrumSimplu(uint8_t linie); // Functie care ia decizia pentru motoare
+                                                                                       ^
 Camera.c(4): warning: In file included from...
 ./Motoare.h(2): warning: In file included from...
-./Defines.h(142): warning: no newline at end of file [-Wnewline-eof]
-#define CAMERA_EDGE_VAL                                         0xFF
-                                                                    ^
-Camera.c(16): warning: no previous extern declaration for non-static variable 'linie' [-Wmissing-variable-declarations]
+./Defines.h(183): warning: no newline at end of file [-Wnewline-eof]
+#define STATE_DRUM_DREPTTOCURBA         6
+                                         ^
+Camera.c(14): warning: no previous extern declaration for non-static variable 'linie' [-Wmissing-variable-declarations]
 uint8_t linie=63;
         ^
-Camera.c(16): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+Camera.c(14): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 uint8_t linie=63;
 ^
-Camera.c(17): warning: no previous extern declaration for non-static variable 'linieStatus' [-Wmissing-variable-declarations]
-uint8_t linieStatus = 1;
-        ^
-Camera.c(17): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint8_t linieStatus = 1;
-^
-Camera.c(18): warning: no previous extern declaration for non-static variable 'primaImagine' [-Wmissing-variable-declarations]
-uint8_t primaImagine = CAMERA_FIRST_IMAGE_TRUE;
-        ^
-Camera.c(18): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint8_t primaImagine = CAMERA_FIRST_IMAGE_TRUE;
-^
-Camera.c(22): warning: unused variable 'linieTemp' [-Wunused-variable]
-        uint8_t linieTemp = 0;
-                ^
-Camera.c(23): warning: unused variable 'j' [-Wunused-variable]
-        uint8_t i,j;
-                  ^
-Camera.c(24): warning: unused variable 'flag' [-Wunused-variable]
-        uint8_t flag = 0;
-                ^
-Camera.c(233): warning: no newline at end of file [-Wnewline-eof]
+Camera.c(43): warning: implicit conversion loses integer precision: 'unsigned int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+                        linieStatus = clockCycles/2;
+                                    ~ ~~~~~~~~~~~^~
+Camera.c(205): warning: no newline at end of file [-Wnewline-eof]
 }
  ^
-Camera.c(15): warning: no previous extern declaration for non-static variable 'cameraPixels' [-Wmissing-variable-declarations]
-uint8_t cameraPixels[128];
-        ^
-Camera.c(15): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint8_t cameraPixels[128];
-^
-20 warnings generated.
+15 warnings generated.
 compiling Camera.c...
 Main.c(1): warning: In file included from...
 C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
@@ -344,58 +399,94 @@ P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(750): warning: function 'NVIC_SystemRes
 ^
 Main.c(2): warning: In file included from...
 ./Motoare.h(2): warning: In file included from...
-./Defines.h(142): warning: no newline at end of file [-Wnewline-eof]
-#define CAMERA_EDGE_VAL                                         0xFF
-                                                                    ^
+./Defines.h(183): warning: no newline at end of file [-Wnewline-eof]
+#define STATE_DRUM_DREPTTOCURBA         6
+                                         ^
 Main.c(3): warning: In file included from...
 ./PortsSetup.h(2): warning: In file included from...
-./Defines.h(142): warning: no newline at end of file [-Wnewline-eof]
-#define CAMERA_EDGE_VAL                                         0xFF
-                                                                    ^
+./Defines.h(183): warning: no newline at end of file [-Wnewline-eof]
+#define STATE_DRUM_DREPTTOCURBA         6
+                                         ^
 Main.c(4): warning: In file included from...
 ./Camera.h(4): warning: In file included from...
-./Defines.h(142): warning: no newline at end of file [-Wnewline-eof]
-#define CAMERA_EDGE_VAL                                         0xFF
-                                                                    ^
+./Defines.h(183): warning: no newline at end of file [-Wnewline-eof]
+#define STATE_DRUM_DREPTTOCURBA         6
+                                         ^
 Main.c(4): warning: In file included from...
 ./Camera.h(18): warning: no newline at end of file [-Wnewline-eof]
 uint8_t cautaLinie(void);
                          ^
 Main.c(5): warning: In file included from...
 ./SistemDecizional.h(2): warning: In file included from...
-./Defines.h(142): warning: no newline at end of file [-Wnewline-eof]
-#define CAMERA_EDGE_VAL                                         0xFF
-                                                                    ^
+./Defines.h(183): warning: no newline at end of file [-Wnewline-eof]
+#define STATE_DRUM_DREPTTOCURBA         6
+                                         ^
 Main.c(5): warning: In file included from...
 ./SistemDecizional.h(3): warning: In file included from...
 ./Motoare.h(2): warning: In file included from...
-./Defines.h(142): warning: no newline at end of file [-Wnewline-eof]
-#define CAMERA_EDGE_VAL                                         0xFF
-                                                                    ^
+./Defines.h(183): warning: no newline at end of file [-Wnewline-eof]
+#define STATE_DRUM_DREPTTOCURBA         6
+                                         ^
 Main.c(5): warning: In file included from...
-./SistemDecizional.h(7): warning: no newline at end of file [-Wnewline-eof]
-void decideViteza(void); // Functie care ia decizia pentru motoare
-                                                                  ^
+./SistemDecizional.h(6): warning: no newline at end of file [-Wnewline-eof]
+double decideVitezaDrumSimplu(uint8_t linie); // Functie care ia decizia pentru motoare
+                                                                                       ^
 Main.c(6): warning: In file included from...
 ./Uart.h(1): warning: In file included from...
-./Defines.h(142): warning: no newline at end of file [-Wnewline-eof]
-#define CAMERA_EDGE_VAL                                         0xFF
-                                                                    ^
+./Defines.h(183): warning: no newline at end of file [-Wnewline-eof]
+#define STATE_DRUM_DREPTTOCURBA         6
+                                         ^
 Main.c(6): warning: In file included from...
 ./Uart.h(7): warning: no newline at end of file [-Wnewline-eof]
 void UartInit(uint32_t baud);
                              ^
-Main.c(25): warning: unused variable 'x' [-Wunused-variable]
-        double x = 0;
-               ^
-Main.c(14): warning: no previous extern declaration for non-static variable 'directie' [-Wmissing-variable-declarations]
-double directie;
-       ^
-Main.c(14): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-double directie;
-^
-15 warnings generated.
+Main.c(7): warning: In file included from...
+./PID.h(1): warning: In file included from...
+./Defines.h(183): warning: no newline at end of file [-Wnewline-eof]
+#define STATE_DRUM_DREPTTOCURBA         6
+                                         ^
+Main.c(7): warning: In file included from...
+./PID.h(12): warning: no newline at end of file [-Wnewline-eof]
+double getNextPid(struct PID pid, double referinta, double output, long double semnalComanda);
+                                                                                              ^
+Main.c(40): warning: unused variable 'aux' [-Wunused-variable]
+        int aux=0;
+            ^
+16 warnings generated.
 compiling Main.c...
+SenzoriDistanta.c(1): warning: In file included from...
+./SenzoriDistanta.h(1): warning: In file included from...
+./Defines.h(1): warning: In file included from...
+C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
+P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(147): warning: In file included from...
+P:/Keil/ARM/CMSIS/Include\core_cmInstr.h(435): warning: implicit conversion changes signedness: 'uint32_t' (aka 'unsigned int') to 'int32_t' (aka 'int') [-Wsign-conversion]
+  return(result);
+  ~~~~~~ ^~~~~~
+SenzoriDistanta.c(1): warning: In file included from...
+./SenzoriDistanta.h(1): warning: In file included from...
+./Defines.h(1): warning: In file included from...
+C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
+P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(716): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    SCB->SHP[_SHP_IDX(IRQn)] = (SCB->SHP[_SHP_IDX(IRQn)] & ~(0xFF << _BIT_SHIFT(IRQn))) |
+                                                         ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(719): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    NVIC->IP[_IP_IDX(IRQn)] = (NVIC->IP[_IP_IDX(IRQn)] & ~(0xFF << _BIT_SHIFT(IRQn))) |
+                                                       ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(750): warning: function 'NVIC_SystemReset' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+{
+^
+SenzoriDistanta.c(1): warning: In file included from...
+./SenzoriDistanta.h(1): warning: In file included from...
+./Defines.h(183): warning: no newline at end of file [-Wnewline-eof]
+#define STATE_DRUM_DREPTTOCURBA         6
+                                         ^
+SenzoriDistanta.c(1): warning: no newline at end of file [-Wnewline-eof]
+#include "SenzoriDistanta.h"
+                            ^
+6 warnings generated.
+compiling SenzoriDistanta.c...
+compiling retarget_io.c...
+assembling startup_MKL25Z4.s...
 RTE/Device/MKL25Z128xxx4/system_MKL25Z4.c(100): warning: In file included from...
 C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
 P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(147): warning: In file included from...
@@ -422,11 +513,10 @@ RTE/Device/MKL25Z128xxx4/system_MKL25Z4.c(267): note: silence by adding parenthe
                                                       /* DISABLES CODE */ ( )
 5 warnings generated.
 compiling system_MKL25Z4.c...
-assembling startup_MKL25Z4.s...
 linking...
-Program Size: Code=4974 RO-data=418 RW-data=4 ZI-data=648  
+Program Size: Code=6876 RO-data=352 RW-data=12 ZI-data=576  
 FromELF: creating hex file...
-".\Objects\ProiectLicenta.axf" - 0 Error(s), 81 Warning(s).
+".\Objects\ProiectLicenta.axf" - 0 Error(s), 99 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -461,9 +551,9 @@ Package Vendor: Keil
       Source file:   Source\retarget_io.c
 
    * Component: Keil::Device:Startup:2.5.0
-      Source file:   Device\Source\ARM\startup_MKL25Z4.s
       Include file:  Device\Source\system_MKL25Z4.h
       Source file:   Device\Source\system_MKL25Z4.c
+      Source file:   Device\Source\ARM\startup_MKL25Z4.s
 Build Time Elapsed:  00:00:03
 </pre>
 </body>
