@@ -12,27 +12,23 @@ Section Cross References
     main.o(.text.main) refers to motoare.o(.text.initializareSenzorTuratie) for initializareSenzorTuratie
     main.o(.text.main) refers to senzoridistanta.o(.text.initializareSenzoriDistanta) for initializareSenzoriDistanta
     main.o(.text.main) refers to camera.o(.text.startCamera) for startCamera
-    main.o(.text.main) refers to uart.o(.text.UartInit) for UartInit
-    main.o(.text.main) refers to motoare.o(.text.SetareUnghi) for SetareUnghi
+    main.o(.text.main) refers to uart.o(.text.uartInit) for uartInit
     main.o(.text.main) refers to sistemdecizional.o(.text.decideDirectiaDrumSimplu) for decideDirectiaDrumSimplu
+    main.o(.text.main) refers to daddsub.o(.text) for __aeabi_dadd
+    main.o(.text.main) refers to motoare.o(.text.SetareUnghi) for SetareUnghi
     main.o(.text.main) refers to motoare.o(.bss.pid) for pid
     main.o(.text.main) refers to camera.o(.data.linie) for linie
     main.o(.text.main) refers to motoare.o(.bss.viteza) for viteza
     main.o(.ARM.exidx.text.main) refers to main.o(.text.main) for [Anonymous Symbol]
     motoare.o(.text.TPM2_IRQHandler) refers to fflti.o(.text) for __aeabi_ui2f
     motoare.o(.text.TPM2_IRQHandler) refers to fmul.o(x$fpl$fmul) for __aeabi_fmul
-    motoare.o(.text.TPM2_IRQHandler) refers to ffixi.o(.text) for __aeabi_f2iz
-    motoare.o(.text.TPM2_IRQHandler) refers to uart.o(.text.trimiteDate) for trimiteDate
     motoare.o(.text.TPM2_IRQHandler) refers to fcmp.o(i._feq) for __aeabi_fcmpeq
     motoare.o(.text.TPM2_IRQHandler) refers to pid.o(.text.getNextPid) for getNextPid
     motoare.o(.text.TPM2_IRQHandler) refers to fcmp.o(i._fleq) for __aeabi_fcmple
     motoare.o(.text.TPM2_IRQHandler) refers to fcmp.o(i._fgeq) for __aeabi_fcmpge
-    motoare.o(.text.TPM2_IRQHandler) refers to f2d.o(.text) for __aeabi_f2d
-    motoare.o(.text.TPM2_IRQHandler) refers to dcmp.o(i._dls) for __aeabi_dcmplt
-    motoare.o(.text.TPM2_IRQHandler) refers to dcmp.o(i._dgr) for __aeabi_dcmpgt
-    motoare.o(.text.TPM2_IRQHandler) refers to dmul.o(.text) for __aeabi_dmul
-    motoare.o(.text.TPM2_IRQHandler) refers to dfixui.o(.text) for __aeabi_d2uiz
-    motoare.o(.text.TPM2_IRQHandler) refers to faddsub.o(x$fpl$fadd) for __aeabi_fadd
+    motoare.o(.text.TPM2_IRQHandler) refers to fcmp.o(i._fls) for __aeabi_fcmplt
+    motoare.o(.text.TPM2_IRQHandler) refers to fcmp.o(i._fgr) for __aeabi_fcmpgt
+    motoare.o(.text.TPM2_IRQHandler) refers to ffixui.o(.text) for __aeabi_f2uiz
     motoare.o(.text.TPM2_IRQHandler) refers to motoare.o(.bss.nrInput) for nrInput
     motoare.o(.text.TPM2_IRQHandler) refers to motoare.o(.bss.vitezaCurenta) for vitezaCurenta
     motoare.o(.text.TPM2_IRQHandler) refers to motoare.o(.bss.viteza) for viteza
@@ -40,10 +36,10 @@ Section Cross References
     motoare.o(.text.TPM2_IRQHandler) refers to motoare.o(.bss.pid) for pid
     motoare.o(.ARM.exidx.text.TPM2_IRQHandler) refers to motoare.o(.text.TPM2_IRQHandler) for [Anonymous Symbol]
     motoare.o(.ARM.exidx.text.SetareSens) refers to motoare.o(.text.SetareSens) for [Anonymous Symbol]
-    motoare.o(.text.SetareViteza) refers to dcmp.o(i._dls) for __aeabi_dcmplt
-    motoare.o(.text.SetareViteza) refers to dcmp.o(i._dgr) for __aeabi_dcmpgt
-    motoare.o(.text.SetareViteza) refers to dmul.o(.text) for __aeabi_dmul
-    motoare.o(.text.SetareViteza) refers to dfixui.o(.text) for __aeabi_d2uiz
+    motoare.o(.text.SetareViteza) refers to fcmp.o(i._fls) for __aeabi_fcmplt
+    motoare.o(.text.SetareViteza) refers to fcmp.o(i._fgr) for __aeabi_fcmpgt
+    motoare.o(.text.SetareViteza) refers to fmul.o(x$fpl$fmul) for __aeabi_fmul
+    motoare.o(.text.SetareViteza) refers to ffixui.o(.text) for __aeabi_f2uiz
     motoare.o(.ARM.exidx.text.SetareViteza) refers to motoare.o(.text.SetareViteza) for [Anonymous Symbol]
     motoare.o(.ARM.exidx.text.InitializarePiniParteMecanica) refers to motoare.o(.text.InitializarePiniParteMecanica) for [Anonymous Symbol]
     motoare.o(.ARM.exidx.text.initializareSenzorTuratie) refers to motoare.o(.text.initializareSenzorTuratie) for [Anonymous Symbol]
@@ -64,7 +60,6 @@ Section Cross References
     camera.o(.text.PIT_IRQHandler) refers to camera.o(.data.linieStatus) for [Anonymous Symbol]
     camera.o(.text.PIT_IRQHandler) refers to camera.o(.data.linie) for linie
     camera.o(.text.PIT_IRQHandler) refers to camera.o(.bss.clockCycles) for [Anonymous Symbol]
-    camera.o(.text.PIT_IRQHandler) refers to camera.o(.bss.max) for [Anonymous Symbol]
     camera.o(.text.PIT_IRQHandler) refers to camera.o(.bss.min) for [Anonymous Symbol]
     camera.o(.ARM.exidx.text.PIT_IRQHandler) refers to camera.o(.text.PIT_IRQHandler) for [Anonymous Symbol]
     camera.o(.text.startCamera) refers to camera.o(.bss.cameraState) for [Anonymous Symbol]
@@ -75,15 +70,11 @@ Section Cross References
     sistemdecizional.o(.text.decideDirectiaDrumSimplu) refers to ddiv.o(.text) for __aeabi_ddiv
     sistemdecizional.o(.text.decideDirectiaDrumSimplu) refers to daddsub.o(.text) for __aeabi_dadd
     sistemdecizional.o(.ARM.exidx.text.decideDirectiaDrumSimplu) refers to sistemdecizional.o(.text.decideDirectiaDrumSimplu) for [Anonymous Symbol]
-    sistemdecizional.o(.text.decideVitezaDrumSimplu) refers to dflti.o(.text) for __aeabi_i2d
-    sistemdecizional.o(.text.decideVitezaDrumSimplu) refers to ddiv.o(.text) for __aeabi_ddiv
-    sistemdecizional.o(.text.decideVitezaDrumSimplu) refers to dmul.o(.text) for __aeabi_dmul
-    sistemdecizional.o(.ARM.exidx.text.decideVitezaDrumSimplu) refers to sistemdecizional.o(.text.decideVitezaDrumSimplu) for [Anonymous Symbol]
-    uart.o(.text.UartInit) refers to aeabi_sdivfast.o(.text_divfast) for __aeabi_uidiv
-    uart.o(.text.UartInit) refers to uart.o(.bss.temp) for temp
-    uart.o(.text.UartInit) refers to uart.o(.data.osr) for osr
-    uart.o(.text.UartInit) refers to uart.o(.bss.sbr) for sbr
-    uart.o(.ARM.exidx.text.UartInit) refers to uart.o(.text.UartInit) for [Anonymous Symbol]
+    uart.o(.text.uartInit) refers to aeabi_sdivfast.o(.text_divfast) for __aeabi_uidiv
+    uart.o(.text.uartInit) refers to uart.o(.bss.temp) for temp
+    uart.o(.text.uartInit) refers to uart.o(.data.osr) for osr
+    uart.o(.text.uartInit) refers to uart.o(.bss.sbr) for sbr
+    uart.o(.ARM.exidx.text.uartInit) refers to uart.o(.text.uartInit) for [Anonymous Symbol]
     uart.o(.ARM.exidx.text.trimiteDate) refers to uart.o(.text.trimiteDate) for [Anonymous Symbol]
     uart.o(.ARM.exidx.text.primesteDate) refers to uart.o(.text.primesteDate) for [Anonymous Symbol]
     pid.o(.text.initializarePID) refers to ddiv.o(.text) for __aeabi_ddiv
@@ -180,7 +171,7 @@ Section Cross References
     fcmp.o(i._fls) refers to flef.o(x$fpl$fleqf) for _fcmple
     fcmp.o(i._fneq) refers (Special) to usenofp.o(x$fpl$usenofp) for __I$use$fp
     fcmp.o(i._fneq) refers to feqf.o(x$fpl$feqf) for _fcmpeq
-    ffixi.o(.text) refers (Special) to usenofp.o(x$fpl$usenofp) for __I$use$fp
+    ffixui.o(.text) refers (Special) to usenofp.o(x$fpl$usenofp) for __I$use$fp
     fflti.o(.text) refers (Special) to usenofp.o(x$fpl$usenofp) for __I$use$fp
     fmul.o(x$fpl$fmul) refers (Special) to usenofp.o(x$fpl$usenofp) for __I$use$fp
     __rtentry.o(.ARM.Collect$$rtentry$$00000000) refers (Special) to __rtentry2.o(.ARM.Collect$$rtentry$$0000000A) for __rt_entry_li
@@ -331,7 +322,7 @@ Removing Unused input sections from the image.
     Removing motoare.o(.ARM.exidx.text.TPM2_IRQHandler), (8 bytes).
     Removing motoare.o(.text.SetareSens), (36 bytes).
     Removing motoare.o(.ARM.exidx.text.SetareSens), (8 bytes).
-    Removing motoare.o(.text.SetareViteza), (104 bytes).
+    Removing motoare.o(.text.SetareViteza), (68 bytes).
     Removing motoare.o(.ARM.exidx.text.SetareViteza), (8 bytes).
     Removing motoare.o(.ARM.exidx.text.InitializarePiniParteMecanica), (8 bytes).
     Removing motoare.o(.ARM.exidx.text.initializareSenzorTuratie), (8 bytes).
@@ -346,10 +337,9 @@ Removing Unused input sections from the image.
     Removing camera.o(.ARM.exidx.text.initializareCamera), (8 bytes).
     Removing sistemdecizional.o(.text), (0 bytes).
     Removing sistemdecizional.o(.ARM.exidx.text.decideDirectiaDrumSimplu), (8 bytes).
-    Removing sistemdecizional.o(.text.decideVitezaDrumSimplu), (72 bytes).
-    Removing sistemdecizional.o(.ARM.exidx.text.decideVitezaDrumSimplu), (8 bytes).
     Removing uart.o(.text), (0 bytes).
-    Removing uart.o(.ARM.exidx.text.UartInit), (8 bytes).
+    Removing uart.o(.ARM.exidx.text.uartInit), (8 bytes).
+    Removing uart.o(.text.trimiteDate), (20 bytes).
     Removing uart.o(.ARM.exidx.text.trimiteDate), (8 bytes).
     Removing uart.o(.text.primesteDate), (16 bytes).
     Removing uart.o(.ARM.exidx.text.primesteDate), (8 bytes).
@@ -384,7 +374,7 @@ Removing Unused input sections from the image.
     Removing system_mkl25z4.o(.ARM.exidx.text.SystemCoreClockUpdate), (8 bytes).
     Removing system_mkl25z4.o(.data.SystemCoreClock), (4 bytes).
 
-59 unused section(s) (total 1005 bytes) removed from the image.
+58 unused section(s) (total 909 bytes) removed from the image.
 
 ==============================================================================
 
@@ -463,7 +453,7 @@ Image Symbol Table
     ../fplib/cfplib/f2d.c                    0x00000000   Number         0  f2d.o ABSOLUTE
     ../fplib/cfplib/fcmpin.c                 0x00000000   Number         0  fcmpin.o ABSOLUTE
     ../fplib/cfplib/ffix.c                   0x00000000   Number         0  dfixui.o ABSOLUTE
-    ../fplib/cfplib/ffix.c                   0x00000000   Number         0  ffixi.o ABSOLUTE
+    ../fplib/cfplib/ffix.c                   0x00000000   Number         0  ffixui.o ABSOLUTE
     ../fplib/cfplib/fflt.c                   0x00000000   Number         0  dflti.o ABSOLUTE
     ../fplib/cfplib/fflt.c                   0x00000000   Number         0  fflti.o ABSOLUTE
     ../fplib/cfplib/fpinit.c                 0x00000000   Number         0  fpinit.o ABSOLUTE
@@ -543,9 +533,14 @@ Image Symbol Table
     .text                                    0x00000224   Section        0  dfixui.o(.text)
     .text                                    0x0000026c   Section        0  dflti.o(.text)
     .text                                    0x000002c4   Section        0  f2d.o(.text)
-    .text                                    0x00000318   Section        0  ffixi.o(.text)
-    .text                                    0x00000364   Section        0  fflti.o(.text)
-    .text                                    0x000003c2   Section       62  sys_stackheap_outer.o(.text)
+    .text                                    0x00000318   Section        0  ffixui.o(.text)
+    .text                                    0x00000348   Section        0  fflti.o(.text)
+    .text                                    0x000003a6   Section       62  sys_stackheap_outer.o(.text)
+    .text                                    0x000003e4   Section        0  exit.o(.text)
+    .text                                    0x000003f4   Section        8  libspace.o(.text)
+    .text                                    0x000003fc   Section        2  use_no_semi.o(.text)
+    .text                                    0x000003fe   Section        0  indicate_semi.o(.text)
+    x$fpl$usenofp                            0x000003fe   Section        0  usenofp.o(x$fpl$usenofp)
     .ARM.__at_0x400                          0x00000400   Section       16  startup_mkl25z4.o(.ARM.__at_0x400)
     _dadd1                                   0x00000411   Thumb Code   290  daddsub.o(.text)
     .text                                    0x00000410   Section        0  daddsub.o(.text)
@@ -554,182 +549,170 @@ Image Symbol Table
     .text                                    0x00000bb0   Section        0  dmul.o(.text)
     .text                                    0x00000df8   Section        0  dcmpin.o(.text)
     .text                                    0x00000e98   Section        0  fcmpin.o(.text)
-    .text                                    0x00000efc   Section        0  exit.o(.text)
-    .text                                    0x00000f0c   Section        0  cmpret.o(.text)
-    .text                                    0x00000f3c   Section        0  dnan2.o(.text)
-    .text                                    0x00000f50   Section        0  fnan2.o(.text)
-    .text                                    0x00000f60   Section        8  libspace.o(.text)
-    .text                                    0x00000f68   Section        0  retnan.o(.text)
-    .text                                    0x00000fc8   Section        0  sys_exit.o(.text)
-    .text                                    0x00000fd4   Section        2  use_no_semi.o(.text)
-    .text                                    0x00000fd6   Section        0  indicate_semi.o(.text)
-    [Anonymous Symbol]                       0x00000fd8   Section        0  camera.o(.text.ADC0_IRQHandler)
-    __arm_cp.0_2                             0x0000101c   Number         4  camera.o(.text.ADC0_IRQHandler)
-    [Anonymous Symbol]                       0x00001020   Section        0  motoare.o(.text.InitializarePiniParteMecanica)
-    __arm_cp.3_0                             0x00001100   Number         4  motoare.o(.text.InitializarePiniParteMecanica)
-    __arm_cp.3_1                             0x00001104   Number         4  motoare.o(.text.InitializarePiniParteMecanica)
-    __arm_cp.3_2                             0x00001108   Number         4  motoare.o(.text.InitializarePiniParteMecanica)
-    __arm_cp.3_3                             0x0000110c   Number         4  motoare.o(.text.InitializarePiniParteMecanica)
-    __arm_cp.3_4                             0x00001110   Number         4  motoare.o(.text.InitializarePiniParteMecanica)
-    __arm_cp.3_5                             0x00001114   Number         4  motoare.o(.text.InitializarePiniParteMecanica)
-    __arm_cp.3_6                             0x00001118   Number         4  motoare.o(.text.InitializarePiniParteMecanica)
-    __arm_cp.3_7                             0x0000111c   Number         4  motoare.o(.text.InitializarePiniParteMecanica)
-    __arm_cp.3_8                             0x00001120   Number         4  motoare.o(.text.InitializarePiniParteMecanica)
-    __arm_cp.3_9                             0x00001124   Number         4  motoare.o(.text.InitializarePiniParteMecanica)
-    [Anonymous Symbol]                       0x00001128   Section        0  camera.o(.text.PIT_IRQHandler)
-    __arm_cp.1_1                             0x00001214   Number         4  camera.o(.text.PIT_IRQHandler)
-    __arm_cp.1_2                             0x00001218   Number         4  camera.o(.text.PIT_IRQHandler)
-    __arm_cp.1_3                             0x0000121c   Number         4  camera.o(.text.PIT_IRQHandler)
-    __arm_cp.1_4                             0x00001220   Number         4  camera.o(.text.PIT_IRQHandler)
-    __arm_cp.1_5                             0x00001224   Number         4  camera.o(.text.PIT_IRQHandler)
-    __arm_cp.1_6                             0x00001228   Number         4  camera.o(.text.PIT_IRQHandler)
-    __arm_cp.1_7                             0x0000122c   Number         4  camera.o(.text.PIT_IRQHandler)
-    __arm_cp.1_8                             0x00001230   Number         4  camera.o(.text.PIT_IRQHandler)
-    __arm_cp.1_9                             0x00001234   Number         4  camera.o(.text.PIT_IRQHandler)
-    __arm_cp.1_10                            0x00001238   Number         4  camera.o(.text.PIT_IRQHandler)
-    __arm_cp.1_11                            0x0000123c   Number         4  camera.o(.text.PIT_IRQHandler)
-    [Anonymous Symbol]                       0x00001240   Section        0  senzoridistanta.o(.text.PORTA_IRQHandler)
-    __arm_cp.0_2                             0x00001284   Number         4  senzoridistanta.o(.text.PORTA_IRQHandler)
-    __arm_cp.0_5                             0x00001288   Number         4  senzoridistanta.o(.text.PORTA_IRQHandler)
-    [Anonymous Symbol]                       0x0000128c   Section        0  senzoridistanta.o(.text.PORTD_IRQHandler)
-    __arm_cp.1_0                             0x00001304   Number         4  senzoridistanta.o(.text.PORTD_IRQHandler)
-    __arm_cp.1_1                             0x00001308   Number         4  senzoridistanta.o(.text.PORTD_IRQHandler)
-    __arm_cp.1_2                             0x0000130c   Number         4  senzoridistanta.o(.text.PORTD_IRQHandler)
-    __arm_cp.1_3                             0x00001310   Number         4  senzoridistanta.o(.text.PORTD_IRQHandler)
-    __arm_cp.1_4                             0x00001314   Number         4  senzoridistanta.o(.text.PORTD_IRQHandler)
-    __arm_cp.1_5                             0x00001318   Number         4  senzoridistanta.o(.text.PORTD_IRQHandler)
-    __arm_cp.1_6                             0x0000131c   Number         4  senzoridistanta.o(.text.PORTD_IRQHandler)
-    __arm_cp.1_7                             0x00001320   Number         4  senzoridistanta.o(.text.PORTD_IRQHandler)
-    __arm_cp.1_8                             0x00001324   Number         4  senzoridistanta.o(.text.PORTD_IRQHandler)
-    [Anonymous Symbol]                       0x00001328   Section        0  portssetup.o(.text.SIMSetup)
-    __arm_cp.0_0                             0x0000138c   Number         4  portssetup.o(.text.SIMSetup)
-    [Anonymous Symbol]                       0x00001390   Section        0  motoare.o(.text.SetareUnghi)
-    __arm_cp.5_0                             0x00001414   Number         4  motoare.o(.text.SetareUnghi)
-    __arm_cp.5_1                             0x00001418   Number         4  motoare.o(.text.SetareUnghi)
-    __arm_cp.5_2                             0x0000141c   Number         4  motoare.o(.text.SetareUnghi)
-    __arm_cp.5_3                             0x00001420   Number         4  motoare.o(.text.SetareUnghi)
-    __arm_cp.5_4                             0x00001424   Number         4  motoare.o(.text.SetareUnghi)
-    __arm_cp.5_5                             0x00001428   Number         4  motoare.o(.text.SetareUnghi)
-    __arm_cp.5_6                             0x0000142c   Number         4  motoare.o(.text.SetareUnghi)
-    __arm_cp.5_7                             0x00001430   Number         4  motoare.o(.text.SetareUnghi)
-    [Anonymous Symbol]                       0x00001434   Section        0  system_mkl25z4.o(.text.SystemInit)
-    __arm_cp.0_0                             0x000014f0   Number         4  system_mkl25z4.o(.text.SystemInit)
-    __arm_cp.0_1                             0x000014f4   Number         4  system_mkl25z4.o(.text.SystemInit)
-    __arm_cp.0_2                             0x000014f8   Number         4  system_mkl25z4.o(.text.SystemInit)
-    __arm_cp.0_3                             0x000014fc   Number         4  system_mkl25z4.o(.text.SystemInit)
-    __arm_cp.0_5                             0x00001500   Number         4  system_mkl25z4.o(.text.SystemInit)
-    __arm_cp.0_6                             0x00001504   Number         4  system_mkl25z4.o(.text.SystemInit)
-    __arm_cp.0_7                             0x00001508   Number         4  system_mkl25z4.o(.text.SystemInit)
-    __arm_cp.0_8                             0x0000150c   Number         4  system_mkl25z4.o(.text.SystemInit)
-    __arm_cp.0_9                             0x00001510   Number         4  system_mkl25z4.o(.text.SystemInit)
-    __arm_cp.0_10                            0x00001514   Number         4  system_mkl25z4.o(.text.SystemInit)
-    [Anonymous Symbol]                       0x00001518   Section        0  motoare.o(.text.TPM2_IRQHandler)
-    __arm_cp.0_0                             0x00001660   Number         4  motoare.o(.text.TPM2_IRQHandler)
-    __arm_cp.0_1                             0x00001664   Number         4  motoare.o(.text.TPM2_IRQHandler)
-    __arm_cp.0_2                             0x00001668   Number         4  motoare.o(.text.TPM2_IRQHandler)
-    __arm_cp.0_3                             0x0000166c   Number         4  motoare.o(.text.TPM2_IRQHandler)
-    __arm_cp.0_4                             0x00001670   Number         4  motoare.o(.text.TPM2_IRQHandler)
-    __arm_cp.0_5                             0x00001674   Number         4  motoare.o(.text.TPM2_IRQHandler)
-    __arm_cp.0_6                             0x00001678   Number         4  motoare.o(.text.TPM2_IRQHandler)
-    __arm_cp.0_7                             0x0000167c   Number         4  motoare.o(.text.TPM2_IRQHandler)
-    __arm_cp.0_8                             0x00001680   Number         4  motoare.o(.text.TPM2_IRQHandler)
-    __arm_cp.0_9                             0x00001684   Number         4  motoare.o(.text.TPM2_IRQHandler)
-    __arm_cp.0_10                            0x00001688   Number         4  motoare.o(.text.TPM2_IRQHandler)
-    __arm_cp.0_11                            0x0000168c   Number         4  motoare.o(.text.TPM2_IRQHandler)
-    __arm_cp.0_12                            0x00001690   Number         4  motoare.o(.text.TPM2_IRQHandler)
-    __arm_cp.0_13                            0x00001694   Number         4  motoare.o(.text.TPM2_IRQHandler)
-    __arm_cp.0_14                            0x00001698   Number         4  motoare.o(.text.TPM2_IRQHandler)
-    __arm_cp.0_15                            0x0000169c   Number         4  motoare.o(.text.TPM2_IRQHandler)
-    [Anonymous Symbol]                       0x000016a0   Section        0  uart.o(.text.UartInit)
-    __arm_cp.0_0                             0x00001728   Number         4  uart.o(.text.UartInit)
-    __arm_cp.0_1                             0x0000172c   Number         4  uart.o(.text.UartInit)
-    __arm_cp.0_2                             0x00001730   Number         4  uart.o(.text.UartInit)
-    __arm_cp.0_3                             0x00001734   Number         4  uart.o(.text.UartInit)
-    __arm_cp.0_4                             0x00001738   Number         4  uart.o(.text.UartInit)
-    __arm_cp.0_5                             0x0000173c   Number         4  uart.o(.text.UartInit)
-    __arm_cp.0_6                             0x00001740   Number         4  uart.o(.text.UartInit)
-    __arm_cp.0_7                             0x00001744   Number         4  uart.o(.text.UartInit)
-    [Anonymous Symbol]                       0x00001748   Section        0  sistemdecizional.o(.text.decideDirectiaDrumSimplu)
-    __arm_cp.0_0                             0x0000176c   Number         4  sistemdecizional.o(.text.decideDirectiaDrumSimplu)
-    __arm_cp.0_1                             0x00001770   Number         4  sistemdecizional.o(.text.decideDirectiaDrumSimplu)
-    [Anonymous Symbol]                       0x00001774   Section        0  pid.o(.text.getNextPid)
-    [Anonymous Symbol]                       0x00001800   Section        0  camera.o(.text.initializareCamera)
-    __arm_cp.4_0                             0x000018f8   Number         4  camera.o(.text.initializareCamera)
-    __arm_cp.4_1                             0x000018fc   Number         4  camera.o(.text.initializareCamera)
-    __arm_cp.4_2                             0x00001900   Number         4  camera.o(.text.initializareCamera)
-    __arm_cp.4_3                             0x00001904   Number         4  camera.o(.text.initializareCamera)
-    __arm_cp.4_4                             0x00001908   Number         4  camera.o(.text.initializareCamera)
-    __arm_cp.4_5                             0x0000190c   Number         4  camera.o(.text.initializareCamera)
-    [Anonymous Symbol]                       0x00001910   Section        0  pid.o(.text.initializarePID)
-    __arm_cp.0_0                             0x000019ac   Number         4  pid.o(.text.initializarePID)
-    [Anonymous Symbol]                       0x000019b0   Section        0  camera.o(.text.initializarePIT)
-    __arm_cp.3_1                             0x000019ec   Number         4  camera.o(.text.initializarePIT)
-    __arm_cp.3_3                             0x000019f0   Number         4  camera.o(.text.initializarePIT)
-    [Anonymous Symbol]                       0x000019f4   Section        0  motoare.o(.text.initializareSenzorTuratie)
-    __arm_cp.4_0                             0x00001a5c   Number         4  motoare.o(.text.initializareSenzorTuratie)
-    __arm_cp.4_1                             0x00001a60   Number         4  motoare.o(.text.initializareSenzorTuratie)
-    __arm_cp.4_2                             0x00001a64   Number         4  motoare.o(.text.initializareSenzorTuratie)
-    __arm_cp.4_3                             0x00001a68   Number         4  motoare.o(.text.initializareSenzorTuratie)
-    __arm_cp.4_4                             0x00001a6c   Number         4  motoare.o(.text.initializareSenzorTuratie)
-    [Anonymous Symbol]                       0x00001a70   Section        0  senzoridistanta.o(.text.initializareSenzoriDistanta)
-    __arm_cp.2_0                             0x00001b08   Number         4  senzoridistanta.o(.text.initializareSenzoriDistanta)
-    __arm_cp.2_1                             0x00001b0c   Number         4  senzoridistanta.o(.text.initializareSenzoriDistanta)
-    __arm_cp.2_2                             0x00001b10   Number         4  senzoridistanta.o(.text.initializareSenzoriDistanta)
-    __arm_cp.2_3                             0x00001b14   Number         4  senzoridistanta.o(.text.initializareSenzoriDistanta)
-    __arm_cp.2_4                             0x00001b18   Number         4  senzoridistanta.o(.text.initializareSenzoriDistanta)
-    __arm_cp.2_5                             0x00001b1c   Number         4  senzoridistanta.o(.text.initializareSenzoriDistanta)
-    [Anonymous Symbol]                       0x00001b20   Section        0  main.o(.text.main)
-    __arm_cp.0_0                             0x00001bb4   Number         4  main.o(.text.main)
-    __arm_cp.0_1                             0x00001bb8   Number         4  main.o(.text.main)
-    __arm_cp.0_2                             0x00001bbc   Number         4  main.o(.text.main)
-    __arm_cp.0_3                             0x00001bc0   Number         4  main.o(.text.main)
-    __arm_cp.0_4                             0x00001bc4   Number         4  main.o(.text.main)
-    __arm_cp.0_5                             0x00001bc8   Number         4  main.o(.text.main)
-    __arm_cp.0_6                             0x00001bcc   Number         4  main.o(.text.main)
-    __arm_cp.0_7                             0x00001bd0   Number         4  main.o(.text.main)
-    __arm_cp.0_8                             0x00001bd4   Number         4  main.o(.text.main)
-    __arm_cp.0_9                             0x00001bd8   Number         4  main.o(.text.main)
-    __arm_cp.0_10                            0x00001bdc   Number         4  main.o(.text.main)
-    [Anonymous Symbol]                       0x00001be0   Section        0  camera.o(.text.startCamera)
-    __arm_cp.2_0                             0x00001c04   Number         4  camera.o(.text.startCamera)
-    __arm_cp.2_1                             0x00001c08   Number         4  camera.o(.text.startCamera)
-    __arm_cp.2_2                             0x00001c0c   Number         4  camera.o(.text.startCamera)
-    __arm_cp.2_3                             0x00001c10   Number         4  camera.o(.text.startCamera)
-    __arm_cp.2_4                             0x00001c14   Number         4  camera.o(.text.startCamera)
-    [Anonymous Symbol]                       0x00001c18   Section        0  uart.o(.text.trimiteDate)
-    __arm_cp.1_0                             0x00001c28   Number         4  uart.o(.text.trimiteDate)
-    .text_divfast                            0x00001c2c   Section      502  aeabi_sdivfast.o(.text_divfast)
-    i._deq                                   0x00001e22   Section        0  dcmp.o(i._deq)
-    i._dgr                                   0x00001e38   Section        0  dcmp.o(i._dgr)
-    i._dls                                   0x00001e4e   Section        0  dcmp.o(i._dls)
-    i._feq                                   0x00001e64   Section        0  fcmp.o(i._feq)
-    i._fgeq                                  0x00001e7a   Section        0  fcmp.o(i._fgeq)
-    i._fleq                                  0x00001e90   Section        0  fcmp.o(i._fleq)
-    x$fpl$deqf                               0x00001eac   Section      100  deqf.o(x$fpl$deqf)
-    x$fpl$dgeqf                              0x00001f10   Section      100  dgef.o(x$fpl$dgeqf)
-    x$fpl$dleqf                              0x00001f74   Section      100  dlef.o(x$fpl$dleqf)
-    x$fpl$fadd                               0x00001fd8   Section      140  faddsub.o(x$fpl$fadd)
-    _fadd1                                   0x00001fe5   Thumb Code     0  faddsub.o(x$fpl$fadd)
-    x$fpl$feqf                               0x00002064   Section       84  feqf.o(x$fpl$feqf)
-    x$fpl$fgeqf                              0x000020b8   Section       84  fgef.o(x$fpl$fgeqf)
-    x$fpl$fleqf                              0x0000210c   Section       84  flef.o(x$fpl$fleqf)
-    x$fpl$fmul                               0x00002160   Section      176  fmul.o(x$fpl$fmul)
-    x$fpl$fsub                               0x00002210   Section      208  faddsub.o(x$fpl$fsub)
-    _fsub1                                   0x0000221d   Thumb Code     0  faddsub.o(x$fpl$fsub)
-    ddiv_reciptbl                            0x000022e0   Data         128  ddiv.o(.constdata)
-    .constdata                               0x000022e0   Section      128  ddiv.o(.constdata)
-    x$fpl$usenofp                            0x000022e0   Section        0  usenofp.o(x$fpl$usenofp)
+    .text                                    0x00000efc   Section        0  cmpret.o(.text)
+    .text                                    0x00000f2c   Section        0  dnan2.o(.text)
+    .text                                    0x00000f40   Section        0  fnan2.o(.text)
+    .text                                    0x00000f50   Section        0  retnan.o(.text)
+    .text                                    0x00000fb0   Section        0  sys_exit.o(.text)
+    [Anonymous Symbol]                       0x00000fbc   Section        0  camera.o(.text.ADC0_IRQHandler)
+    __arm_cp.0_2                             0x00001000   Number         4  camera.o(.text.ADC0_IRQHandler)
+    [Anonymous Symbol]                       0x00001004   Section        0  motoare.o(.text.InitializarePiniParteMecanica)
+    __arm_cp.3_0                             0x000010e4   Number         4  motoare.o(.text.InitializarePiniParteMecanica)
+    __arm_cp.3_1                             0x000010e8   Number         4  motoare.o(.text.InitializarePiniParteMecanica)
+    __arm_cp.3_2                             0x000010ec   Number         4  motoare.o(.text.InitializarePiniParteMecanica)
+    __arm_cp.3_3                             0x000010f0   Number         4  motoare.o(.text.InitializarePiniParteMecanica)
+    __arm_cp.3_4                             0x000010f4   Number         4  motoare.o(.text.InitializarePiniParteMecanica)
+    __arm_cp.3_5                             0x000010f8   Number         4  motoare.o(.text.InitializarePiniParteMecanica)
+    __arm_cp.3_6                             0x000010fc   Number         4  motoare.o(.text.InitializarePiniParteMecanica)
+    __arm_cp.3_7                             0x00001100   Number         4  motoare.o(.text.InitializarePiniParteMecanica)
+    __arm_cp.3_8                             0x00001104   Number         4  motoare.o(.text.InitializarePiniParteMecanica)
+    __arm_cp.3_9                             0x00001108   Number         4  motoare.o(.text.InitializarePiniParteMecanica)
+    [Anonymous Symbol]                       0x0000110c   Section        0  camera.o(.text.PIT_IRQHandler)
+    __arm_cp.1_1                             0x000011f0   Number         4  camera.o(.text.PIT_IRQHandler)
+    __arm_cp.1_2                             0x000011f4   Number         4  camera.o(.text.PIT_IRQHandler)
+    __arm_cp.1_3                             0x000011f8   Number         4  camera.o(.text.PIT_IRQHandler)
+    __arm_cp.1_4                             0x000011fc   Number         4  camera.o(.text.PIT_IRQHandler)
+    __arm_cp.1_5                             0x00001200   Number         4  camera.o(.text.PIT_IRQHandler)
+    __arm_cp.1_6                             0x00001204   Number         4  camera.o(.text.PIT_IRQHandler)
+    __arm_cp.1_7                             0x00001208   Number         4  camera.o(.text.PIT_IRQHandler)
+    __arm_cp.1_8                             0x0000120c   Number         4  camera.o(.text.PIT_IRQHandler)
+    __arm_cp.1_9                             0x00001210   Number         4  camera.o(.text.PIT_IRQHandler)
+    __arm_cp.1_10                            0x00001214   Number         4  camera.o(.text.PIT_IRQHandler)
+    [Anonymous Symbol]                       0x00001218   Section        0  senzoridistanta.o(.text.PORTA_IRQHandler)
+    __arm_cp.0_2                             0x0000125c   Number         4  senzoridistanta.o(.text.PORTA_IRQHandler)
+    __arm_cp.0_5                             0x00001260   Number         4  senzoridistanta.o(.text.PORTA_IRQHandler)
+    [Anonymous Symbol]                       0x00001264   Section        0  senzoridistanta.o(.text.PORTD_IRQHandler)
+    __arm_cp.1_0                             0x000012dc   Number         4  senzoridistanta.o(.text.PORTD_IRQHandler)
+    __arm_cp.1_1                             0x000012e0   Number         4  senzoridistanta.o(.text.PORTD_IRQHandler)
+    __arm_cp.1_2                             0x000012e4   Number         4  senzoridistanta.o(.text.PORTD_IRQHandler)
+    __arm_cp.1_3                             0x000012e8   Number         4  senzoridistanta.o(.text.PORTD_IRQHandler)
+    __arm_cp.1_4                             0x000012ec   Number         4  senzoridistanta.o(.text.PORTD_IRQHandler)
+    __arm_cp.1_5                             0x000012f0   Number         4  senzoridistanta.o(.text.PORTD_IRQHandler)
+    __arm_cp.1_6                             0x000012f4   Number         4  senzoridistanta.o(.text.PORTD_IRQHandler)
+    __arm_cp.1_7                             0x000012f8   Number         4  senzoridistanta.o(.text.PORTD_IRQHandler)
+    __arm_cp.1_8                             0x000012fc   Number         4  senzoridistanta.o(.text.PORTD_IRQHandler)
+    [Anonymous Symbol]                       0x00001300   Section        0  portssetup.o(.text.SIMSetup)
+    __arm_cp.0_0                             0x00001364   Number         4  portssetup.o(.text.SIMSetup)
+    [Anonymous Symbol]                       0x00001368   Section        0  motoare.o(.text.SetareUnghi)
+    __arm_cp.5_0                             0x000013ec   Number         4  motoare.o(.text.SetareUnghi)
+    __arm_cp.5_1                             0x000013f0   Number         4  motoare.o(.text.SetareUnghi)
+    __arm_cp.5_2                             0x000013f4   Number         4  motoare.o(.text.SetareUnghi)
+    __arm_cp.5_3                             0x000013f8   Number         4  motoare.o(.text.SetareUnghi)
+    __arm_cp.5_4                             0x000013fc   Number         4  motoare.o(.text.SetareUnghi)
+    __arm_cp.5_5                             0x00001400   Number         4  motoare.o(.text.SetareUnghi)
+    __arm_cp.5_6                             0x00001404   Number         4  motoare.o(.text.SetareUnghi)
+    __arm_cp.5_7                             0x00001408   Number         4  motoare.o(.text.SetareUnghi)
+    [Anonymous Symbol]                       0x0000140c   Section        0  system_mkl25z4.o(.text.SystemInit)
+    __arm_cp.0_0                             0x000014c8   Number         4  system_mkl25z4.o(.text.SystemInit)
+    __arm_cp.0_1                             0x000014cc   Number         4  system_mkl25z4.o(.text.SystemInit)
+    __arm_cp.0_2                             0x000014d0   Number         4  system_mkl25z4.o(.text.SystemInit)
+    __arm_cp.0_3                             0x000014d4   Number         4  system_mkl25z4.o(.text.SystemInit)
+    __arm_cp.0_4                             0x000014d8   Number         4  system_mkl25z4.o(.text.SystemInit)
+    __arm_cp.0_5                             0x000014dc   Number         4  system_mkl25z4.o(.text.SystemInit)
+    __arm_cp.0_6                             0x000014e0   Number         4  system_mkl25z4.o(.text.SystemInit)
+    __arm_cp.0_7                             0x000014e4   Number         4  system_mkl25z4.o(.text.SystemInit)
+    __arm_cp.0_8                             0x000014e8   Number         4  system_mkl25z4.o(.text.SystemInit)
+    __arm_cp.0_9                             0x000014ec   Number         4  system_mkl25z4.o(.text.SystemInit)
+    __arm_cp.0_10                            0x000014f0   Number         4  system_mkl25z4.o(.text.SystemInit)
+    [Anonymous Symbol]                       0x000014f4   Section        0  motoare.o(.text.TPM2_IRQHandler)
+    __arm_cp.0_0                             0x000015f0   Number         4  motoare.o(.text.TPM2_IRQHandler)
+    __arm_cp.0_1                             0x000015f4   Number         4  motoare.o(.text.TPM2_IRQHandler)
+    __arm_cp.0_2                             0x000015f8   Number         4  motoare.o(.text.TPM2_IRQHandler)
+    __arm_cp.0_3                             0x000015fc   Number         4  motoare.o(.text.TPM2_IRQHandler)
+    __arm_cp.0_4                             0x00001600   Number         4  motoare.o(.text.TPM2_IRQHandler)
+    __arm_cp.0_5                             0x00001604   Number         4  motoare.o(.text.TPM2_IRQHandler)
+    __arm_cp.0_6                             0x00001608   Number         4  motoare.o(.text.TPM2_IRQHandler)
+    __arm_cp.0_7                             0x0000160c   Number         4  motoare.o(.text.TPM2_IRQHandler)
+    __arm_cp.0_8                             0x00001610   Number         4  motoare.o(.text.TPM2_IRQHandler)
+    __arm_cp.0_9                             0x00001614   Number         4  motoare.o(.text.TPM2_IRQHandler)
+    __arm_cp.0_10                            0x00001618   Number         4  motoare.o(.text.TPM2_IRQHandler)
+    __arm_cp.0_11                            0x0000161c   Number         4  motoare.o(.text.TPM2_IRQHandler)
+    __arm_cp.0_12                            0x00001620   Number         4  motoare.o(.text.TPM2_IRQHandler)
+    [Anonymous Symbol]                       0x00001624   Section        0  sistemdecizional.o(.text.decideDirectiaDrumSimplu)
+    __arm_cp.0_0                             0x00001648   Number         4  sistemdecizional.o(.text.decideDirectiaDrumSimplu)
+    __arm_cp.0_1                             0x0000164c   Number         4  sistemdecizional.o(.text.decideDirectiaDrumSimplu)
+    [Anonymous Symbol]                       0x00001650   Section        0  pid.o(.text.getNextPid)
+    [Anonymous Symbol]                       0x000016dc   Section        0  camera.o(.text.initializareCamera)
+    __arm_cp.4_0                             0x000017d4   Number         4  camera.o(.text.initializareCamera)
+    __arm_cp.4_1                             0x000017d8   Number         4  camera.o(.text.initializareCamera)
+    __arm_cp.4_2                             0x000017dc   Number         4  camera.o(.text.initializareCamera)
+    __arm_cp.4_3                             0x000017e0   Number         4  camera.o(.text.initializareCamera)
+    __arm_cp.4_4                             0x000017e4   Number         4  camera.o(.text.initializareCamera)
+    [Anonymous Symbol]                       0x000017e8   Section        0  pid.o(.text.initializarePID)
+    __arm_cp.0_0                             0x00001884   Number         4  pid.o(.text.initializarePID)
+    [Anonymous Symbol]                       0x00001888   Section        0  camera.o(.text.initializarePIT)
+    __arm_cp.3_1                             0x000018c4   Number         4  camera.o(.text.initializarePIT)
+    __arm_cp.3_3                             0x000018c8   Number         4  camera.o(.text.initializarePIT)
+    __arm_cp.3_4                             0x000018cc   Number         4  camera.o(.text.initializarePIT)
+    [Anonymous Symbol]                       0x000018d0   Section        0  motoare.o(.text.initializareSenzorTuratie)
+    __arm_cp.4_0                             0x00001938   Number         4  motoare.o(.text.initializareSenzorTuratie)
+    __arm_cp.4_1                             0x0000193c   Number         4  motoare.o(.text.initializareSenzorTuratie)
+    __arm_cp.4_2                             0x00001940   Number         4  motoare.o(.text.initializareSenzorTuratie)
+    __arm_cp.4_3                             0x00001944   Number         4  motoare.o(.text.initializareSenzorTuratie)
+    __arm_cp.4_4                             0x00001948   Number         4  motoare.o(.text.initializareSenzorTuratie)
+    [Anonymous Symbol]                       0x0000194c   Section        0  senzoridistanta.o(.text.initializareSenzoriDistanta)
+    __arm_cp.2_0                             0x000019e4   Number         4  senzoridistanta.o(.text.initializareSenzoriDistanta)
+    __arm_cp.2_1                             0x000019e8   Number         4  senzoridistanta.o(.text.initializareSenzoriDistanta)
+    __arm_cp.2_2                             0x000019ec   Number         4  senzoridistanta.o(.text.initializareSenzoriDistanta)
+    __arm_cp.2_3                             0x000019f0   Number         4  senzoridistanta.o(.text.initializareSenzoriDistanta)
+    __arm_cp.2_4                             0x000019f4   Number         4  senzoridistanta.o(.text.initializareSenzoriDistanta)
+    __arm_cp.2_5                             0x000019f8   Number         4  senzoridistanta.o(.text.initializareSenzoriDistanta)
+    [Anonymous Symbol]                       0x000019fc   Section        0  main.o(.text.main)
+    __arm_cp.0_0                             0x00001a88   Number         4  main.o(.text.main)
+    __arm_cp.0_1                             0x00001a8c   Number         4  main.o(.text.main)
+    __arm_cp.0_2                             0x00001a90   Number         4  main.o(.text.main)
+    __arm_cp.0_3                             0x00001a94   Number         4  main.o(.text.main)
+    __arm_cp.0_4                             0x00001a98   Number         4  main.o(.text.main)
+    __arm_cp.0_5                             0x00001a9c   Number         4  main.o(.text.main)
+    __arm_cp.0_6                             0x00001aa0   Number         4  main.o(.text.main)
+    __arm_cp.0_7                             0x00001aa4   Number         4  main.o(.text.main)
+    __arm_cp.0_8                             0x00001aa8   Number         4  main.o(.text.main)
+    [Anonymous Symbol]                       0x00001aac   Section        0  camera.o(.text.startCamera)
+    __arm_cp.2_0                             0x00001ad0   Number         4  camera.o(.text.startCamera)
+    __arm_cp.2_1                             0x00001ad4   Number         4  camera.o(.text.startCamera)
+    __arm_cp.2_2                             0x00001ad8   Number         4  camera.o(.text.startCamera)
+    __arm_cp.2_3                             0x00001adc   Number         4  camera.o(.text.startCamera)
+    __arm_cp.2_4                             0x00001ae0   Number         4  camera.o(.text.startCamera)
+    [Anonymous Symbol]                       0x00001ae4   Section        0  uart.o(.text.uartInit)
+    __arm_cp.0_0                             0x00001b6c   Number         4  uart.o(.text.uartInit)
+    __arm_cp.0_1                             0x00001b70   Number         4  uart.o(.text.uartInit)
+    __arm_cp.0_2                             0x00001b74   Number         4  uart.o(.text.uartInit)
+    __arm_cp.0_3                             0x00001b78   Number         4  uart.o(.text.uartInit)
+    __arm_cp.0_4                             0x00001b7c   Number         4  uart.o(.text.uartInit)
+    __arm_cp.0_5                             0x00001b80   Number         4  uart.o(.text.uartInit)
+    __arm_cp.0_6                             0x00001b84   Number         4  uart.o(.text.uartInit)
+    __arm_cp.0_7                             0x00001b88   Number         4  uart.o(.text.uartInit)
+    .text_divfast                            0x00001b8c   Section      502  aeabi_sdivfast.o(.text_divfast)
+    i._deq                                   0x00001d82   Section        0  dcmp.o(i._deq)
+    i._dgr                                   0x00001d98   Section        0  dcmp.o(i._dgr)
+    i._dls                                   0x00001dae   Section        0  dcmp.o(i._dls)
+    i._feq                                   0x00001dc4   Section        0  fcmp.o(i._feq)
+    i._fgeq                                  0x00001dda   Section        0  fcmp.o(i._fgeq)
+    i._fgr                                   0x00001df0   Section        0  fcmp.o(i._fgr)
+    i._fleq                                  0x00001e06   Section        0  fcmp.o(i._fleq)
+    i._fls                                   0x00001e20   Section        0  fcmp.o(i._fls)
+    x$fpl$deqf                               0x00001e38   Section      100  deqf.o(x$fpl$deqf)
+    x$fpl$dgeqf                              0x00001e9c   Section      100  dgef.o(x$fpl$dgeqf)
+    x$fpl$dleqf                              0x00001f00   Section      100  dlef.o(x$fpl$dleqf)
+    x$fpl$fadd                               0x00001f64   Section      140  faddsub.o(x$fpl$fadd)
+    _fadd1                                   0x00001f71   Thumb Code     0  faddsub.o(x$fpl$fadd)
+    x$fpl$feqf                               0x00001ff0   Section       84  feqf.o(x$fpl$feqf)
+    x$fpl$fgeqf                              0x00002044   Section       84  fgef.o(x$fpl$fgeqf)
+    x$fpl$fleqf                              0x00002098   Section       84  flef.o(x$fpl$fleqf)
+    x$fpl$fmul                               0x000020ec   Section      176  fmul.o(x$fpl$fmul)
+    x$fpl$fsub                               0x0000219c   Section      208  faddsub.o(x$fpl$fsub)
+    _fsub1                                   0x000021a9   Thumb Code     0  faddsub.o(x$fpl$fsub)
+    ddiv_reciptbl                            0x0000226c   Data         128  ddiv.o(.constdata)
+    .constdata                               0x0000226c   Section      128  ddiv.o(.constdata)
     linieStatus                              0x1ffff019   Data           1  camera.o(.data.linieStatus)
     [Anonymous Symbol]                       0x1ffff019   Section        0  camera.o(.data.linieStatus)
     .bss                                     0x1ffff020   Section       96  libspace.o(.bss)
-    cameraState                              0x1ffff080   Data           4  camera.o(.bss.cameraState)
+    cameraState                              0x1ffff080   Data           1  camera.o(.bss.cameraState)
     [Anonymous Symbol]                       0x1ffff080   Section        0  camera.o(.bss.cameraState)
     clockCycles                              0x1ffff084   Data           4  camera.o(.bss.clockCycles)
     [Anonymous Symbol]                       0x1ffff084   Section        0  camera.o(.bss.clockCycles)
-    max                                      0x1ffff088   Data           1  camera.o(.bss.max)
-    [Anonymous Symbol]                       0x1ffff088   Section        0  camera.o(.bss.max)
-    min                                      0x1ffff089   Data           1  camera.o(.bss.min)
-    [Anonymous Symbol]                       0x1ffff089   Section        0  camera.o(.bss.min)
+    min                                      0x1ffff088   Data           1  camera.o(.bss.min)
+    [Anonymous Symbol]                       0x1ffff088   Section        0  camera.o(.bss.min)
     tempPixels                               0x1ffff0c9   Data         128  camera.o(.bss.tempPixels)
     [Anonymous Symbol]                       0x1ffff0c9   Section        0  camera.o(.bss.tempPixels)
     Heap_Mem                                 0x1ffff158   Data           0  startup_mkl25z4.o(HEAP)
@@ -871,14 +854,22 @@ Image Symbol Table
     _dfltu                                   0x000002bf   Thumb Code     0  dflti.o(.text)
     __aeabi_f2d                              0x000002c5   Thumb Code     0  f2d.o(.text)
     _f2d                                     0x000002c5   Thumb Code    80  f2d.o(.text)
-    __aeabi_f2iz                             0x00000319   Thumb Code     0  ffixi.o(.text)
-    _ffix                                    0x00000319   Thumb Code    76  ffixi.o(.text)
-    __aeabi_i2f_normalise                    0x00000365   Thumb Code    72  fflti.o(.text)
-    __aeabi_i2f                              0x000003ad   Thumb Code    16  fflti.o(.text)
-    _fflt                                    0x000003ad   Thumb Code     0  fflti.o(.text)
-    __aeabi_ui2f                             0x000003bd   Thumb Code     6  fflti.o(.text)
-    _ffltu                                   0x000003bd   Thumb Code     0  fflti.o(.text)
-    __user_setup_stackheap                   0x000003c3   Thumb Code    62  sys_stackheap_outer.o(.text)
+    __aeabi_f2uiz                            0x00000319   Thumb Code     0  ffixui.o(.text)
+    _ffixu                                   0x00000319   Thumb Code    48  ffixui.o(.text)
+    __aeabi_i2f_normalise                    0x00000349   Thumb Code    72  fflti.o(.text)
+    __aeabi_i2f                              0x00000391   Thumb Code    16  fflti.o(.text)
+    _fflt                                    0x00000391   Thumb Code     0  fflti.o(.text)
+    __aeabi_ui2f                             0x000003a1   Thumb Code     6  fflti.o(.text)
+    _ffltu                                   0x000003a1   Thumb Code     0  fflti.o(.text)
+    __user_setup_stackheap                   0x000003a7   Thumb Code    62  sys_stackheap_outer.o(.text)
+    exit                                     0x000003e5   Thumb Code    16  exit.o(.text)
+    __user_libspace                          0x000003f5   Thumb Code     8  libspace.o(.text)
+    __user_perproc_libspace                  0x000003f5   Thumb Code     0  libspace.o(.text)
+    __user_perthread_libspace                0x000003f5   Thumb Code     0  libspace.o(.text)
+    __I$use$semihosting                      0x000003fd   Thumb Code     0  use_no_semi.o(.text)
+    __use_no_semihosting_swi                 0x000003fd   Thumb Code     2  use_no_semi.o(.text)
+    __I$use$fp                               0x000003fe   Number         0  usenofp.o(x$fpl$usenofp)
+    __semihosting_library_function           0x000003ff   Thumb Code     0  indicate_semi.o(.text)
     __aeabi_dadd                             0x00000709   Thumb Code     0  daddsub.o(.text)
     _dadd                                    0x00000709   Thumb Code    26  daddsub.o(.text)
     __aeabi_dsub                             0x00000723   Thumb Code     0  daddsub.o(.text)
@@ -892,71 +883,66 @@ Image Symbol Table
     _dmul                                    0x00000bb1   Thumb Code   558  dmul.o(.text)
     __fpl_dcmp_InfNaN                        0x00000df9   Thumb Code   154  dcmpin.o(.text)
     __fpl_fcmp_InfNaN                        0x00000e99   Thumb Code    96  fcmpin.o(.text)
-    exit                                     0x00000efd   Thumb Code    16  exit.o(.text)
-    __fpl_cmpreturn                          0x00000f0d   Thumb Code    46  cmpret.o(.text)
-    __fpl_dcheck_NaN2                        0x00000f3d   Thumb Code    14  dnan2.o(.text)
-    __fpl_fcheck_NaN2                        0x00000f51   Thumb Code    10  fnan2.o(.text)
-    __user_libspace                          0x00000f61   Thumb Code     8  libspace.o(.text)
-    __user_perproc_libspace                  0x00000f61   Thumb Code     0  libspace.o(.text)
-    __user_perthread_libspace                0x00000f61   Thumb Code     0  libspace.o(.text)
-    __fpl_return_NaN                         0x00000f69   Thumb Code    94  retnan.o(.text)
-    _sys_exit                                0x00000fc9   Thumb Code     8  sys_exit.o(.text)
-    __I$use$semihosting                      0x00000fd5   Thumb Code     0  use_no_semi.o(.text)
-    __use_no_semihosting_swi                 0x00000fd5   Thumb Code     2  use_no_semi.o(.text)
-    __semihosting_library_function           0x00000fd7   Thumb Code     0  indicate_semi.o(.text)
-    ADC0_IRQHandler                          0x00000fd9   Thumb Code    72  camera.o(.text.ADC0_IRQHandler)
-    InitializarePiniParteMecanica            0x00001021   Thumb Code   264  motoare.o(.text.InitializarePiniParteMecanica)
-    PIT_IRQHandler                           0x00001129   Thumb Code   280  camera.o(.text.PIT_IRQHandler)
-    PORTA_IRQHandler                         0x00001241   Thumb Code    76  senzoridistanta.o(.text.PORTA_IRQHandler)
-    PORTD_IRQHandler                         0x0000128d   Thumb Code   156  senzoridistanta.o(.text.PORTD_IRQHandler)
-    SIMSetup                                 0x00001329   Thumb Code   104  portssetup.o(.text.SIMSetup)
-    SetareUnghi                              0x00001391   Thumb Code   164  motoare.o(.text.SetareUnghi)
-    SystemInit                               0x00001435   Thumb Code   228  system_mkl25z4.o(.text.SystemInit)
-    TPM2_IRQHandler                          0x00001519   Thumb Code   392  motoare.o(.text.TPM2_IRQHandler)
-    UartInit                                 0x000016a1   Thumb Code   168  uart.o(.text.UartInit)
-    decideDirectiaDrumSimplu                 0x00001749   Thumb Code    44  sistemdecizional.o(.text.decideDirectiaDrumSimplu)
-    getNextPid                               0x00001775   Thumb Code   138  pid.o(.text.getNextPid)
-    initializareCamera                       0x00001801   Thumb Code   272  camera.o(.text.initializareCamera)
-    initializarePID                          0x00001911   Thumb Code   160  pid.o(.text.initializarePID)
-    initializarePIT                          0x000019b1   Thumb Code    68  camera.o(.text.initializarePIT)
-    initializareSenzorTuratie                0x000019f5   Thumb Code   124  motoare.o(.text.initializareSenzorTuratie)
-    initializareSenzoriDistanta              0x00001a71   Thumb Code   176  senzoridistanta.o(.text.initializareSenzoriDistanta)
-    main                                     0x00001b21   Thumb Code   192  main.o(.text.main)
-    startCamera                              0x00001be1   Thumb Code    56  camera.o(.text.startCamera)
-    trimiteDate                              0x00001c19   Thumb Code    20  uart.o(.text.trimiteDate)
-    __aeabi_uidiv                            0x00001c2d   Thumb Code    68  aeabi_sdivfast.o(.text_divfast)
-    __aeabi_idiv                             0x00001c71   Thumb Code   434  aeabi_sdivfast.o(.text_divfast)
-    __aeabi_dcmpeq                           0x00001e23   Thumb Code     0  dcmp.o(i._deq)
-    _deq                                     0x00001e23   Thumb Code    22  dcmp.o(i._deq)
-    __aeabi_dcmpgt                           0x00001e39   Thumb Code     0  dcmp.o(i._dgr)
-    _dgr                                     0x00001e39   Thumb Code    22  dcmp.o(i._dgr)
-    __aeabi_dcmplt                           0x00001e4f   Thumb Code     0  dcmp.o(i._dls)
-    _dls                                     0x00001e4f   Thumb Code    22  dcmp.o(i._dls)
-    __aeabi_fcmpeq                           0x00001e65   Thumb Code     0  fcmp.o(i._feq)
-    _feq                                     0x00001e65   Thumb Code    22  fcmp.o(i._feq)
-    __aeabi_fcmpge                           0x00001e7b   Thumb Code     0  fcmp.o(i._fgeq)
-    _fgeq                                    0x00001e7b   Thumb Code    22  fcmp.o(i._fgeq)
-    __aeabi_fcmple                           0x00001e91   Thumb Code     0  fcmp.o(i._fleq)
-    _fleq                                    0x00001e91   Thumb Code    26  fcmp.o(i._fleq)
-    __aeabi_cdcmpeq                          0x00001ead   Thumb Code     0  deqf.o(x$fpl$deqf)
-    _dcmpeq                                  0x00001ead   Thumb Code    94  deqf.o(x$fpl$deqf)
-    _dcmpge                                  0x00001f11   Thumb Code    94  dgef.o(x$fpl$dgeqf)
-    __aeabi_cdcmple                          0x00001f75   Thumb Code     0  dlef.o(x$fpl$dleqf)
-    _dcmple                                  0x00001f75   Thumb Code    94  dlef.o(x$fpl$dleqf)
-    __aeabi_fadd                             0x00001fd9   Thumb Code     0  faddsub.o(x$fpl$fadd)
-    _fadd                                    0x00001fd9   Thumb Code   134  faddsub.o(x$fpl$fadd)
-    __aeabi_cfcmpeq                          0x00002065   Thumb Code     0  feqf.o(x$fpl$feqf)
-    _fcmpeq                                  0x00002065   Thumb Code    78  feqf.o(x$fpl$feqf)
-    _fcmpge                                  0x000020b9   Thumb Code    78  fgef.o(x$fpl$fgeqf)
-    __aeabi_cfcmple                          0x0000210d   Thumb Code     0  flef.o(x$fpl$fleqf)
-    _fcmple                                  0x0000210d   Thumb Code    78  flef.o(x$fpl$fleqf)
-    __aeabi_fmul                             0x00002161   Thumb Code     0  fmul.o(x$fpl$fmul)
-    _fmul                                    0x00002161   Thumb Code   172  fmul.o(x$fpl$fmul)
-    __aeabi_fsub                             0x00002211   Thumb Code     0  faddsub.o(x$fpl$fsub)
-    _fsub                                    0x00002211   Thumb Code   204  faddsub.o(x$fpl$fsub)
-    __I$use$fp                               0x000022e0   Number         0  usenofp.o(x$fpl$usenofp)
-    Region$$Table$$Base                      0x00002360   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00002380   Number         0  anon$$obj.o(Region$$Table)
+    __fpl_cmpreturn                          0x00000efd   Thumb Code    46  cmpret.o(.text)
+    __fpl_dcheck_NaN2                        0x00000f2d   Thumb Code    14  dnan2.o(.text)
+    __fpl_fcheck_NaN2                        0x00000f41   Thumb Code    10  fnan2.o(.text)
+    __fpl_return_NaN                         0x00000f51   Thumb Code    94  retnan.o(.text)
+    _sys_exit                                0x00000fb1   Thumb Code     8  sys_exit.o(.text)
+    ADC0_IRQHandler                          0x00000fbd   Thumb Code    72  camera.o(.text.ADC0_IRQHandler)
+    InitializarePiniParteMecanica            0x00001005   Thumb Code   264  motoare.o(.text.InitializarePiniParteMecanica)
+    PIT_IRQHandler                           0x0000110d   Thumb Code   268  camera.o(.text.PIT_IRQHandler)
+    PORTA_IRQHandler                         0x00001219   Thumb Code    76  senzoridistanta.o(.text.PORTA_IRQHandler)
+    PORTD_IRQHandler                         0x00001265   Thumb Code   156  senzoridistanta.o(.text.PORTD_IRQHandler)
+    SIMSetup                                 0x00001301   Thumb Code   104  portssetup.o(.text.SIMSetup)
+    SetareUnghi                              0x00001369   Thumb Code   164  motoare.o(.text.SetareUnghi)
+    SystemInit                               0x0000140d   Thumb Code   232  system_mkl25z4.o(.text.SystemInit)
+    TPM2_IRQHandler                          0x000014f5   Thumb Code   304  motoare.o(.text.TPM2_IRQHandler)
+    decideDirectiaDrumSimplu                 0x00001625   Thumb Code    44  sistemdecizional.o(.text.decideDirectiaDrumSimplu)
+    getNextPid                               0x00001651   Thumb Code   138  pid.o(.text.getNextPid)
+    initializareCamera                       0x000016dd   Thumb Code   268  camera.o(.text.initializareCamera)
+    initializarePID                          0x000017e9   Thumb Code   160  pid.o(.text.initializarePID)
+    initializarePIT                          0x00001889   Thumb Code    72  camera.o(.text.initializarePIT)
+    initializareSenzorTuratie                0x000018d1   Thumb Code   124  motoare.o(.text.initializareSenzorTuratie)
+    initializareSenzoriDistanta              0x0000194d   Thumb Code   176  senzoridistanta.o(.text.initializareSenzoriDistanta)
+    main                                     0x000019fd   Thumb Code   176  main.o(.text.main)
+    startCamera                              0x00001aad   Thumb Code    56  camera.o(.text.startCamera)
+    uartInit                                 0x00001ae5   Thumb Code   168  uart.o(.text.uartInit)
+    __aeabi_uidiv                            0x00001b8d   Thumb Code    68  aeabi_sdivfast.o(.text_divfast)
+    __aeabi_idiv                             0x00001bd1   Thumb Code   434  aeabi_sdivfast.o(.text_divfast)
+    __aeabi_dcmpeq                           0x00001d83   Thumb Code     0  dcmp.o(i._deq)
+    _deq                                     0x00001d83   Thumb Code    22  dcmp.o(i._deq)
+    __aeabi_dcmpgt                           0x00001d99   Thumb Code     0  dcmp.o(i._dgr)
+    _dgr                                     0x00001d99   Thumb Code    22  dcmp.o(i._dgr)
+    __aeabi_dcmplt                           0x00001daf   Thumb Code     0  dcmp.o(i._dls)
+    _dls                                     0x00001daf   Thumb Code    22  dcmp.o(i._dls)
+    __aeabi_fcmpeq                           0x00001dc5   Thumb Code     0  fcmp.o(i._feq)
+    _feq                                     0x00001dc5   Thumb Code    22  fcmp.o(i._feq)
+    __aeabi_fcmpge                           0x00001ddb   Thumb Code     0  fcmp.o(i._fgeq)
+    _fgeq                                    0x00001ddb   Thumb Code    22  fcmp.o(i._fgeq)
+    __aeabi_fcmpgt                           0x00001df1   Thumb Code     0  fcmp.o(i._fgr)
+    _fgr                                     0x00001df1   Thumb Code    22  fcmp.o(i._fgr)
+    __aeabi_fcmple                           0x00001e07   Thumb Code     0  fcmp.o(i._fleq)
+    _fleq                                    0x00001e07   Thumb Code    26  fcmp.o(i._fleq)
+    __aeabi_fcmplt                           0x00001e21   Thumb Code     0  fcmp.o(i._fls)
+    _fls                                     0x00001e21   Thumb Code    22  fcmp.o(i._fls)
+    __aeabi_cdcmpeq                          0x00001e39   Thumb Code     0  deqf.o(x$fpl$deqf)
+    _dcmpeq                                  0x00001e39   Thumb Code    94  deqf.o(x$fpl$deqf)
+    _dcmpge                                  0x00001e9d   Thumb Code    94  dgef.o(x$fpl$dgeqf)
+    __aeabi_cdcmple                          0x00001f01   Thumb Code     0  dlef.o(x$fpl$dleqf)
+    _dcmple                                  0x00001f01   Thumb Code    94  dlef.o(x$fpl$dleqf)
+    __aeabi_fadd                             0x00001f65   Thumb Code     0  faddsub.o(x$fpl$fadd)
+    _fadd                                    0x00001f65   Thumb Code   134  faddsub.o(x$fpl$fadd)
+    __aeabi_cfcmpeq                          0x00001ff1   Thumb Code     0  feqf.o(x$fpl$feqf)
+    _fcmpeq                                  0x00001ff1   Thumb Code    78  feqf.o(x$fpl$feqf)
+    _fcmpge                                  0x00002045   Thumb Code    78  fgef.o(x$fpl$fgeqf)
+    __aeabi_cfcmple                          0x00002099   Thumb Code     0  flef.o(x$fpl$fleqf)
+    _fcmple                                  0x00002099   Thumb Code    78  flef.o(x$fpl$fleqf)
+    __aeabi_fmul                             0x000020ed   Thumb Code     0  fmul.o(x$fpl$fmul)
+    _fmul                                    0x000020ed   Thumb Code   172  fmul.o(x$fpl$fmul)
+    __aeabi_fsub                             0x0000219d   Thumb Code     0  faddsub.o(x$fpl$fsub)
+    _fsub                                    0x0000219d   Thumb Code   204  faddsub.o(x$fpl$fsub)
+    Region$$Table$$Base                      0x000022ec   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x0000230c   Number         0  anon$$obj.o(Region$$Table)
     distantaC                                0x1ffff000   Data           8  senzoridistanta.o(.data.distantaC)
     distantaD                                0x1ffff008   Data           8  senzoridistanta.o(.data.distantaD)
     distantaS                                0x1ffff010   Data           8  senzoridistanta.o(.data.distantaS)
@@ -980,167 +966,169 @@ Memory Map of the image
 
   Image Entry point : 0x00000165
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x000023a0, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00002330, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00002380, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x0000230c, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x00000000   0x00000000   0x000000c0   Data   RO          153    RESET               startup_mkl25z4.o
-    0x000000c0   0x000000c0   0x00000008   Code   RO          190  * !!!main             c_p.l(__main.o)
-    0x000000c8   0x000000c8   0x0000003c   Code   RO          441    !!!scatter          c_p.l(__scatter.o)
-    0x00000104   0x00000104   0x0000001a   Code   RO          443    !!handler_copy      c_p.l(__scatter_copy.o)
+    0x00000000   0x00000000   0x000000c0   Data   RO          149    RESET               startup_mkl25z4.o
+    0x000000c0   0x000000c0   0x00000008   Code   RO          186  * !!!main             c_p.l(__main.o)
+    0x000000c8   0x000000c8   0x0000003c   Code   RO          437    !!!scatter          c_p.l(__scatter.o)
+    0x00000104   0x00000104   0x0000001a   Code   RO          439    !!handler_copy      c_p.l(__scatter_copy.o)
     0x0000011e   0x0000011e   0x00000002   PAD
-    0x00000120   0x00000120   0x0000001c   Code   RO          445    !!handler_zi        c_p.l(__scatter_zi.o)
-    0x0000013c   0x0000013c   0x00000002   Code   RO          296    .ARM.Collect$$libinit$$00000000  c_p.l(libinit.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          316    .ARM.Collect$$libinit$$00000002  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          318    .ARM.Collect$$libinit$$00000004  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          321    .ARM.Collect$$libinit$$0000000A  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          323    .ARM.Collect$$libinit$$0000000C  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          325    .ARM.Collect$$libinit$$0000000E  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          328    .ARM.Collect$$libinit$$00000011  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          330    .ARM.Collect$$libinit$$00000013  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          332    .ARM.Collect$$libinit$$00000015  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          334    .ARM.Collect$$libinit$$00000017  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          336    .ARM.Collect$$libinit$$00000019  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          338    .ARM.Collect$$libinit$$0000001B  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          340    .ARM.Collect$$libinit$$0000001D  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          342    .ARM.Collect$$libinit$$0000001F  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          344    .ARM.Collect$$libinit$$00000021  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          346    .ARM.Collect$$libinit$$00000023  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          348    .ARM.Collect$$libinit$$00000025  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          352    .ARM.Collect$$libinit$$0000002C  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          354    .ARM.Collect$$libinit$$0000002E  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          356    .ARM.Collect$$libinit$$00000030  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          358    .ARM.Collect$$libinit$$00000032  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000002   Code   RO          359    .ARM.Collect$$libinit$$00000033  c_p.l(libinit2.o)
-    0x00000140   0x00000140   0x00000002   Code   RO          396    .ARM.Collect$$libshutdown$$00000000  c_p.l(libshutdown.o)
-    0x00000142   0x00000142   0x00000000   Code   RO          424    .ARM.Collect$$libshutdown$$00000002  c_p.l(libshutdown2.o)
-    0x00000142   0x00000142   0x00000000   Code   RO          426    .ARM.Collect$$libshutdown$$00000004  c_p.l(libshutdown2.o)
-    0x00000142   0x00000142   0x00000000   Code   RO          429    .ARM.Collect$$libshutdown$$00000007  c_p.l(libshutdown2.o)
-    0x00000142   0x00000142   0x00000000   Code   RO          432    .ARM.Collect$$libshutdown$$0000000A  c_p.l(libshutdown2.o)
-    0x00000142   0x00000142   0x00000000   Code   RO          434    .ARM.Collect$$libshutdown$$0000000C  c_p.l(libshutdown2.o)
-    0x00000142   0x00000142   0x00000000   Code   RO          437    .ARM.Collect$$libshutdown$$0000000F  c_p.l(libshutdown2.o)
-    0x00000142   0x00000142   0x00000002   Code   RO          438    .ARM.Collect$$libshutdown$$00000010  c_p.l(libshutdown2.o)
-    0x00000144   0x00000144   0x00000000   Code   RO          243    .ARM.Collect$$rtentry$$00000000  c_p.l(__rtentry.o)
-    0x00000144   0x00000144   0x00000000   Code   RO          262    .ARM.Collect$$rtentry$$00000002  c_p.l(__rtentry2.o)
-    0x00000144   0x00000144   0x00000006   Code   RO          274    .ARM.Collect$$rtentry$$00000004  c_p.l(__rtentry4.o)
-    0x0000014a   0x0000014a   0x00000000   Code   RO          264    .ARM.Collect$$rtentry$$00000009  c_p.l(__rtentry2.o)
-    0x0000014a   0x0000014a   0x00000004   Code   RO          265    .ARM.Collect$$rtentry$$0000000A  c_p.l(__rtentry2.o)
-    0x0000014e   0x0000014e   0x00000000   Code   RO          267    .ARM.Collect$$rtentry$$0000000C  c_p.l(__rtentry2.o)
-    0x0000014e   0x0000014e   0x00000008   Code   RO          268    .ARM.Collect$$rtentry$$0000000D  c_p.l(__rtentry2.o)
-    0x00000156   0x00000156   0x00000002   Code   RO          307    .ARM.Collect$$rtexit$$00000000  c_p.l(rtexit.o)
-    0x00000158   0x00000158   0x00000000   Code   RO          367    .ARM.Collect$$rtexit$$00000002  c_p.l(rtexit2.o)
-    0x00000158   0x00000158   0x00000004   Code   RO          368    .ARM.Collect$$rtexit$$00000003  c_p.l(rtexit2.o)
-    0x0000015c   0x0000015c   0x00000006   Code   RO          369    .ARM.Collect$$rtexit$$00000004  c_p.l(rtexit2.o)
+    0x00000120   0x00000120   0x0000001c   Code   RO          441    !!handler_zi        c_p.l(__scatter_zi.o)
+    0x0000013c   0x0000013c   0x00000002   Code   RO          292    .ARM.Collect$$libinit$$00000000  c_p.l(libinit.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          312    .ARM.Collect$$libinit$$00000002  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          314    .ARM.Collect$$libinit$$00000004  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          317    .ARM.Collect$$libinit$$0000000A  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          319    .ARM.Collect$$libinit$$0000000C  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          321    .ARM.Collect$$libinit$$0000000E  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          324    .ARM.Collect$$libinit$$00000011  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          326    .ARM.Collect$$libinit$$00000013  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          328    .ARM.Collect$$libinit$$00000015  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          330    .ARM.Collect$$libinit$$00000017  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          332    .ARM.Collect$$libinit$$00000019  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          334    .ARM.Collect$$libinit$$0000001B  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          336    .ARM.Collect$$libinit$$0000001D  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          338    .ARM.Collect$$libinit$$0000001F  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          340    .ARM.Collect$$libinit$$00000021  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          342    .ARM.Collect$$libinit$$00000023  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          344    .ARM.Collect$$libinit$$00000025  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          348    .ARM.Collect$$libinit$$0000002C  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          350    .ARM.Collect$$libinit$$0000002E  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          352    .ARM.Collect$$libinit$$00000030  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          354    .ARM.Collect$$libinit$$00000032  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000002   Code   RO          355    .ARM.Collect$$libinit$$00000033  c_p.l(libinit2.o)
+    0x00000140   0x00000140   0x00000002   Code   RO          392    .ARM.Collect$$libshutdown$$00000000  c_p.l(libshutdown.o)
+    0x00000142   0x00000142   0x00000000   Code   RO          420    .ARM.Collect$$libshutdown$$00000002  c_p.l(libshutdown2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO          422    .ARM.Collect$$libshutdown$$00000004  c_p.l(libshutdown2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO          425    .ARM.Collect$$libshutdown$$00000007  c_p.l(libshutdown2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO          428    .ARM.Collect$$libshutdown$$0000000A  c_p.l(libshutdown2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO          430    .ARM.Collect$$libshutdown$$0000000C  c_p.l(libshutdown2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO          433    .ARM.Collect$$libshutdown$$0000000F  c_p.l(libshutdown2.o)
+    0x00000142   0x00000142   0x00000002   Code   RO          434    .ARM.Collect$$libshutdown$$00000010  c_p.l(libshutdown2.o)
+    0x00000144   0x00000144   0x00000000   Code   RO          239    .ARM.Collect$$rtentry$$00000000  c_p.l(__rtentry.o)
+    0x00000144   0x00000144   0x00000000   Code   RO          258    .ARM.Collect$$rtentry$$00000002  c_p.l(__rtentry2.o)
+    0x00000144   0x00000144   0x00000006   Code   RO          270    .ARM.Collect$$rtentry$$00000004  c_p.l(__rtentry4.o)
+    0x0000014a   0x0000014a   0x00000000   Code   RO          260    .ARM.Collect$$rtentry$$00000009  c_p.l(__rtentry2.o)
+    0x0000014a   0x0000014a   0x00000004   Code   RO          261    .ARM.Collect$$rtentry$$0000000A  c_p.l(__rtentry2.o)
+    0x0000014e   0x0000014e   0x00000000   Code   RO          263    .ARM.Collect$$rtentry$$0000000C  c_p.l(__rtentry2.o)
+    0x0000014e   0x0000014e   0x00000008   Code   RO          264    .ARM.Collect$$rtentry$$0000000D  c_p.l(__rtentry2.o)
+    0x00000156   0x00000156   0x00000002   Code   RO          303    .ARM.Collect$$rtexit$$00000000  c_p.l(rtexit.o)
+    0x00000158   0x00000158   0x00000000   Code   RO          363    .ARM.Collect$$rtexit$$00000002  c_p.l(rtexit2.o)
+    0x00000158   0x00000158   0x00000004   Code   RO          364    .ARM.Collect$$rtexit$$00000003  c_p.l(rtexit2.o)
+    0x0000015c   0x0000015c   0x00000006   Code   RO          365    .ARM.Collect$$rtexit$$00000004  c_p.l(rtexit2.o)
     0x00000162   0x00000162   0x00000002   PAD
-    0x00000164   0x00000164   0x0000003c   Code   RO          155  * .text               startup_mkl25z4.o
-    0x000001a0   0x000001a0   0x00000006   Code   RO          188    .text               c_p.l(heapauxi.o)
+    0x00000164   0x00000164   0x0000003c   Code   RO          151  * .text               startup_mkl25z4.o
+    0x000001a0   0x000001a0   0x00000006   Code   RO          184    .text               c_p.l(heapauxi.o)
     0x000001a6   0x000001a6   0x00000002   PAD
-    0x000001a8   0x000001a8   0x0000007c   Code   RO          192    .text               fz_ps.l(d2f.o)
-    0x00000224   0x00000224   0x00000048   Code   RO          211    .text               fz_ps.l(dfixui.o)
-    0x0000026c   0x0000026c   0x00000058   Code   RO          213    .text               fz_ps.l(dflti.o)
-    0x000002c4   0x000002c4   0x00000054   Code   RO          217    .text               fz_ps.l(f2d.o)
-    0x00000318   0x00000318   0x0000004c   Code   RO          237    .text               fz_ps.l(ffixi.o)
-    0x00000364   0x00000364   0x0000005e   Code   RO          239    .text               fz_ps.l(fflti.o)
-    0x000003c2   0x000003c2   0x0000003e   Code   RO          282    .text               c_p.l(sys_stackheap_outer.o)
-    0x00000400   0x00000400   0x00000010   Code   RO          154    .ARM.__at_0x400     startup_mkl25z4.o
-    0x00000410   0x00000410   0x00000358   Code   RO          194    .text               fz_ps.l(daddsub.o)
-    0x00000768   0x00000768   0x00000448   Code   RO          208    .text               fz_ps.l(ddiv.o)
-    0x00000bb0   0x00000bb0   0x00000248   Code   RO          215    .text               fz_ps.l(dmul.o)
-    0x00000df8   0x00000df8   0x000000a0   Code   RO          278    .text               fz_ps.l(dcmpin.o)
-    0x00000e98   0x00000e98   0x00000064   Code   RO          280    .text               fz_ps.l(fcmpin.o)
-    0x00000efc   0x00000efc   0x00000010   Code   RO          285    .text               c_p.l(exit.o)
-    0x00000f0c   0x00000f0c   0x0000002e   Code   RO          297    .text               fz_ps.l(cmpret.o)
-    0x00000f3a   0x00000f3a   0x00000002   PAD
-    0x00000f3c   0x00000f3c   0x00000014   Code   RO          299    .text               fz_ps.l(dnan2.o)
-    0x00000f50   0x00000f50   0x00000010   Code   RO          301    .text               fz_ps.l(fnan2.o)
-    0x00000f60   0x00000f60   0x00000008   Code   RO          303    .text               c_p.l(libspace.o)
-    0x00000f68   0x00000f68   0x0000005e   Code   RO          360    .text               fz_ps.l(retnan.o)
-    0x00000fc6   0x00000fc6   0x00000002   PAD
-    0x00000fc8   0x00000fc8   0x0000000c   Code   RO          362    .text               c_p.l(sys_exit.o)
-    0x00000fd4   0x00000fd4   0x00000002   Code   RO          385    .text               c_p.l(use_no_semi.o)
-    0x00000fd6   0x00000fd6   0x00000000   Code   RO          387    .text               c_p.l(indicate_semi.o)
-    0x00000fd6   0x00000fd6   0x00000002   PAD
-    0x00000fd8   0x00000fd8   0x00000048   Code   RO           44    .text.ADC0_IRQHandler  camera.o
-    0x00001020   0x00001020   0x00000108   Code   RO           17    .text.InitializarePiniParteMecanica  motoare.o
-    0x00001128   0x00001128   0x00000118   Code   RO           46    .text.PIT_IRQHandler  camera.o
-    0x00001240   0x00001240   0x0000004c   Code   RO          110    .text.PORTA_IRQHandler  senzoridistanta.o
-    0x0000128c   0x0000128c   0x0000009c   Code   RO          112    .text.PORTD_IRQHandler  senzoridistanta.o
-    0x00001328   0x00001328   0x00000068   Code   RO           36    .text.SIMSetup      portssetup.o
-    0x00001390   0x00001390   0x000000a4   Code   RO           21    .text.SetareUnghi   motoare.o
-    0x00001434   0x00001434   0x000000e4   Code   RO          164    .text.SystemInit    system_mkl25z4.o
-    0x00001518   0x00001518   0x00000188   Code   RO           11    .text.TPM2_IRQHandler  motoare.o
-    0x000016a0   0x000016a0   0x000000a8   Code   RO           81    .text.UartInit      uart.o
-    0x00001748   0x00001748   0x0000002c   Code   RO           69    .text.decideDirectiaDrumSimplu  sistemdecizional.o
-    0x00001774   0x00001774   0x0000008a   Code   RO          100    .text.getNextPid    pid.o
-    0x000017fe   0x000017fe   0x00000002   PAD
-    0x00001800   0x00001800   0x00000110   Code   RO           52    .text.initializareCamera  camera.o
-    0x00001910   0x00001910   0x000000a0   Code   RO           98    .text.initializarePID  pid.o
-    0x000019b0   0x000019b0   0x00000044   Code   RO           50    .text.initializarePIT  camera.o
-    0x000019f4   0x000019f4   0x0000007c   Code   RO           19    .text.initializareSenzorTuratie  motoare.o
-    0x00001a70   0x00001a70   0x000000b0   Code   RO          114    .text.initializareSenzoriDistanta  senzoridistanta.o
-    0x00001b20   0x00001b20   0x000000c0   Code   RO            2    .text.main          main.o
-    0x00001be0   0x00001be0   0x00000038   Code   RO           48    .text.startCamera   camera.o
-    0x00001c18   0x00001c18   0x00000014   Code   RO           83    .text.trimiteDate   uart.o
-    0x00001c2c   0x00001c2c   0x000001f6   Code   RO          181    .text_divfast       c_p.l(aeabi_sdivfast.o)
-    0x00001e22   0x00001e22   0x00000016   Code   RO          196    i._deq              fz_ps.l(dcmp.o)
-    0x00001e38   0x00001e38   0x00000016   Code   RO          198    i._dgr              fz_ps.l(dcmp.o)
-    0x00001e4e   0x00001e4e   0x00000016   Code   RO          200    i._dls              fz_ps.l(dcmp.o)
-    0x00001e64   0x00001e64   0x00000016   Code   RO          225    i._feq              fz_ps.l(fcmp.o)
-    0x00001e7a   0x00001e7a   0x00000016   Code   RO          226    i._fgeq             fz_ps.l(fcmp.o)
-    0x00001e90   0x00001e90   0x0000001a   Code   RO          228    i._fleq             fz_ps.l(fcmp.o)
-    0x00001eaa   0x00001eaa   0x00000002   PAD
-    0x00001eac   0x00001eac   0x00000064   Code   RO          248    x$fpl$deqf          fz_ps.l(deqf.o)
-    0x00001f10   0x00001f10   0x00000064   Code   RO          250    x$fpl$dgeqf         fz_ps.l(dgef.o)
-    0x00001f74   0x00001f74   0x00000064   Code   RO          252    x$fpl$dleqf         fz_ps.l(dlef.o)
-    0x00001fd8   0x00001fd8   0x0000008c   Code   RO          219    x$fpl$fadd          fz_ps.l(faddsub.o)
-    0x00002064   0x00002064   0x00000054   Code   RO          254    x$fpl$feqf          fz_ps.l(feqf.o)
-    0x000020b8   0x000020b8   0x00000054   Code   RO          256    x$fpl$fgeqf         fz_ps.l(fgef.o)
-    0x0000210c   0x0000210c   0x00000054   Code   RO          258    x$fpl$fleqf         fz_ps.l(flef.o)
-    0x00002160   0x00002160   0x000000b0   Code   RO          241    x$fpl$fmul          fz_ps.l(fmul.o)
-    0x00002210   0x00002210   0x000000d0   Code   RO          221    x$fpl$fsub          fz_ps.l(faddsub.o)
-    0x000022e0   0x000022e0   0x00000000   Code   RO          260    x$fpl$usenofp       fz_ps.l(usenofp.o)
-    0x000022e0   0x000022e0   0x00000080   Data   RO          209    .constdata          fz_ps.l(ddiv.o)
-    0x00002360   0x00002360   0x00000020   Data   RO          440    Region$$Table       anon$$obj.o
+    0x000001a8   0x000001a8   0x0000007c   Code   RO          188    .text               fz_ps.l(d2f.o)
+    0x00000224   0x00000224   0x00000048   Code   RO          207    .text               fz_ps.l(dfixui.o)
+    0x0000026c   0x0000026c   0x00000058   Code   RO          209    .text               fz_ps.l(dflti.o)
+    0x000002c4   0x000002c4   0x00000054   Code   RO          213    .text               fz_ps.l(f2d.o)
+    0x00000318   0x00000318   0x00000030   Code   RO          233    .text               fz_ps.l(ffixui.o)
+    0x00000348   0x00000348   0x0000005e   Code   RO          235    .text               fz_ps.l(fflti.o)
+    0x000003a6   0x000003a6   0x0000003e   Code   RO          278    .text               c_p.l(sys_stackheap_outer.o)
+    0x000003e4   0x000003e4   0x00000010   Code   RO          281    .text               c_p.l(exit.o)
+    0x000003f4   0x000003f4   0x00000008   Code   RO          299    .text               c_p.l(libspace.o)
+    0x000003fc   0x000003fc   0x00000002   Code   RO          381    .text               c_p.l(use_no_semi.o)
+    0x000003fe   0x000003fe   0x00000000   Code   RO          383    .text               c_p.l(indicate_semi.o)
+    0x000003fe   0x000003fe   0x00000000   Code   RO          256    x$fpl$usenofp       fz_ps.l(usenofp.o)
+    0x000003fe   0x000003fe   0x00000002   PAD
+    0x00000400   0x00000400   0x00000010   Code   RO          150    .ARM.__at_0x400     startup_mkl25z4.o
+    0x00000410   0x00000410   0x00000358   Code   RO          190    .text               fz_ps.l(daddsub.o)
+    0x00000768   0x00000768   0x00000448   Code   RO          204    .text               fz_ps.l(ddiv.o)
+    0x00000bb0   0x00000bb0   0x00000248   Code   RO          211    .text               fz_ps.l(dmul.o)
+    0x00000df8   0x00000df8   0x000000a0   Code   RO          274    .text               fz_ps.l(dcmpin.o)
+    0x00000e98   0x00000e98   0x00000064   Code   RO          276    .text               fz_ps.l(fcmpin.o)
+    0x00000efc   0x00000efc   0x0000002e   Code   RO          293    .text               fz_ps.l(cmpret.o)
+    0x00000f2a   0x00000f2a   0x00000002   PAD
+    0x00000f2c   0x00000f2c   0x00000014   Code   RO          295    .text               fz_ps.l(dnan2.o)
+    0x00000f40   0x00000f40   0x00000010   Code   RO          297    .text               fz_ps.l(fnan2.o)
+    0x00000f50   0x00000f50   0x0000005e   Code   RO          356    .text               fz_ps.l(retnan.o)
+    0x00000fae   0x00000fae   0x00000002   PAD
+    0x00000fb0   0x00000fb0   0x0000000c   Code   RO          358    .text               c_p.l(sys_exit.o)
+    0x00000fbc   0x00000fbc   0x00000048   Code   RO           44    .text.ADC0_IRQHandler  camera.o
+    0x00001004   0x00001004   0x00000108   Code   RO           17    .text.InitializarePiniParteMecanica  motoare.o
+    0x0000110c   0x0000110c   0x0000010c   Code   RO           46    .text.PIT_IRQHandler  camera.o
+    0x00001218   0x00001218   0x0000004c   Code   RO          106    .text.PORTA_IRQHandler  senzoridistanta.o
+    0x00001264   0x00001264   0x0000009c   Code   RO          108    .text.PORTD_IRQHandler  senzoridistanta.o
+    0x00001300   0x00001300   0x00000068   Code   RO           36    .text.SIMSetup      portssetup.o
+    0x00001368   0x00001368   0x000000a4   Code   RO           21    .text.SetareUnghi   motoare.o
+    0x0000140c   0x0000140c   0x000000e8   Code   RO          160    .text.SystemInit    system_mkl25z4.o
+    0x000014f4   0x000014f4   0x00000130   Code   RO           11    .text.TPM2_IRQHandler  motoare.o
+    0x00001624   0x00001624   0x0000002c   Code   RO           68    .text.decideDirectiaDrumSimplu  sistemdecizional.o
+    0x00001650   0x00001650   0x0000008a   Code   RO           96    .text.getNextPid    pid.o
+    0x000016da   0x000016da   0x00000002   PAD
+    0x000016dc   0x000016dc   0x0000010c   Code   RO           52    .text.initializareCamera  camera.o
+    0x000017e8   0x000017e8   0x000000a0   Code   RO           94    .text.initializarePID  pid.o
+    0x00001888   0x00001888   0x00000048   Code   RO           50    .text.initializarePIT  camera.o
+    0x000018d0   0x000018d0   0x0000007c   Code   RO           19    .text.initializareSenzorTuratie  motoare.o
+    0x0000194c   0x0000194c   0x000000b0   Code   RO          110    .text.initializareSenzoriDistanta  senzoridistanta.o
+    0x000019fc   0x000019fc   0x000000b0   Code   RO            2    .text.main          main.o
+    0x00001aac   0x00001aac   0x00000038   Code   RO           48    .text.startCamera   camera.o
+    0x00001ae4   0x00001ae4   0x000000a8   Code   RO           77    .text.uartInit      uart.o
+    0x00001b8c   0x00001b8c   0x000001f6   Code   RO          177    .text_divfast       c_p.l(aeabi_sdivfast.o)
+    0x00001d82   0x00001d82   0x00000016   Code   RO          192    i._deq              fz_ps.l(dcmp.o)
+    0x00001d98   0x00001d98   0x00000016   Code   RO          194    i._dgr              fz_ps.l(dcmp.o)
+    0x00001dae   0x00001dae   0x00000016   Code   RO          196    i._dls              fz_ps.l(dcmp.o)
+    0x00001dc4   0x00001dc4   0x00000016   Code   RO          221    i._feq              fz_ps.l(fcmp.o)
+    0x00001dda   0x00001dda   0x00000016   Code   RO          222    i._fgeq             fz_ps.l(fcmp.o)
+    0x00001df0   0x00001df0   0x00000016   Code   RO          223    i._fgr              fz_ps.l(fcmp.o)
+    0x00001e06   0x00001e06   0x0000001a   Code   RO          224    i._fleq             fz_ps.l(fcmp.o)
+    0x00001e20   0x00001e20   0x00000016   Code   RO          225    i._fls              fz_ps.l(fcmp.o)
+    0x00001e36   0x00001e36   0x00000002   PAD
+    0x00001e38   0x00001e38   0x00000064   Code   RO          244    x$fpl$deqf          fz_ps.l(deqf.o)
+    0x00001e9c   0x00001e9c   0x00000064   Code   RO          246    x$fpl$dgeqf         fz_ps.l(dgef.o)
+    0x00001f00   0x00001f00   0x00000064   Code   RO          248    x$fpl$dleqf         fz_ps.l(dlef.o)
+    0x00001f64   0x00001f64   0x0000008c   Code   RO          215    x$fpl$fadd          fz_ps.l(faddsub.o)
+    0x00001ff0   0x00001ff0   0x00000054   Code   RO          250    x$fpl$feqf          fz_ps.l(feqf.o)
+    0x00002044   0x00002044   0x00000054   Code   RO          252    x$fpl$fgeqf         fz_ps.l(fgef.o)
+    0x00002098   0x00002098   0x00000054   Code   RO          254    x$fpl$fleqf         fz_ps.l(flef.o)
+    0x000020ec   0x000020ec   0x000000b0   Code   RO          237    x$fpl$fmul          fz_ps.l(fmul.o)
+    0x0000219c   0x0000219c   0x000000d0   Code   RO          217    x$fpl$fsub          fz_ps.l(faddsub.o)
+    0x0000226c   0x0000226c   0x00000080   Data   RO          205    .constdata          fz_ps.l(ddiv.o)
+    0x000022ec   0x000022ec   0x00000020   Data   RO          436    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x1ffff000, Load base: 0x00002380, Size: 0x00000020, Max: 0xffffffff, ABSOLUTE)
-
-    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
-
-    0x1ffff000   0x00002380   0x00000008   Data   RW          118    .data.distantaC     senzoridistanta.o
-    0x1ffff008   0x00002388   0x00000008   Data   RW          117    .data.distantaD     senzoridistanta.o
-    0x1ffff010   0x00002390   0x00000008   Data   RW          116    .data.distantaS     senzoridistanta.o
-    0x1ffff018   0x00002398   0x00000001   Data   RW           54    .data.linie         camera.o
-    0x1ffff019   0x00002399   0x00000001   Data   RW           58    .data.linieStatus   camera.o
-    0x1ffff01a   0x0000239a   0x00000002   PAD
-    0x1ffff01c   0x0000239c   0x00000004   Data   RW           87    .data.osr           uart.o
-
-
-    Execution Region ER_ZI (Exec base: 0x1ffff020, Load base: 0x000023a0, Size: 0x00000238, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x1ffff000, Load base: 0x00002310, Size: 0x00000020, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x1ffff020        -       0x00000060   Zero   RW          304    .bss                c_p.l(libspace.o)
-    0x1ffff080        -       0x00000004   Zero   RW           59    .bss.cameraState    camera.o
+    0x1ffff000   0x00002310   0x00000008   Data   RW          114    .data.distantaC     senzoridistanta.o
+    0x1ffff008   0x00002318   0x00000008   Data   RW          113    .data.distantaD     senzoridistanta.o
+    0x1ffff010   0x00002320   0x00000008   Data   RW          112    .data.distantaS     senzoridistanta.o
+    0x1ffff018   0x00002328   0x00000001   Data   RW           54    .data.linie         camera.o
+    0x1ffff019   0x00002329   0x00000001   Data   RW           58    .data.linieStatus   camera.o
+    0x1ffff01a   0x0000232a   0x00000002   PAD
+    0x1ffff01c   0x0000232c   0x00000004   Data   RW           83    .data.osr           uart.o
+
+
+    Execution Region ER_ZI (Exec base: 0x1ffff020, Load base: 0x00002330, Size: 0x00000238, Max: 0xffffffff, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x1ffff020        -       0x00000060   Zero   RW          300    .bss                c_p.l(libspace.o)
+    0x1ffff080        -       0x00000001   Zero   RW           59    .bss.cameraState    camera.o
+    0x1ffff081   0x00002330   0x00000003   PAD
     0x1ffff084        -       0x00000004   Zero   RW           55    .bss.clockCycles    camera.o
-    0x1ffff088        -       0x00000001   Zero   RW           60    .bss.max            camera.o
-    0x1ffff089        -       0x00000001   Zero   RW           57    .bss.min            camera.o
+    0x1ffff088        -       0x00000001   Zero   RW           57    .bss.min            camera.o
+    0x1ffff089   0x00002330   0x00000001   PAD
     0x1ffff08a        -       0x00000002   Zero   RW           26    .bss.nrInput        motoare.o
-    0x1ffff08c   0x000023a0   0x00000004   PAD
+    0x1ffff08c   0x00002330   0x00000004   PAD
     0x1ffff090        -       0x00000030   Zero   RW           27    .bss.pid            motoare.o
-    0x1ffff0c0        -       0x00000002   Zero   RW           88    .bss.sbr            uart.o
-    0x1ffff0c2   0x000023a0   0x00000002   PAD
+    0x1ffff0c0        -       0x00000002   Zero   RW           84    .bss.sbr            uart.o
+    0x1ffff0c2   0x00002330   0x00000002   PAD
     0x1ffff0c4        -       0x00000004   Zero   RW           25    .bss.semnal         motoare.o
-    0x1ffff0c8        -       0x00000001   Zero   RW           89    .bss.temp           uart.o
+    0x1ffff0c8        -       0x00000001   Zero   RW           85    .bss.temp           uart.o
     0x1ffff0c9        -       0x00000080   Zero   RW           56    .bss.tempPixels     camera.o
-    0x1ffff149   0x000023a0   0x00000003   PAD
+    0x1ffff149   0x00002330   0x00000003   PAD
     0x1ffff14c        -       0x00000004   Zero   RW           24    .bss.viteza         motoare.o
     0x1ffff150        -       0x00000004   Zero   RW           23    .bss.vitezaCurenta  motoare.o
-    0x1ffff154   0x000023a0   0x00000004   PAD
-    0x1ffff158        -       0x00000000   Zero   RW          152    HEAP                startup_mkl25z4.o
-    0x1ffff158        -       0x00000100   Zero   RW          151    STACK               startup_mkl25z4.o
+    0x1ffff154   0x00002330   0x00000004   PAD
+    0x1ffff158        -       0x00000000   Zero   RW          148    HEAP                startup_mkl25z4.o
+    0x1ffff158        -       0x00000100   Zero   RW          147    STACK               startup_mkl25z4.o
 
 
 ==============================================================================
@@ -1150,21 +1138,21 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       748        104          0          2        138       4840   camera.o
-       192         44          0          0          0        574   main.o
-       944        156          0          0         62       4681   motoare.o
+       736        100          0          2        134       4840   camera.o
+       176         36          0          0          0        556   main.o
+       856        144          0          0         62       4633   motoare.o
        298          4          0          0          0       1272   pid.o
        104          4          0          0          0       1413   portssetup.o
        408         68          0         24          0       3509   senzoridistanta.o
-        44          8          0          0          0        954   sistemdecizional.o
+        44          8          0          0          0        635   sistemdecizional.o
         76         42        192          0        256        836   startup_mkl25z4.o
-       228         40          0          0          0       3204   system_mkl25z4.o
-       188         36          0          4          3       2314   uart.o
+       232         44          0          0          0       3204   system_mkl25z4.o
+       168         32          0          4          3       2314   uart.o
 
     ----------------------------------------------------------------------
-      3232        506        224         32        472      23597   Object Totals
+      3100        482        224         32        472      23212   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-         2          0          0          2         13          0   (incl. Padding)
+         2          0          0          2         17          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1206,10 +1194,10 @@ Image component sizes
         20          6          0          0          0         68   dnan2.o
         84          4          0          0          0         60   f2d.o
        348          8          0          0          0        160   faddsub.o
-        70          0          0          0          0        204   fcmp.o
+       114          0          0          0          0        340   fcmp.o
        100          4          0          0          0         68   fcmpin.o
         84          4          0          0          0         76   feqf.o
-        76          0          0          0          0         68   ffixi.o
+        48          0          0          0          0         60   ffixui.o
         94          0          0          0          0         92   fflti.o
         84          4          0          0          0         76   fgef.o
         84          4          0          0          0         76   flef.o
@@ -1219,7 +1207,7 @@ Image component sizes
          0          0          0          0          0          0   usenofp.o
 
     ----------------------------------------------------------------------
-      5504        158        128          0         96       3056   Library Totals
+      5520        158        128          0         96       3184   Library Totals
         14          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
@@ -1227,10 +1215,10 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
 
        768         16          0          0         96        640   c_p.l
-      4722        142        128          0          0       2416   fz_ps.l
+      4738        142        128          0          0       2544   fz_ps.l
 
     ----------------------------------------------------------------------
-      5504        158        128          0         96       3056   Library Totals
+      5520        158        128          0         96       3184   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -1239,15 +1227,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      8736        664        352         32        568      24989   Grand Totals
-      8736        664        352         32        568      24989   ELF Image Totals
-      8736        664        352         32          0          0   ROM Totals
+      8620        640        352         32        568      24644   Grand Totals
+      8620        640        352         32        568      24644   ELF Image Totals
+      8620        640        352         32          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 9088 (   8.88kB)
+    Total RO  Size (Code + RO Data)                 8972 (   8.76kB)
     Total RW  Size (RW Data + ZI Data)               600 (   0.59kB)
-    Total ROM Size (Code + RO Data + RW Data)       9120 (   8.91kB)
+    Total ROM Size (Code + RO Data + RW Data)       9004 (   8.79kB)
 
 ==============================================================================
 

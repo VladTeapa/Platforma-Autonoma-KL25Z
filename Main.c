@@ -18,7 +18,7 @@ extern long double volatile distantaS;
 extern long double volatile distantaD;
 extern long double volatile distantaC;
 
-static uint8_t stare = STATE_START;
+static uint8_t stare = STATE_DRUM_FARA_OBSTACOL;
 
 static long double directie;
 
@@ -86,26 +86,11 @@ int main (void) {
 	
 	while(1){
 		
-		//Se testeaza aparitia unei curbe
-		if(linie>=63 + LINE_MAX_ERROR_MID || linie<=64 - LINE_MAX_ERROR_MID)
-		{
-			stare = STATE_DRUM_CURBA;
-		}
-		else
-		{
-			stare = STATE_DRUM_DREPT;
-		}
+		
 	  switch(stare)
 		{
 			
-			//Pentru drumul drept setam o viteza mai mare si unghiul corespunzator
-			case STATE_DRUM_DREPT:
-				viteza = MOTOARE_VITEZA_MAX_MS;
-				SetareUnghi(SERVOMOTOR_STRAIGHT_ERR);
-				break;
-			
-			//Pentru curbe, in caz ca nu este una foarte brusca nu are sens sa incetinim
-			case STATE_DRUM_CURBA:
+			case STATE_DRUM_FARA_OBSTACOL:
 				if(linie>=63 + LINE_MAX_ERROR_FOR_SPEED || linie<=64 - LINE_MAX_ERROR_FOR_SPEED)
 				{
 					viteza = MOTOARE_VITEZA_CURBA_MS;
@@ -116,7 +101,7 @@ int main (void) {
 				}
 				viteza = MOTOARE_VITEZA_CURBA_MS;
 				directie = decideDirectiaDrumSimplu(linie);
-				SetareUnghi(directie);
+				SetareUnghi(directie + SERVOMOTOR_STRAIGHT_ERR);
 				break;
 			default:
 				break;

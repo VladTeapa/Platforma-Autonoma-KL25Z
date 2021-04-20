@@ -153,15 +153,15 @@
 #define MOTOARE_VITEZA_MAXIMA_SIG 0.9f
 #define MOTOARE_SENS_INAITE				1
 #define MOTOARE_SENS_SPATE				-1
-#define MOTOARE_VITEZA_MAX_MS			3
+#define MOTOARE_VITEZA_MAX_MS			2.5f
 #define MOTOARE_VITEZA_CURBA_MS	  1
-#define SERVOMOTOR_STRAIGHT_ERR		-0.07
+#define SERVOMOTOR_STRAIGHT_ERR		-0.07f
 #define SERVOMOTOR_THRESHOLD			15
 
 //----------------------PID----------------------
 
 #define PID_TS										0.125
-#define PID_KP										0.09
+#define PID_KP										0.1
 #define PID_KI										0.025
 #define PID_KD										0.025
 
@@ -203,10 +203,4 @@
 
 /***********************Stari************************/
 
-#define STATE_DRUM_DREPT					0
-#define STATE_DRUM_CURBA					1
-#define STATE_DRUM_CURBATODREPT		2
-#define STATE_OBSTACOL_DREAPTA		3
-#define STATE_OBSTACOL_STANGA			4
-#define	STATE_START								5
-#define STATE_DRUM_DREPTTOCURBA		6
+#define STATE_DRUM_FARA_OBSTACOL 0
