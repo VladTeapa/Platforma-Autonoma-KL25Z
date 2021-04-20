@@ -3,15 +3,15 @@
 #include "SistemDecizional.h"
 #include "Motoare.h"
 
-static int cameraState=0;
-static unsigned int clockCycles=0;
+static volatile int cameraState=0;
+static volatile unsigned int clockCycles=0;
 
 static volatile uint8_t tempPixels[128];
 static volatile uint8_t max;
 static volatile uint8_t min;
 static volatile uint8_t linieStatus = 63;
 
-uint8_t linie=63;
+volatile uint8_t linie=63;
 
 void debugLineScanCamera(void)
 {
@@ -38,7 +38,7 @@ void ADC0_IRQHandler(void)
 	if(clockCycles < NumberOfClocks && clockCycles/2>CAMERA_IGNORE_EDGE_VAL && clockCycles/2<127-CAMERA_IGNORE_EDGE_VAL)
 	{	
 		tempPixels[clockCycles/2] = (uint8_t)value;
-		if(min<value)
+		if(min>tempPixels[clockCycles/2])
 		{
 			linieStatus = clockCycles/2;
 			min = value;
