@@ -150,7 +150,7 @@
 
 //--------------------Motoare--------------------
 
-#define MOTOARE_VITEZA_MAXIMA_SIG 0.9L
+#define MOTOARE_VITEZA_MAXIMA_SIG 0.9f
 #define MOTOARE_SENS_INAITE				1
 #define MOTOARE_SENS_SPATE				-1
 #define MOTOARE_VITEZA_MAX_MS			3
@@ -196,7 +196,7 @@
 #define SENZOR_DISTANTA_DEBUG_S		0
 #define SENZOR_DISTANTA_DEBUG_D		0
 #define SENZOR_DISTANTA_DEBUG_C		0
-#define	ACTIVARE_PID_DEBUG				1
+#define	DEZACTIVARE_PID_DEBUG			0
 
 #define CAMERA_EDGE_VAL						0xFF
 #define VITEZA_SEMNAL_TIME_DEBUG	25

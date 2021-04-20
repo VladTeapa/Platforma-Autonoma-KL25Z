@@ -3,18 +3,19 @@
 #include "SistemDecizional.h"
 #include "Motoare.h"
 
-static volatile int cameraState=0;
-static volatile unsigned int clockCycles=0;
+static volatile uint8_t cameraState=0;
+static volatile uint32_t clockCycles=0;
 
 static volatile uint8_t tempPixels[128];
-static volatile uint8_t max;
 static volatile uint8_t min;
 static volatile uint8_t linieStatus = 63;
 
 volatile uint8_t linie=63;
 
-void debugLineScanCamera(void)
+static void debugLineScanCamera(void)
 {
+	
+	//Functie de debug pentru camera, se foloseste cu scriptul din Matlab
 	register uint8_t i=0;
 	
 	if(CAMERA_DEBUG_LINE_SCAN == 1)
@@ -35,6 +36,8 @@ void ADC0_IRQHandler(void)
 	uint8_t value;
 	ADCCameraSC1A &= ~ADC_SC1_AIEN_MASK;
 	value =(uint8_t)ADCCameraResult;
+	
+	//Nu ne intereseaza marginea drumului intrucat ar putea sa fie din afara traseului si sa introduca erori
 	if(clockCycles < NumberOfClocks && clockCycles/2>CAMERA_IGNORE_EDGE_VAL && clockCycles/2<127-CAMERA_IGNORE_EDGE_VAL)
 	{	
 		tempPixels[clockCycles/2] = (uint8_t)value;
@@ -53,6 +56,8 @@ void PIT_IRQHandler(void)
 	{
 		PIT_TCTRL0 = 0;
 		PIT_TCTRL1 = 0;
+		
+		//Functie pentru a lua datele de la camera, aceasta are mai multe stari in functie de ce semnale se genereaza
 		switch(cameraState)
 		{
 			case CAMERA_START:
@@ -63,7 +68,6 @@ void PIT_IRQHandler(void)
 				clockCycles = 1;
 				cameraState = CAMERA_SET_CLK;
 				PIT->CHANNEL[0].LDVAL = PITQuarterClock;
-				max = 0;
 				min = 0xFF;
 				break;
 			case CAMERA_SET_CLK:
@@ -88,6 +92,8 @@ void PIT_IRQHandler(void)
 	}
 	else if(PIT->CHANNEL[1].TFLG & PIT_TFLG_TIF_MASK)
 	{
+		
+		//Aici se genereaza clockul pentru camera
 		if(clockCycles%2 == 0)
 			ADCCameraSC1A = ADC_SC1_ADCH(8) | ADC_SC1_AIEN_MASK;	
 		PIT->CHANNEL[1].TFLG &= PIT_TFLG_TIF_MASK;
@@ -98,10 +104,11 @@ void PIT_IRQHandler(void)
 void startCamera(void)
 {
 	
+	//Se porneste modulul PIT pentru camera
 	PIT_MCR &= ~(PIT_MCR_MDIS_MASK);				
-	PIT_LDVAL0 = PITQuarterClock;		// set pit0 to quarter of a CLK period initially
-	PIT_LDVAL1 = PITHalfClock;		// set pit1 to half CLK period   
-	PIT_TCTRL0 = PIT_TCTRL_TEN_MASK | PIT_TCTRL_TIE_MASK; //enable pit0
+	PIT_LDVAL0 = PITQuarterClock;		
+	PIT_LDVAL1 = PITHalfClock;		
+	PIT_TCTRL0 = PIT_TCTRL_TEN_MASK | PIT_TCTRL_TIE_MASK;
 	PIT_MCR = 1;		
 	cameraState = CAMERA_START;
 }
@@ -114,12 +121,11 @@ void initializarePIT(void)
 	
 	//Se configureaza canalul 0
 	PIT->CHANNEL[0].LDVAL = PIT_LDVAL_TSV(PITHalfClock);
-
-	PIT->CHANNEL[0].TCTRL &= PIT_TCTRL_CHN_MASK;
 	
+	PIT->CHANNEL[0].TCTRL &= PIT_TCTRL_CHN_MASK;
 	PIT->CHANNEL[0].TCTRL |= PIT_TCTRL_TIE_MASK;
 
-	//Se seteaza intreruperile
+	//Se seteaza intrerupea
 	NVIC_SetPriority(PIT_IRQn, 128);
 	NVIC_ClearPendingIRQ(PIT_IRQn); 
 	NVIC_EnableIRQ(PIT_IRQn);	
@@ -145,6 +151,7 @@ void initializareCamera(void)
 	//Configurare pin pentru AO
 	PortAOCamera |= PORT_PCR_MUX(PortAOCameraMux);
 	
+	//Se verifica calibrarea
 	if(calibrareADC()==-1)
 		return;
 	
@@ -159,9 +166,11 @@ void initializareCamera(void)
 	NVIC_EnableIRQ(ADC0_IRQn);	
 }
 
-int calibrareADC(void)
+static int calibrareADC(void)
 {
-	unsigned short calVar;
+	
+	//Functie de calibrare a ADC-ului, pentru detalii vedeti in reference manual
+	uint16_t calVar;
 	ADCCameraSC2 &= ~ADC_SC2_ADTRG_MASK;
 	ADCCameraSC3 &= (~ADC_SC3_ADCO_MASK & ~ADC_SC3_AVGS_MASK);
 	ADCCameraSC3 |= ADC_SC3_AVGE_MASK | ADC_SC3_AVGS(3);

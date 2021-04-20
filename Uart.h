@@ -1,7 +1,5 @@
 #include "Defines.h"
 #include "MKL25Z4.h"
-
-void initializareUart(int baudRate);
-void trimiteDate(uint8_t data);
-uint8_t primesteDate(void);
-void UartInit(uint32_t baud);
+void trimiteDate(uint8_t data); //Trimite un singur caracter pe interfata UART
+uint8_t primesteDate(void); //Asteapta un singur caracter pana primeste
+void uartInit(uint32_t baud); //Initializare modul UART
