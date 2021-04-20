@@ -1,16 +1,38 @@
 #include "MKL25Z4.h"
 
-/****************Pini Senzor Turatie******************/
+/****************Pini Senzori Distanta****************/
 
-#define PortSenzorTuratie					PORTE->PCR[30] //FTM0_CH3
+#define PortSenzorDistantaTrig		PORTD->PCR[4] //FTM0_CH4
+#define PortSenzorDistantaTrigMux	4
+#define PortSenzorDistantaEchoS		PORTD->PCR[6]
+#define PortSenzorDistantaSPin		6
+#define PortSenzorDistantaEchoSM	1
+#define PortSenzorDistantaEchoD		PORTD->PCR[7]
+#define PortSenzorDistantaDPin		7
+#define PortSenzorDistantaEchoDM	1
+#define PortSenzorDistantaEchoC		PORTA->PCR[17]
+#define PortSenzorDistantaCPin		17
+#define PortSenzorDistantaEchoCM	1
+
+
+/*****************Valori Senzor Distanta***************/
+
+#define SENZORDISTANTAPWM					0xF
+#define	FACTORMULDISTANTA					0.01122 //cm/percount
+#define DISTANTAEROARE						8.1L //cm
+
+/*****************Pini Senzor Turatie*****************/
+
+#define PortSenzorTuratie					PORTB->PCR[3] //FTM2_CH1
 #define	PortSenzorTuratieMux			3
+#define SenzorTuratieMOD					0xB71B
 
 /**************Valori Senzor Turatie******************/
 
-#define NUMBER_OF_MAGNETS					4
-#define DIAMETER_OF_WHEEL					0.05
-#define PI												3.14
-#define COEFFICIENT_MEASURE_TIME	0.02
+#define NUMBER_OF_MAGNETS					6
+#define DIAMETER_OF_WHEEL					0.05f
+#define PI												3.14f
+#define COEFFICIENT_MEASURE_TIME	0.125f
 
 /********************Pini Motor***********************/
 
@@ -44,13 +66,13 @@
 #define PortMotorActivareStangaM	1
 #define PortSensMotorMux					1
 
-#define MotorMaxCount							0xEA60
+#define MotorMaxCount							0x8CA0
 
 /********************Pini ServoMotor******************/
 
-#define PortServoMotor						PORTD->PCR[4] //FTM0_CH4
+#define PortServoMotor						PORTA->PCR[12] //FTM1_CH0
 
-#define PortServoMux							4
+#define PortServoMux							3
 
 #define ServoMaxCount							0xEA60
 #define	ServoMinVal								0x5DC
@@ -58,8 +80,9 @@
 
 /********************Valori TPM*************************/
 
-#define TPMDivider								4
-
+#define TPMDIVIDERSERVO						4
+#define TPMDIVIDERTURATIE					7
+#define TPMDIVIDERMOTOARE					5
 #define TPMClockSource						1
 #define TPMPLLFLLSELValue					0
 
@@ -106,7 +129,7 @@
 #define NumberOfClocks						256
 #define PITHalfClock							0x8FF
 #define PITQuarterClock						PITHalfClock/2
-#define PITSIClock								PITHalfClock*(256+20)
+#define PITSIClock								PITHalfClock*(256+8)
 #define CAMERA_START							0
 #define	CAMERA_SET_CLK						1
 #define CAMERA_CLEAR_SI						2
@@ -122,24 +145,25 @@
 #define COEFFICIENT_PIXELI_CUT		2
 #define PIXELI_CUT_LOW_VAL				20
 #define PIXELI_CUT_HIGH_VAL				40
-#define LINE_MAX_ERROR_MID				5
+#define LINE_MAX_ERROR_MID				3
+#define LINE_MAX_ERROR_FOR_SPEED	7
 
 //--------------------Motoare--------------------
 
-#define MOTOARE_VITEZA_MAXIMA_SIG 0.5L
+#define MOTOARE_VITEZA_MAXIMA_SIG 0.9L
 #define MOTOARE_SENS_INAITE				1
 #define MOTOARE_SENS_SPATE				-1
-#define MOTOARE_VITEZA_MAX_MS			1
-#define MOTOARE_VITEZA_FRANARE_MS	0.25L
+#define MOTOARE_VITEZA_MAX_MS			3
+#define MOTOARE_VITEZA_CURBA_MS	  1
 #define SERVOMOTOR_STRAIGHT_ERR		-0.07
-#define SERVOMOTOR_THRESHOLD			30
+#define SERVOMOTOR_THRESHOLD			15
 
 //----------------------PID----------------------
 
-#define PID_TS										200
-#define PID_KP										1
-#define PID_KI										1
-#define PID_KD										1
+#define PID_TS										0.125
+#define PID_KP										0.09
+#define PID_KI										0.025
+#define PID_KD										0.025
 
 /**********************Pini UART**********************/
 
@@ -167,10 +191,15 @@
 
 #define CAMERA_DEBUG_LINE_SCAN		0
 #define CAMERA_DEBUG_LINE					0
-#define VITEZA_DEBUG_VITEZA_CUR		1
-#define TURATIE_DEBUG_FUNCTIE_TR	0
+#define VITEZA_DEBUG_VITEZA_CUR		0
+#define SENZOR_TUR_SEMNAL_DEBUG		0
+#define SENZOR_DISTANTA_DEBUG_S		0
+#define SENZOR_DISTANTA_DEBUG_D		0
+#define SENZOR_DISTANTA_DEBUG_C		0
+#define	ACTIVARE_PID_DEBUG				1
+
 #define CAMERA_EDGE_VAL						0xFF
-#define VITEZA_SEMNAL_TIME_DEBUG	200
+#define VITEZA_SEMNAL_TIME_DEBUG	25
 
 /***********************Stari************************/
 
