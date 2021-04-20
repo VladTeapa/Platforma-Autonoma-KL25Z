@@ -11,6 +11,8 @@ void PORTA_IRQHandler(void)
 	uint32_t value = TPM0->CNT;
 	if(PORTA_ISFR & 1<<PortSenzorDistantaCPin)
 	{
+		
+		//Se calculeaza distanta fata de senzor
 		distantaC = FACTORMULDISTANTA * value;
 		PORTA_ISFR |= 1<<PortSenzorDistantaCPin;
 		distantaC -= DISTANTAEROARE;
@@ -25,6 +27,8 @@ void PORTD_IRQHandler(void)
 	uint32_t value = TPM0->CNT;
 	if(PORTD_ISFR & 1<<PortSenzorDistantaSPin)
 	{
+		
+		//Se calculeaza distanta fata de senzor
 		distantaS = FACTORMULDISTANTA * value;
 		PORTD_ISFR |= 1<<PortSenzorDistantaSPin;
 		distantaS -= DISTANTAEROARE;
@@ -33,6 +37,8 @@ void PORTD_IRQHandler(void)
 	}
 	if(PORTD_ISFR & 1<<PortSenzorDistantaDPin)
 	{
+		
+		//Se calculeaza distanta fata de senzor
 		distantaD = FACTORMULDISTANTA * value;
 		PORTD_ISFR |= 1<<PortSenzorDistantaDPin;
 		distantaD -= DISTANTAEROARE;

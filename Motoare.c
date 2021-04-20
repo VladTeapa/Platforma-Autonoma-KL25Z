@@ -5,41 +5,50 @@
 struct PID pid;
 
 float volatile vitezaCurenta = 0;
-
 float volatile viteza=0;
-
 float volatile semnal=0;
 
 uint16_t volatile nrInput = 0;
 
+static const float nrInputCoeff = (PI * DIAMETER_OF_WHEEL / COEFFICIENT_MEASURE_TIME) / NUMBER_OF_MAGNETS;
+
 void TPM2_IRQHandler(void)
 {
-	const float nrInputCoeff = (PI * DIAMETER_OF_WHEEL / COEFFICIENT_MEASURE_TIME) / NUMBER_OF_MAGNETS;
+
 	NVIC_ClearPendingIRQ(TPM2_IRQn);
+	
+	//Verificam daca intreruperea a fost generata de catre modul input capture
 	if(TPM2->CONTROLS[1].CnSC & TPM_CnSC_CHF_MASK)
 	{
 			nrInput++;
 			TPM2->CONTROLS[1].CnSC |= TPM_CnSC_CHF_MASK;
 	}
+	
+	//Verificam daca modulul a terminat de numarat
 	if((TPM2_SC & TPM_SC_TOF_MASK))
 	{
+		
+			//Calculam viteza
 			vitezaCurenta = nrInput*nrInputCoeff;
-			trimiteDate(vitezaCurenta*10);
 			TPM2_SC |= TPM_SC_TOF_MASK;
-			if(ACTIVARE_PID_DEBUG == 0)
+			
+			//Daca PID-ul nu este dezactivat calculam semnalul urmator
+			if(DEZACTIVARE_PID_DEBUG == 0)
 			{
-				nrInput = 0;
-			} 
-			else 
-			{
+				
+				//Daca masina trebuie sa se opreasca si viteza ajunge la 0 semnalul trebuie sa ramana pe 0
 				if(viteza == 0 && vitezaCurenta == 0)
 					semnal = 0;
 				else
 					semnal = getNextPid(&pid, viteza, vitezaCurenta, semnal);
+				
+				//PID-ul ne poate da valori mai mari decat 1 sau mai mici decat -1 si nu dorim acest lucru 
 				if(semnal > 1)
 					semnal = 1;
 				if(semnal < -1)
 					semnal = -1;
+				
+				//In functie de semnul variabilei semnal schimbam sensul motoarelor
 				if(semnal < 0)
 				{
 						SetareSens(MOTOARE_SENS_SPATE);
@@ -50,9 +59,10 @@ void TPM2_IRQHandler(void)
 						SetareSens(MOTOARE_SENS_INAITE);
 						SetareViteza(semnal);
 				}
-				nrInput = 0;
-				trimiteDate((semnal+1)*100);
 			}
+			
+			//Resetam numarul de inputuri
+			nrInput = 0;
 	}
 }
 
@@ -161,28 +171,32 @@ void SetareSens(int sens)
 	} //Daca nu este niciuna dintre ele nu se modifica sensul
 }
 
-void SetareViteza(double vitezaMotor)
+void SetareViteza(float vitezaMotor)
 {
+	
+	//Daca viteza este in afara intervalului dorit se limiteaza
 	if(vitezaMotor < 0)
 		vitezaMotor = 0;
 	if(vitezaMotor > MOTOARE_VITEZA_MAXIMA_SIG)
 		vitezaMotor = MOTOARE_VITEZA_MAXIMA_SIG;
 	
+	//Setam viteza corespunzator
 	TPM0->CONTROLS[2].CnV = MotorMaxCount*vitezaMotor;
-	
 	TPM0->CONTROLS[1].CnV = MotorMaxCount*vitezaMotor;
-	
 }
 
 
 void SetareUnghi(long double unghi)
 {
+	//Intrucat la valoarea 0 platforma nu va mentine rotile fix drepte ne folosim de un factor de eroare
 	if(unghi == 0)
 	{
 		unghi = SERVOMOTOR_STRAIGHT_ERR;
 		return;
 	}
-	if(unghi<-0.4) // Se verifica daca valoarea unghilui este setata corect
+	
+	//Se limiteaza valorile posibile intrucat platforma nu poate vira la valori foarte mari sau mici
+	if(unghi<-0.4) 
 	{
 		unghi = -0.4;
 	}
@@ -190,9 +204,13 @@ void SetareUnghi(long double unghi)
 	{
 		unghi = 0.4;
 	}
-	unghi++;	// Se aduce valoarea la intervalul 0-2
-	unghi /= 2;	// Se aduce valoarea la intervalul 0-1
+	
+	//Se calculeaza un procent
+	unghi++;
+	unghi /= 2;
 	unghi = (ServoMaxVal-ServoMinVal)*unghi;
 	unghi = unghi + ServoMinVal;
+	
+	//Se seteaza valoarea calculata
 	TPM1->CONTROLS[0].CnV = unghi;
 }
