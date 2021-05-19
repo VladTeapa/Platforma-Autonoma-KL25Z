@@ -1,6 +1,6 @@
 #include "SistemDecizional.h"
 
-long double decideDirectiaDrumSimplu(uint8_t linie) //Se va modifica pentru obstacole si curbe
+inline long double decideDirectiaDrumSimplu(uint8_t linie) //Se va modifica pentru obstacole si curbe
 {
 	//In functie de linie se calculeaza o valoare pentru unghi intre -1 si 1
 	long double temp = 128;

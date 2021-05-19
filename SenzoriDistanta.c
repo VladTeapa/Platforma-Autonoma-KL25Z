@@ -1,9 +1,9 @@
 #include "SenzoriDistanta.h"
 #include "Uart.h"
 
-long double volatile distantaS = 100;
-long double volatile distantaD = 100;
-long double volatile distantaC = 100;
+float volatile distantaS = 100;
+float volatile distantaD = 100;
+float volatile distantaC = 100;
 
 void PORTA_IRQHandler(void)
 {
