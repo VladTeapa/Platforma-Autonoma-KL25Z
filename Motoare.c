@@ -2,7 +2,7 @@
 #include "Uart.h"
 #include "PID.h"
 
-struct PID pid;
+volatile PIDv2 pid;
 
 float volatile vitezaCurenta = 0;
 float volatile viteza=0;
@@ -10,7 +10,14 @@ float volatile semnal=0;
 
 uint16_t volatile nrInput = 0;
 
-static const float nrInputCoeff = (PI * DIAMETER_OF_WHEEL / COEFFICIENT_MEASURE_TIME) / NUMBER_OF_MAGNETS;
+static const float nrInputCoeff = NRINPUTCOEFF;
+
+double abs(double x)
+{
+	if(x<0)
+		return -x;
+	return x;
+}
 
 void TPM2_IRQHandler(void)
 {
@@ -35,31 +42,42 @@ void TPM2_IRQHandler(void)
 			//Daca PID-ul nu este dezactivat calculam semnalul urmator
 			if(DEZACTIVARE_PID_DEBUG == 0)
 			{
-				
-				//Daca masina trebuie sa se opreasca si viteza ajunge la 0 semnalul trebuie sa ramana pe 0
-				if(viteza == 0 && vitezaCurenta == 0)
-					semnal = 0;
-				else
-					semnal = getNextPid(&pid, viteza, vitezaCurenta, semnal);
-				
-				//PID-ul ne poate da valori mai mari decat 1 sau mai mici decat -1 si nu dorim acest lucru 
-				if(semnal > 1)
-					semnal = 1;
-				if(semnal < -1)
-					semnal = -1;
-				
-				//In functie de semnul variabilei semnal schimbam sensul motoarelor
-				if(semnal < 0)
-				{
-						SetareSens(MOTOARE_SENS_SPATE);
-						SetareViteza(-semnal);
-				}
-				else
-				{
-						SetareSens(MOTOARE_SENS_INAITE);
-						SetareViteza(semnal);
-				}
+					if(abs(viteza - vitezaCurenta)>nrInputCoeff/10)
+					{
+						//Daca masina trebuie sa se opreasca si viteza ajunge la 0 semnalul trebuie sa ramana pe 0
+						if(viteza == 0 && vitezaCurenta == 0)
+							semnal = 0;
+						else
+							semnal = getNextPidv2(viteza, vitezaCurenta);
+						
+						//PID-ul ne poate da valori mai mari decat 1 sau mai mici decat -1 si nu dorim acest lucru 
+						if(semnal > 1)
+							semnal = 1;
+						if(semnal < -1)
+							semnal = -1;
+					}
+					
+					//In functie de semnul variabilei semnal schimbam sensul motoarelor
+					if(semnal < 0)
+					{
+							SetareSens(MOTOARE_SENS_SPATE);
+							SetareViteza(-semnal);
+					}
+					else
+					{
+							SetareSens(MOTOARE_SENS_INAITE);
+							SetareViteza(semnal);
+					}
 			}
+			
+			//Pentru a face debug pe semnal trimitem prin XBEE valoarea
+			if(SENZOR_TUR_SEMNAL_DEBUG == 1)
+			{
+				trimiteDate(50+semnal*50);
+			}
+	
+			
+			
 			
 			//Resetam numarul de inputuri
 			nrInput = 0;
@@ -177,8 +195,8 @@ void SetareViteza(float vitezaMotor)
 	//Daca viteza este in afara intervalului dorit se limiteaza
 	if(vitezaMotor < 0)
 		vitezaMotor = 0;
-	if(vitezaMotor > MOTOARE_VITEZA_MAXIMA_SIG)
-		vitezaMotor = MOTOARE_VITEZA_MAXIMA_SIG;
+	if(vitezaMotor > MOTOARE_VITEZA_MAXIM_SIG)
+		vitezaMotor = MOTOARE_VITEZA_MAXIM_SIG;
 	
 	//Setam viteza corespunzator
 	TPM0->CONTROLS[2].CnV = MotorMaxCount*vitezaMotor;
@@ -196,15 +214,15 @@ void SetareUnghi(long double unghi)
 	}
 	
 	//Se limiteaza valorile posibile intrucat platforma nu poate vira la valori foarte mari sau mici
-	if(unghi<-0.4) 
+	if(unghi<-0.4L) 
 	{
-		unghi = -0.4;
+		unghi = -0.4L;
 	}
-	if (unghi > 0.4)
+	if (unghi > 0.4L)
 	{
-		unghi = 0.4;
+		unghi = 0.4L;
 	}
-	
+
 	//Se calculeaza un procent
 	unghi++;
 	unghi /= 2;

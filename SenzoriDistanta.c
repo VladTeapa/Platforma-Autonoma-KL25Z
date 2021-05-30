@@ -1,9 +1,9 @@
 #include "SenzoriDistanta.h"
 #include "Uart.h"
 
-long double volatile distantaS = 100;
-long double volatile distantaD = 100;
-long double volatile distantaC = 100;
+float volatile distantaS = 100;
+float volatile distantaD = 100;
+float volatile distantaC = 100;
 
 void PORTA_IRQHandler(void)
 {
@@ -73,7 +73,7 @@ void initializareSenzoriDistanta(void)
 	TPM0->CONTROLS[4].CnSC = TPM_CnSC_MSB_MASK | TPM_CnSC_ELSB_MASK;
 
 	//Setare factor de umplere
-	TPM0->CONTROLS[4].CnV = SENZORDISTANTAPWM;
+	TPM0->CONTROLS[4].CnV = SENZOR_DISTANTA_PWM;
 	
 	//Activare modul TPM0
 	TPM0->SC |= TPM_SC_CMOD(1);

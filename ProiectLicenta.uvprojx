@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>Target 1</TargetName>
+      <TargetName>Licenta</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>6150000::V6.15::ARMCLANG</pCCUsed>
@@ -486,25 +486,25 @@
       <component Cbundle="ARM Compiler" Cclass="Compiler" Cgroup="I/O" Csub="STDERR" Cvariant="Breakpoint" Cvendor="Keil" Cversion="1.2.0" condition="ARMCC Cortex-M">
         <package name="ARM_Compiler" schemaVersion="1.6.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.6.3"/>
         <targetInfos>
-          <targetInfo name="Target 1"/>
+          <targetInfo name="Licenta"/>
         </targetInfos>
       </component>
       <component Cbundle="ARM Compiler" Cclass="Compiler" Cgroup="I/O" Csub="STDIN" Cvariant="Breakpoint" Cvendor="Keil" Cversion="1.2.0" condition="ARMCC Cortex-M">
         <package name="ARM_Compiler" schemaVersion="1.6.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.6.3"/>
         <targetInfos>
-          <targetInfo name="Target 1"/>
+          <targetInfo name="Licenta"/>
         </targetInfos>
       </component>
       <component Cbundle="ARM Compiler" Cclass="Compiler" Cgroup="I/O" Csub="STDOUT" Cvariant="Breakpoint" Cvendor="Keil" Cversion="1.2.0" condition="ARMCC Cortex-M">
         <package name="ARM_Compiler" schemaVersion="1.6.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.6.3"/>
         <targetInfos>
-          <targetInfo name="Target 1"/>
+          <targetInfo name="Licenta"/>
         </targetInfos>
       </component>
       <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="2.5.0" condition="MKL25Z4 CMSIS">
         <package name="Kinetis_KLxx_DFP" schemaVersion="1.4.9" url="http://www.keil.com/pack/" vendor="Keil" version="1.15.0"/>
         <targetInfos>
-          <targetInfo name="Target 1"/>
+          <targetInfo name="Licenta"/>
         </targetInfos>
       </component>
     </components>
@@ -514,7 +514,7 @@
         <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="2.5.0" condition="MKL25Z4 CMSIS"/>
         <package name="Kinetis_KLxx_DFP" schemaVersion="1.4.9" url="http://www.keil.com/pack/" vendor="Keil" version="1.15.0"/>
         <targetInfos>
-          <targetInfo name="Target 1"/>
+          <targetInfo name="Licenta"/>
         </targetInfos>
       </file>
       <file attr="config" category="source" name="Device\Source\system_MKL25Z4.c" version="2.5.0">
@@ -522,7 +522,7 @@
         <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="2.5.0" condition="MKL25Z4 CMSIS"/>
         <package name="Kinetis_KLxx_DFP" schemaVersion="1.4.9" url="http://www.keil.com/pack/" vendor="Keil" version="1.15.0"/>
         <targetInfos>
-          <targetInfo name="Target 1"/>
+          <targetInfo name="Licenta"/>
         </targetInfos>
       </file>
       <file attr="config" category="header" name="Device\Source\system_MKL25Z4.h" version="2.5.0">
@@ -530,7 +530,7 @@
         <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="2.5.0" condition="MKL25Z4 CMSIS"/>
         <package name="Kinetis_KLxx_DFP" schemaVersion="1.4.9" url="http://www.keil.com/pack/" vendor="Keil" version="1.15.0"/>
         <targetInfos>
-          <targetInfo name="Target 1"/>
+          <targetInfo name="Licenta"/>
         </targetInfos>
       </file>
     </files>

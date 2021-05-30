@@ -6,4 +6,4 @@
   P:\Keil\ARM\ARMCLANG\Bin\..\include\stdlib.h \
   P:\Keil\ARM\ARMCLANG\Bin\..\include\assert.h \
   P:\Keil\ARM\ARMCLANG\Bin\..\include\rt_sys.h \
-  RTE\_Target_1\RTE_Components.h
+  RTE\_Licenta\RTE_Components.h
