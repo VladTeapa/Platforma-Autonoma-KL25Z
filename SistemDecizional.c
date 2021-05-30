@@ -10,3 +10,15 @@ inline long double decideDirectiaDrumSimplu(uint8_t linie) //Se va modifica pent
 	temp-=1;
 	return temp;
 }
+
+inline float decideVitezaDrumSimplu(uint8_t linie)
+{
+	if(linie>=63 + LINE_MAX_ERROR_FOR_SPEED || linie<=64 - LINE_MAX_ERROR_FOR_SPEED)
+	{
+		return MOTOARE_VITEZA_CURBA_MS;
+	}
+	else
+	{
+		return MOTOARE_VITEZA_MAX_MS;
+	}
+}

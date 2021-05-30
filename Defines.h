@@ -185,7 +185,7 @@
 /***********************Debug*************************/
 
 #define CAMERA_DEBUG_LINE_SCAN		0
-#define SERVO_DEBUG_ANGLE					1
+#define SERVO_DEBUG_ANGLE					0
 #define VITEZA_DEBUG_VITEZA_CUR		0
 #define SENZOR_TUR_SEMNAL_DEBUG		0
 #define SENZOR_DISTANTA_DEBUG_S		0
