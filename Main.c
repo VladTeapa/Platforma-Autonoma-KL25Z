@@ -83,6 +83,7 @@ int main (void) {
 
 	//Unghiul initial este de 0 grade
 	SetareUnghi(SERVOMOTOR_STRAIGHT_ERR); 
+	
 	for(int i=0;i<10000000;i++){
 		viteza = 0;
 	}

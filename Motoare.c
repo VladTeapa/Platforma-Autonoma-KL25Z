@@ -195,8 +195,8 @@ void SetareViteza(float vitezaMotor)
 	//Daca viteza este in afara intervalului dorit se limiteaza
 	if(vitezaMotor < 0)
 		vitezaMotor = 0;
-	if(vitezaMotor > MOTOARE_VITEZA_MAXIMA_SIG)
-		vitezaMotor = MOTOARE_VITEZA_MAXIMA_SIG;
+	if(vitezaMotor > MOTOARE_VITEZA_MAXIM_SIG)
+		vitezaMotor = MOTOARE_VITEZA_MAXIM_SIG;
 	
 	//Setam viteza corespunzator
 	TPM0->CONTROLS[2].CnV = MotorMaxCount*vitezaMotor;
@@ -222,7 +222,7 @@ void SetareUnghi(long double unghi)
 	{
 		unghi = 0.4L;
 	}
-	
+
 	//Se calculeaza un procent
 	unghi++;
 	unghi /= 2;

@@ -73,7 +73,7 @@ void initializareSenzoriDistanta(void)
 	TPM0->CONTROLS[4].CnSC = TPM_CnSC_MSB_MASK | TPM_CnSC_ELSB_MASK;
 
 	//Setare factor de umplere
-	TPM0->CONTROLS[4].CnV = SENZORDISTANTAPWM;
+	TPM0->CONTROLS[4].CnV = SENZOR_DISTANTA_PWM;
 	
 	//Activare modul TPM0
 	TPM0->SC |= TPM_SC_CMOD(1);

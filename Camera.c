@@ -6,7 +6,7 @@
 static volatile uint8_t cameraState=0;
 static volatile uint32_t clockCycles=0;
 
-//static volatile uint8_t tempPixels[128];
+static volatile uint8_t tempPixels[128];
 static volatile uint8_t min;
 static volatile uint8_t linieStatus = 63;
 
@@ -42,7 +42,7 @@ void ADC0_IRQHandler(void)
 	//Nu ne intereseaza marginea drumului intrucat ar putea sa fie din afara traseului si sa introduca erori
 	if(clockCycles < NumberOfClocks && clockCycles/2>CAMERA_IGNORE_EDGE_VAL && clockCycles/2<127-CAMERA_IGNORE_EDGE_VAL)
 	{	
-		//tempPixels[clockCycles/2] = (uint8_t)value;
+	//	tempPixels[clockCycles/2] = (uint8_t)value;
 		if(min>(uint8_t)value)
 		{
 			linieStatus = clockCycles/2;
@@ -64,7 +64,7 @@ void PIT_IRQHandler(void)
 		{
 			case CAMERA_START:
 				GPIOCCLKCamera = 1<<GPIOPinCLKCamera;
-		//		debugLineScanCamera();
+			//	debugLineScanCamera();
 				linie = linieStatus;
 				GPIOSSICamera = 1<<GPIOPinSICamera;
 				clockCycles = 1;
