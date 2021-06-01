@@ -94,15 +94,7 @@ int main (void) {
 		{
 			
 			case STATE_DRUM_FARA_OBSTACOL:
-				if(linie>=63 + LINE_MAX_ERROR_FOR_SPEED || linie<=64 - LINE_MAX_ERROR_FOR_SPEED)
-				{
-					viteza = MOTOARE_VITEZA_CURBA_MS;
-				}
-				else
-				{
-					viteza = MOTOARE_VITEZA_MAX_MS;
-				}
-				
+				viteza = decideVitezaDrumSimplu(linie);
 				directie = decideDirectiaDrumSimplu(linie);
 				SetareUnghi(directie + SERVOMOTOR_STRAIGHT_ERR);
 				break;

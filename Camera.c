@@ -43,7 +43,7 @@ void ADC0_IRQHandler(void)
 	if(clockCycles < NumberOfClocks && clockCycles/2>CAMERA_IGNORE_EDGE_VAL && clockCycles/2<127-CAMERA_IGNORE_EDGE_VAL)
 	{	
 	//	tempPixels[clockCycles/2] = (uint8_t)value;
-		if(min>(uint8_t)value)
+		if(min<(uint8_t)value)
 		{
 			linieStatus = clockCycles/2;
 			min = value;
@@ -70,7 +70,7 @@ void PIT_IRQHandler(void)
 				clockCycles = 1;
 				cameraState = CAMERA_SET_CLK;
 				PIT->CHANNEL[0].LDVAL = PITQuarterClock;
-				min = 0xFF;
+				min = 0x0;
 				break;
 			case CAMERA_SET_CLK:
 				GPIOSCLKCamera |= 1<<GPIOPinCLKCamera;
