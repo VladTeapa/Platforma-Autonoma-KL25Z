@@ -152,7 +152,7 @@
 
 //--------------------Motoare--------------------
 
-#define MOTOARE_VITEZA_MAXIM_SIG  0.7f
+#define MOTOARE_VITEZA_MAXIM_SIG  0.8f
 #define SERVOMOTOR_MAXIM_SIG			0.4L
 #define MOTOARE_SENS_INAITE				1
 #define MOTOARE_SENS_SPATE				-1
@@ -166,9 +166,9 @@
 //----------------------PID----------------------
 
 #define PID_TS										COEFFICIENT_MEASURE_TIME
-#define PID_KP										0.25f
-#define PID_KI										0.0015f
-#define PID_KD										0.05f
+#define PID_KP										0.185f
+#define PID_KI										0.001f
+#define PID_KD										0.045f
 
 
 /**********************Pini UART**********************/
