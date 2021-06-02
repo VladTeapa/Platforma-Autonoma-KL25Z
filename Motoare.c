@@ -60,11 +60,13 @@ void TPM2_IRQHandler(void)
 					//In functie de semnul variabilei semnal schimbam sensul motoarelor
 					if(semnal < 0)
 					{
+							SetareViteza(0);
 							SetareSens(MOTOARE_SENS_SPATE);
 							SetareViteza(-semnal);
 					}
 					else
 					{
+							SetareViteza(0);
 							SetareSens(MOTOARE_SENS_INAITE);
 							SetareViteza(semnal);
 					}

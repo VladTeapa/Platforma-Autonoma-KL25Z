@@ -66,7 +66,7 @@ static void testDrumRudimentar(void)
 }
 
 int main (void) {
-
+	uint8_t obstDirectie = OBSTACOL_DREAPTA;
 	//Se initializeaza toate modulele si variabilele necesare
 	directie = 0;
 	initializarePIDv2(PID_TS, PID_KP, PID_KI, PID_KD);
@@ -99,34 +99,51 @@ int main (void) {
 				SetareUnghi(directie + SERVOMOTOR_STRAIGHT_ERR);
 				break;
 			case STATE_DRUM_OBSTACOL_FATA:
-				if(distantaC >= DISTANTATHRESHOLD)
-					if(distantaD >= DISTANTATHRESHOLD && distantaS >= DISTANTATHRESHOLD)
-					{
-						stare = STATE_DRUM_FARA_OBSTACOL;
-						break;
-					}
-				viteza = ((int) (MAX_VITEZA_MULTIPLIER * (distantaC / DISTANTATHRESHOLD))) * NRINPUTCOEFF;
-				if(distantaD < DISTANTATHRESHOLD || distantaS < DISTANTATHRESHOLD)
-				{
-					stare = STATE_DRUM_OBSTACOL_DIAG;
-				}
+				stare = decideStareDrumObstacolFata(stare, distantaC, distantaD, distantaS);
+				viteza = decideVitezaObstacolFata(distantaC);			
 				break;
 			case STATE_DRUM_OBSTACOL_DIAG:
-				viteza = NRINPUTCOEFF * MIN_VITEZA_MULTIPLIER / 2;
-				if(distantaD < DISTANTATHRESHOLD)
+				viteza = MOTOARE_VITEZA_OBSTACOL;
+				if(distantaD < DISTANTA_THRESHOLD)
 				{
+					obstDirectie = OBSTACOL_DREAPTA;
 					SetareUnghi(1);
 				}
-				else if(distantaS < DISTANTATHRESHOLD)
+				else if(distantaS < DISTANTA_THRESHOLD)
 				{
+					obstDirectie = OBSTACOL_STANGA;
 					SetareUnghi(-1);
 				}
-				if(distantaC >= DISTANTATHRESHOLD)
+				if(distantaC >= DISTANTA_THRESHOLD)
 				{
 					stare = STATE_DRUM_OBSTACOL_LAT;
 				}
 				break;
 			case STATE_DRUM_OBSTACOL_LAT:
+				if(obstDirectie == OBSTACOL_DREAPTA)
+				{
+					if(distantaD > DISTANTA_THREHOLD_LAT_MAX)
+					{
+						SetareUnghi(1);
+					}
+					if(distantaD < DISTANTA_THREHOLD_LAT_MIN)
+					{
+						SetareUnghi(-1);
+					}
+				}
+				else
+				{
+					if(distantaS > DISTANTA_THREHOLD_LAT_MAX)
+					{
+						SetareUnghi(-1);
+					}
+					if(distantaS < DISTANTA_THREHOLD_LAT_MIN)
+					{
+						SetareUnghi(1);
+					}
+				}
+				if(DISTANTA_THRESHOLD > distantaS)
+					stare = STATE_DRUM_FARA_OBSTACOL;
 				break;
 			default:
 				break;

@@ -18,9 +18,13 @@
 /*****************Valori Senzor Distanta***************/
 
 #define SENZOR_DISTANTA_PWM				0xF
-#define	FACTORMULDISTANTA					0.01122f //cm/percount
-#define DISTANTAEROARE						8.1f //cm
-#define DISTANTATHRESHOLD					45 //cm
+#define	FACTOR_MUL_DISTANTA				0.01122f //cm/percount
+#define DISTANTA_EROARE						8.1f //cm
+#define DISTANTA_THRESHOLD				45 //cm
+#define DISTANTA_THREHOLD_LAT_MAX	7 //cm
+#define DISTANTA_THREHOLD_LAT_MIN 4 //cm
+#define OBSTACOL_STANGA						1
+#define OBSTACOL_DREAPTA					0
 
 /*****************Pini Senzor Turatie*****************/
 
@@ -158,8 +162,10 @@
 #define MOTOARE_SENS_SPATE				-1
 #define MAX_VITEZA_MULTIPLIER			8
 #define MIN_VITEZA_MULTIPLIER			6
+#define MAX_VITEZA_OBS_MULTIPLIER	3
 #define MOTOARE_VITEZA_MAX_MS			NRINPUTCOEFF * MAX_VITEZA_MULTIPLIER
 #define MOTOARE_VITEZA_CURBA_MS	  NRINPUTCOEFF * MIN_VITEZA_MULTIPLIER
+#define MOTOARE_VITEZA_OBSTACOL		NRINPUTCOEFF * MAX_VITEZA_OBS_MULTIPLIER
 #define SERVOMOTOR_STRAIGHT_ERR		-0.07f //-0.07f
 #define SERVOMOTOR_THRESHOLD			13
 
