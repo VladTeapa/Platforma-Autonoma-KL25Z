@@ -69,7 +69,7 @@ int main (void) {
 	uint8_t obstDirectie = OBSTACOL_DREAPTA;
 	//Se initializeaza toate modulele si variabilele necesare
 	directie = 0;
-	initializarePIDv2(PID_TS, PID_KP, PID_KI, PID_KD);
+	initializarePID(PID_TS, PID_KP, PID_KI, PID_KD);
 	SIMSetup();
 	InitializarePiniParteMecanica();
 	initializareCamera();
@@ -97,6 +97,10 @@ int main (void) {
 				viteza = decideVitezaDrumSimplu(linie);
 				directie = decideDirectiaDrumSimplu(linie);
 				SetareUnghi(directie + SERVOMOTOR_STRAIGHT_ERR);
+				/*if(distantaC<DISTANTA_THRESHOLD)
+				{
+					stare = STATE_DRUM_OBSTACOL_FATA;
+				}*/
 				break;
 			case STATE_DRUM_OBSTACOL_FATA:
 				stare = decideStareDrumObstacolFata(stare, distantaC, distantaD, distantaS);
@@ -107,12 +111,12 @@ int main (void) {
 				if(distantaD < DISTANTA_THRESHOLD)
 				{
 					obstDirectie = OBSTACOL_DREAPTA;
-					SetareUnghi(1);
+					SetareUnghi(-1);
 				}
 				else if(distantaS < DISTANTA_THRESHOLD)
 				{
 					obstDirectie = OBSTACOL_STANGA;
-					SetareUnghi(-1);
+					SetareUnghi(1);
 				}
 				if(distantaC >= DISTANTA_THRESHOLD)
 				{

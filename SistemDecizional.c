@@ -25,7 +25,8 @@ inline float decideVitezaDrumSimplu(uint8_t linie)
 
 inline float decideVitezaObstacolFata(float distantaC)
 {
-	 return ((int) (MAX_VITEZA_MULTIPLIER * (distantaC / DISTANTA_THRESHOLD))) * NRINPUTCOEFF;
+	 //return ((int) (MAX_VITEZA_MULTIPLIER * (distantaC / DISTANTA_THRESHOLD))) * NRINPUTCOEFF;
+	return MOTOARE_VITEZA_OBSTACOL;
 }
 inline uint8_t decideStareDrumObstacolFata(uint8_t stare, float distantaC, float distantaD, float distantaS)
 {

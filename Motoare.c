@@ -9,8 +9,7 @@ float volatile viteza=0;
 float volatile semnal=0;
 
 uint16_t volatile nrInput = 0;
-
-static const float nrInputCoeff = NRINPUTCOEFF;
+uint8_t volatile lastSign = 0;
 
 double abs(double x)
 {
@@ -36,19 +35,19 @@ void TPM2_IRQHandler(void)
 	{
 		
 			//Calculam viteza
-			vitezaCurenta = nrInput*nrInputCoeff;
+			vitezaCurenta = nrInput*NR_INPUT_COEFF;
 			TPM2_SC |= TPM_SC_TOF_MASK;
 			
 			//Daca PID-ul nu este dezactivat calculam semnalul urmator
 			if(DEZACTIVARE_PID_DEBUG == 0)
 			{
-					if(abs(viteza - vitezaCurenta)>nrInputCoeff/10)
+					if(abs(viteza - vitezaCurenta)>NR_INPUT_COEFF/10)
 					{
 						//Daca masina trebuie sa se opreasca si viteza ajunge la 0 semnalul trebuie sa ramana pe 0
 						if(viteza == 0 && vitezaCurenta == 0)
 							semnal = 0;
 						else
-							semnal = getNextPidv2(viteza, vitezaCurenta);
+							semnal = getNextPid(viteza, vitezaCurenta, semnal);
 						
 						//PID-ul ne poate da valori mai mari decat 1 sau mai mici decat -1 si nu dorim acest lucru 
 						if(semnal > 1)
@@ -56,19 +55,22 @@ void TPM2_IRQHandler(void)
 						if(semnal < -1)
 							semnal = -1;
 					}
-					
 					//In functie de semnul variabilei semnal schimbam sensul motoarelor
 					if(semnal < 0)
 					{
-							SetareViteza(0);
+							if(lastSign == 0)
+								SetareViteza(0);
 							SetareSens(MOTOARE_SENS_SPATE);
 							SetareViteza(-semnal);
+							lastSign = 1;
 					}
 					else
 					{
-							SetareViteza(0);
+							if(lastSign == 1)
+								SetareViteza(0);
 							SetareSens(MOTOARE_SENS_INAITE);
 							SetareViteza(semnal);
+							lastSign = 0;
 					}
 			}
 			
