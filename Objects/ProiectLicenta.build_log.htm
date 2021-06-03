@@ -27,6 +27,68 @@ Project File Date:  05/11/2021
 <h2>Output:</h2>
 *** Using Compiler 'V6.15', folder: 'P:\Keil\ARM\ARMCLANG\Bin'
 Rebuild target 'Licenta'
+PID.c(1): warning: In file included from...
+./PID.h(1): warning: In file included from...
+./Defines.h(1): warning: In file included from...
+C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
+P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(147): warning: In file included from...
+P:/Keil/ARM/CMSIS/Include\core_cmInstr.h(435): warning: implicit conversion changes signedness: 'uint32_t' (aka 'unsigned int') to 'int32_t' (aka 'int') [-Wsign-conversion]
+  return(result);
+  ~~~~~~ ^~~~~~
+PID.c(1): warning: In file included from...
+./PID.h(1): warning: In file included from...
+./Defines.h(1): warning: In file included from...
+C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
+P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(716): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    SCB->SHP[_SHP_IDX(IRQn)] = (SCB->SHP[_SHP_IDX(IRQn)] & ~(0xFF << _BIT_SHIFT(IRQn))) |
+                                                         ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(719): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    NVIC->IP[_IP_IDX(IRQn)] = (NVIC->IP[_IP_IDX(IRQn)] & ~(0xFF << _BIT_SHIFT(IRQn))) |
+                                                       ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(750): warning: function 'NVIC_SystemReset' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+{
+^
+PID.c(1): warning: In file included from...
+./PID.h(16): warning: no newline at end of file [-Wnewline-eof]
+float getNextPidv2(float referinta, float output); //Functie care calculeaza urmatorul semnal cu ajutorul la PIDv2
+                                                                                                                  ^
+PID.c(2): warning: In file included from...
+./Uart.h(5): warning: no newline at end of file [-Wnewline-eof]
+void uartInit(uint32_t baud); //Initializare modul UART
+                                                       ^
+PID.c(26): warning: implicit conversion increases floating-point precision: 'float' to 'double' [-Wdouble-promotion]
+        pid->errorK1 = referinta - output;
+                     ~ ~~~~~~~~~~^~~~~~~~
+PID.c(27): warning: implicit conversion loses floating-point precision: 'double' to 'float' [-Wimplicit-float-conversion]
+        return semnalComanda + pid->a1*pid->errorK1 + pid->a2*pid->errorK2 + pid->a3*pid->errorK3;
+        ~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+PID.c(27): warning: implicit conversion increases floating-point precision: 'float' to 'double' [-Wdouble-promotion]
+        return semnalComanda + pid->a1*pid->errorK1 + pid->a2*pid->errorK2 + pid->a3*pid->errorK3;
+               ^~~~~~~~~~~~~ ~
+PID.c(50): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+10 warnings generated.
+compiling PID.c...
+PortsSetup.c(1): warning: In file included from...
+C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
+P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(147): warning: In file included from...
+P:/Keil/ARM/CMSIS/Include\core_cmInstr.h(435): warning: implicit conversion changes signedness: 'uint32_t' (aka 'unsigned int') to 'int32_t' (aka 'int') [-Wsign-conversion]
+  return(result);
+  ~~~~~~ ^~~~~~
+PortsSetup.c(1): warning: In file included from...
+C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
+P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(716): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    SCB->SHP[_SHP_IDX(IRQn)] = (SCB->SHP[_SHP_IDX(IRQn)] & ~(0xFF << _BIT_SHIFT(IRQn))) |
+                                                         ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(719): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    NVIC->IP[_IP_IDX(IRQn)] = (NVIC->IP[_IP_IDX(IRQn)] & ~(0xFF << _BIT_SHIFT(IRQn))) |
+                                                       ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(750): warning: function 'NVIC_SystemReset' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+{
+^
+4 warnings generated.
+compiling PortsSetup.c...
 Uart.c(1): warning: In file included from...
 ./Uart.h(1): warning: In file included from...
 ./Defines.h(1): warning: In file included from...
@@ -72,25 +134,6 @@ uint8_t temp;
 ^
 8 warnings generated.
 compiling Uart.c...
-PortsSetup.c(1): warning: In file included from...
-C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
-P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(147): warning: In file included from...
-P:/Keil/ARM/CMSIS/Include\core_cmInstr.h(435): warning: implicit conversion changes signedness: 'uint32_t' (aka 'unsigned int') to 'int32_t' (aka 'int') [-Wsign-conversion]
-  return(result);
-  ~~~~~~ ^~~~~~
-PortsSetup.c(1): warning: In file included from...
-C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
-P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(716): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-    SCB->SHP[_SHP_IDX(IRQn)] = (SCB->SHP[_SHP_IDX(IRQn)] & ~(0xFF << _BIT_SHIFT(IRQn))) |
-                                                         ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~
-P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(719): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-    NVIC->IP[_IP_IDX(IRQn)] = (NVIC->IP[_IP_IDX(IRQn)] & ~(0xFF << _BIT_SHIFT(IRQn))) |
-                                                       ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~
-P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(750): warning: function 'NVIC_SystemReset' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
-{
-^
-4 warnings generated.
-compiling PortsSetup.c...
 SistemDecizional.c(1): warning: In file included from...
 ./SistemDecizional.h(1): warning: In file included from...
 C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
@@ -122,49 +165,6 @@ SistemDecizional.c(43): warning: no newline at end of file [-Wnewline-eof]
  ^
 7 warnings generated.
 compiling SistemDecizional.c...
-PID.c(1): warning: In file included from...
-./PID.h(1): warning: In file included from...
-./Defines.h(1): warning: In file included from...
-C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
-P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(147): warning: In file included from...
-P:/Keil/ARM/CMSIS/Include\core_cmInstr.h(435): warning: implicit conversion changes signedness: 'uint32_t' (aka 'unsigned int') to 'int32_t' (aka 'int') [-Wsign-conversion]
-  return(result);
-  ~~~~~~ ^~~~~~
-PID.c(1): warning: In file included from...
-./PID.h(1): warning: In file included from...
-./Defines.h(1): warning: In file included from...
-C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
-P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(716): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-    SCB->SHP[_SHP_IDX(IRQn)] = (SCB->SHP[_SHP_IDX(IRQn)] & ~(0xFF << _BIT_SHIFT(IRQn))) |
-                                                         ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~
-P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(719): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-    NVIC->IP[_IP_IDX(IRQn)] = (NVIC->IP[_IP_IDX(IRQn)] & ~(0xFF << _BIT_SHIFT(IRQn))) |
-                                                       ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~
-P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(750): warning: function 'NVIC_SystemReset' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
-{
-^
-PID.c(1): warning: In file included from...
-./PID.h(16): warning: no newline at end of file [-Wnewline-eof]
-float getNextPidv2(float referinta, float output); //Functie care calculeaza urmatorul semnal cu ajutorul la PIDv2
-                                                                                                                  ^
-PID.c(2): warning: In file included from...
-./Uart.h(5): warning: no newline at end of file [-Wnewline-eof]
-void uartInit(uint32_t baud); //Initializare modul UART
-                                                       ^
-PID.c(26): warning: implicit conversion increases floating-point precision: 'float' to 'double' [-Wdouble-promotion]
-        pid->errorK1 = referinta - output;
-                     ~ ~~~~~~~~~~^~~~~~~~
-PID.c(27): warning: implicit conversion loses floating-point precision: 'double' to 'float' [-Wimplicit-float-conversion]
-        return semnalComanda + pid->a1*pid->errorK1 + pid->a2*pid->errorK2 + pid->a3*pid->errorK3;
-        ~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
-PID.c(27): warning: implicit conversion increases floating-point precision: 'float' to 'double' [-Wdouble-promotion]
-        return semnalComanda + pid->a1*pid->errorK1 + pid->a2*pid->errorK2 + pid->a3*pid->errorK3;
-               ^~~~~~~~~~~~~ ~
-PID.c(50): warning: no newline at end of file [-Wnewline-eof]
-}
- ^
-10 warnings generated.
-compiling PID.c...
 Main.c(1): warning: In file included from...
 C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
 P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(147): warning: In file included from...
@@ -198,42 +198,63 @@ Main.c(8): warning: In file included from...
 ./PID.h(16): warning: no newline at end of file [-Wnewline-eof]
 float getNextPidv2(float referinta, float output); //Functie care calculeaza urmatorul semnal cu ajutorul la PIDv2
                                                                                                                   ^
-Main.c(25): warning: function 'testSenzorDistanta' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+Main.c(20): warning: no previous extern declaration for non-static variable 'lastObst' [-Wmissing-variable-declarations]
+uint8_t lastObst = 2;
+        ^
+Main.c(20): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t lastObst = 2;
+^
+Main.c(28): warning: function 'testSenzorDistanta' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
 {
 ^
-Main.c(30): warning: code will never be executed [-Wunreachable-code]
+Main.c(33): warning: code will never be executed [-Wunreachable-code]
                 if(distantaD < 8)
                    ^~~~~~~~~
-Main.c(52): warning: implicit conversion increases floating-point precision: 'float' to 'long double' [-Wdouble-promotion]
+Main.c(55): warning: implicit conversion increases floating-point precision: 'float' to 'long double' [-Wdouble-promotion]
                 SetareUnghi(directie + SERVOMOTOR_STRAIGHT_ERR);
                                      ~ ^~~~~~~~~~~~~~~~~~~~~~~
 ./Defines.h(169): note: expanded from macro 'SERVOMOTOR_STRAIGHT_ERR'
 #define SERVOMOTOR_STRAIGHT_ERR         -0.07f //-0.07f
                                         ^~~~~~
-Main.c(48): warning: function 'testCamera' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+Main.c(51): warning: function 'testCamera' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
 {
 ^
-Main.c(63): warning: implicit conversion increases floating-point precision: 'float' to 'long double' [-Wdouble-promotion]
+Main.c(66): warning: implicit conversion increases floating-point precision: 'float' to 'long double' [-Wdouble-promotion]
                 SetareUnghi(directie + SERVOMOTOR_STRAIGHT_ERR);
                                      ~ ^~~~~~~~~~~~~~~~~~~~~~~
 ./Defines.h(169): note: expanded from macro 'SERVOMOTOR_STRAIGHT_ERR'
 #define SERVOMOTOR_STRAIGHT_ERR         -0.07f //-0.07f
                                         ^~~~~~
-Main.c(57): warning: function 'testDrumRudimentar' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+Main.c(60): warning: function 'testDrumRudimentar' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
 {
 ^
-Main.c(84): warning: implicit conversion increases floating-point precision: 'float' to 'long double' [-Wdouble-promotion]
+Main.c(90): warning: implicit conversion increases floating-point precision: 'float' to 'long double' [-Wdouble-promotion]
         SetareUnghi(SERVOMOTOR_STRAIGHT_ERR); 
         ~~~~~~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~
 ./Defines.h(169): note: expanded from macro 'SERVOMOTOR_STRAIGHT_ERR'
 #define SERVOMOTOR_STRAIGHT_ERR         -0.07f //-0.07f
                                         ^~~~~~
-Main.c(98): warning: implicit conversion increases floating-point precision: 'float' to 'long double' [-Wdouble-promotion]
+Main.c(104): warning: implicit conversion increases floating-point precision: 'float' to 'long double' [-Wdouble-promotion]
                                 SetareUnghi(directie + SERVOMOTOR_STRAIGHT_ERR);
                                                      ~ ^~~~~~~~~~~~~~~~~~~~~~~
 ./Defines.h(169): note: expanded from macro 'SERVOMOTOR_STRAIGHT_ERR'
 #define SERVOMOTOR_STRAIGHT_ERR         -0.07f //-0.07f
                                         ^~~~~~
+Main.c(131): warning: implicit conversion increases floating-point precision: 'float' to 'long double' [-Wdouble-promotion]
+                                                SetareUnghi(0.05f);
+                                                ~~~~~~~~~~~ ^~~~~
+Main.c(133): warning: implicit conversion increases floating-point precision: 'float' to 'long double' [-Wdouble-promotion]
+                                                SetareUnghi(-0.05f);
+                                                ~~~~~~~~~~~ ^~~~~~
+Main.c(74): warning: unused variable 'toggleServoIncrement' [-Wunused-variable]
+        uint64_t toggleServoIncrement = 0;
+                 ^
+Main.c(73): warning: unused variable 'toggleServo' [-Wunused-variable]
+        int8_t toggleServo = -1;
+               ^
+Main.c(71): warning: unused variable 'obstDirectie' [-Wunused-variable]
+        uint8_t obstDirectie = OBSTACOL_DREAPTA;
+                ^
 Main.c(4): warning: In file included from...
 ./Camera.h(8): warning: unused function 'debugLineScanCamera' [-Wunused-function]
 static void debugLineScanCamera(void); //Copiere din vector temporar in vectorul care va fi folosit pentru decizie
@@ -241,16 +262,16 @@ static void debugLineScanCamera(void); //Copiere din vector temporar in vectorul
 ./Camera.h(9): warning: unused function 'calibrareADC' [-Wunused-function]
 static int calibrareADC(void); //Initializare modul ADC
            ^
-Main.c(24): warning: unused function 'testSenzorDistanta' [-Wunused-function]
+Main.c(27): warning: unused function 'testSenzorDistanta' [-Wunused-function]
 static void testSenzorDistanta(void)
             ^
-Main.c(47): warning: unused function 'testCamera' [-Wunused-function]
+Main.c(50): warning: unused function 'testCamera' [-Wunused-function]
 static void testCamera(void)
             ^
-Main.c(56): warning: unused function 'testDrumRudimentar' [-Wunused-function]
+Main.c(59): warning: unused function 'testDrumRudimentar' [-Wunused-function]
 static void testDrumRudimentar(void)
             ^
-21 warnings generated.
+27 warnings generated.
 compiling Main.c...
 Camera.c(1): warning: In file included from...
 ./Camera.h(1): warning: In file included from...
@@ -508,9 +529,9 @@ RTE/Device/MKL25Z128xxx4/system_MKL25Z4.c(267): note: silence by adding parenthe
 5 warnings generated.
 compiling system_MKL25Z4.c...
 linking...
-Program Size: Code=8612 RO-data=416 RW-data=20 ZI-data=408  
+Program Size: Code=8864 RO-data=416 RW-data=20 ZI-data=408  
 FromELF: creating hex file...
-".\Objects\ProiectLicenta.axf" - 0 Error(s), 107 Warning(s).
+".\Objects\ProiectLicenta.axf" - 0 Error(s), 113 Warning(s).
 
 <h2>Software Packages used:</h2>
 
