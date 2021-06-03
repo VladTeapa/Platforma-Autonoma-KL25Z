@@ -18,9 +18,13 @@
 /*****************Valori Senzor Distanta***************/
 
 #define SENZOR_DISTANTA_PWM				0xF
-#define	FACTORMULDISTANTA					0.01122f //cm/percount
-#define DISTANTAEROARE						8.1f //cm
-#define DISTANTATHRESHOLD					45 //cm
+#define	FACTOR_MUL_DISTANTA				0.01122f //cm/percount
+#define DISTANTA_EROARE						8.1f //cm
+#define DISTANTA_THRESHOLD				35 //cm
+#define DISTANTA_THREHOLD_LAT_MAX	15 //cm
+#define DISTANTA_THREHOLD_LAT_MIN 10 //cm
+#define OBSTACOL_STANGA						1
+#define OBSTACOL_DREAPTA					0
 
 /*****************Pini Senzor Turatie*****************/
 
@@ -34,7 +38,7 @@
 #define DIAMETER_OF_WHEEL					0.05f // metri
 #define PI												3.14f
 #define COEFFICIENT_MEASURE_TIME	0.125f
-#define NRINPUTCOEFF							(PI * DIAMETER_OF_WHEEL / COEFFICIENT_MEASURE_TIME) / NUMBER_OF_MAGNETS
+#define NR_INPUT_COEFF						(PI * DIAMETER_OF_WHEEL / COEFFICIENT_MEASURE_TIME) / NUMBER_OF_MAGNETS
 
 /********************Pini Motor***********************/
 
@@ -138,7 +142,7 @@
 #define CAMERA_FINAL							3
 #define CAMERA_FIRST_IMAGE_TRUE		1
 #define CAMERA_FIRST_IMAGE_FALSE	1
-#define CAMERA_IGNORE_EDGE_VAL		18
+#define CAMERA_IGNORE_EDGE_VAL		12
 
 /**********************Matematica*********************/
 
@@ -157,18 +161,20 @@
 #define MOTOARE_SENS_INAITE				1
 #define MOTOARE_SENS_SPATE				-1
 #define MAX_VITEZA_MULTIPLIER			8
-#define MIN_VITEZA_MULTIPLIER			6
-#define MOTOARE_VITEZA_MAX_MS			NRINPUTCOEFF * MAX_VITEZA_MULTIPLIER
-#define MOTOARE_VITEZA_CURBA_MS	  NRINPUTCOEFF * MIN_VITEZA_MULTIPLIER
+#define MIN_VITEZA_MULTIPLIER			5
+#define MAX_VITEZA_OBS_MULTIPLIER	3
+#define MOTOARE_VITEZA_MAX_MS			NR_INPUT_COEFF * MAX_VITEZA_MULTIPLIER
+#define MOTOARE_VITEZA_CURBA_MS	  NR_INPUT_COEFF * MIN_VITEZA_MULTIPLIER
+#define MOTOARE_VITEZA_OBSTACOL		NR_INPUT_COEFF * MAX_VITEZA_OBS_MULTIPLIER
 #define SERVOMOTOR_STRAIGHT_ERR		-0.07f //-0.07f
 #define SERVOMOTOR_THRESHOLD			13
 
 //----------------------PID----------------------
 
 #define PID_TS										COEFFICIENT_MEASURE_TIME
-#define PID_KP										0.185f
-#define PID_KI										0.001f
-#define PID_KD										0.045f
+#define PID_KP										0.22f
+#define PID_KI										0.0016f
+#define PID_KD										0.04f
 
 
 /**********************Pini UART**********************/

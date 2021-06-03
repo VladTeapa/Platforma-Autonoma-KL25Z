@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\ProiectLicenta.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\ProiectLicenta.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6150002: Last Updated: Tue Jun  1 19:26:52 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6150002: Last Updated: Thu Jun  3 19:47:53 2021
 <BR><P>
-<H3>Maximum Stack Usage =         80 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =         96 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; SetareUnghi &rArr; __aeabi_dmul
 <P>
@@ -185,7 +185,7 @@ Global Symbols
 <P><STRONG><a name="[a2]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[32]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 96 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; SetareUnghi &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -356,7 +356,7 @@ Global Symbols
 <P><STRONG><a name="[39]"></a>__aeabi_i2d</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, dflti.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d_normalise
 </UL>
-<BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;decideDirectiaDrumSimplu
+<BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;decideDirectiaDrumSimplu
 </UL>
 
 <P><STRONG><a name="[a9]"></a>_dflt</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, dflti.o(.text), UNUSED)
@@ -367,10 +367,11 @@ Global Symbols
 
 <P><STRONG><a name="[aa]"></a>_dfltu</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, dflti.o(.text), UNUSED)
 
-<P><STRONG><a name="[65]"></a>__aeabi_fdiv</STRONG> (Thumb, 0 bytes, Stack size 20 bytes, fdiv.o(.text))
+<P><STRONG><a name="[5a]"></a>__aeabi_fdiv</STRONG> (Thumb, 0 bytes, Stack size 20 bytes, fdiv.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = __aeabi_fdiv
 </UL>
-<BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializarePIDv2
+<BR>[Called By]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TPM2_IRQHandler
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializarePIDv2
 </UL>
 
 <P><STRONG><a name="[3d]"></a>_fdiv</STRONG> (Thumb, 334 bytes, Stack size 20 bytes, fdiv.o(.text), UNUSED)
@@ -381,7 +382,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fdiv
 </UL>
 
-<P><STRONG><a name="[61]"></a>__aeabi_f2uiz</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, ffixui.o(.text))
+<P><STRONG><a name="[62]"></a>__aeabi_f2uiz</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, ffixui.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TPM2_IRQHandler
 </UL>
 
@@ -413,7 +414,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_dadd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;decideDirectiaDrumSimplu
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;decideDirectiaDrumSimplu
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetareUnghi
 </UL>
 
@@ -436,10 +437,10 @@ Global Symbols
 <LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dadd1
 </UL>
 
-<P><STRONG><a name="[63]"></a>__aeabi_ddiv</STRONG> (Thumb, 0 bytes, Stack size 64 bytes, ddiv.o(.text))
+<P><STRONG><a name="[64]"></a>__aeabi_ddiv</STRONG> (Thumb, 0 bytes, Stack size 64 bytes, ddiv.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = __aeabi_ddiv
 </UL>
-<BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;decideDirectiaDrumSimplu
+<BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;decideDirectiaDrumSimplu
 </UL>
 
 <P><STRONG><a name="[48]"></a>_ddiv</STRONG> (Thumb, 1072 bytes, Stack size 64 bytes, ddiv.o(.text), UNUSED)
@@ -596,27 +597,28 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_mkl25z4.o(.text)
 </UL>
-<P><STRONG><a name="[19]"></a>TPM2_IRQHandler</STRONG> (Thumb, 316 bytes, Stack size 24 bytes, motoare.o(.text.TPM2_IRQHandler))
+<P><STRONG><a name="[19]"></a>TPM2_IRQHandler</STRONG> (Thumb, 372 bytes, Stack size 24 bytes, motoare.o(.text.TPM2_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = TPM2_IRQHandler &rArr; getNextPidv2 &rArr; __aeabi_fmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getNextPidv2
+<BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getNextPidv2
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
-<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
-<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fcmplt
-<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fcmple
-<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fcmpgt
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fcmpge
-<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fcmpeq
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
+<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
+<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fcmplt
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fcmple
+<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fcmpgt
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fcmpge
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fcmpeq
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_mkl25z4.o(RESET)
 </UL>
-<P><STRONG><a name="[62]"></a>decideDirectiaDrumSimplu</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, sistemdecizional.o(.text.decideDirectiaDrumSimplu))
+<P><STRONG><a name="[63]"></a>decideDirectiaDrumSimplu</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, sistemdecizional.o(.text.decideDirectiaDrumSimplu))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = decideDirectiaDrumSimplu &rArr; __aeabi_ddiv
 </UL>
 <BR>[Calls]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -626,11 +628,11 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[5d]"></a>getNextPidv2</STRONG> (Thumb, 88 bytes, Stack size 24 bytes, pid.o(.text.getNextPidv2))
+<P><STRONG><a name="[5e]"></a>getNextPidv2</STRONG> (Thumb, 88 bytes, Stack size 24 bytes, pid.o(.text.getNextPidv2))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = getNextPidv2 &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TPM2_IRQHandler
@@ -642,11 +644,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[64]"></a>initializarePIDv2</STRONG> (Thumb, 68 bytes, Stack size 16 bytes, pid.o(.text.initializarePIDv2))
+<P><STRONG><a name="[65]"></a>initializarePIDv2</STRONG> (Thumb, 68 bytes, Stack size 16 bytes, pid.o(.text.initializarePIDv2))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = initializarePIDv2 &rArr; __aeabi_fdiv
 </UL>
 <BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
 </UL>
 <BR>[Called By]<UL><LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -665,21 +667,24 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[33]"></a>main</STRONG> (Thumb, 136 bytes, Stack size 0 bytes, main.o(.text.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = main &rArr; SetareUnghi &rArr; __aeabi_dmul
+<P><STRONG><a name="[33]"></a>main</STRONG> (Thumb, 384 bytes, Stack size 16 bytes, main.o(.text.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = main &rArr; SetareUnghi &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uartInit
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startCamera
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializareSenzoriDistanta
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializareSenzorTuratie
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializarePIT
-<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializarePIDv2
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializarePIDv2
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializareCamera
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;decideVitezaDrumSimplu
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;decideDirectiaDrumSimplu
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;decideDirectiaDrumSimplu
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetareUnghi
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SIMSetup
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitializarePiniParteMecanica
+<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fcmplt
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fcmple
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fcmpge
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
@@ -733,7 +738,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dcmple
 </UL>
 
-<P><STRONG><a name="[5c]"></a>__aeabi_fcmpeq</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, fcmp.o(i._feq))
+<P><STRONG><a name="[5d]"></a>__aeabi_fcmpeq</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, fcmp.o(i._feq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_fcmpeq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TPM2_IRQHandler
@@ -743,17 +748,18 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fcmpeq
 </UL>
 
-<P><STRONG><a name="[5e]"></a>__aeabi_fcmpge</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, fcmp.o(i._fgeq))
+<P><STRONG><a name="[5f]"></a>__aeabi_fcmpge</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, fcmp.o(i._fgeq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_fcmpge
 </UL>
 <BR>[Called By]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TPM2_IRQHandler
+<LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[78]"></a>_fgeq</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, fcmp.o(i._fgeq), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fcmpge
 </UL>
 
-<P><STRONG><a name="[60]"></a>__aeabi_fcmpgt</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, fcmp.o(i._fgr))
+<P><STRONG><a name="[61]"></a>__aeabi_fcmpgt</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, fcmp.o(i._fgr))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_fcmpgt
 </UL>
 <BR>[Called By]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TPM2_IRQHandler
@@ -763,20 +769,22 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fcmpge
 </UL>
 
-<P><STRONG><a name="[5b]"></a>__aeabi_fcmple</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, fcmp.o(i._fleq))
+<P><STRONG><a name="[5c]"></a>__aeabi_fcmple</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, fcmp.o(i._fleq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_fcmple
 </UL>
 <BR>[Called By]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TPM2_IRQHandler
+<LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[7b]"></a>_fleq</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, fcmp.o(i._fleq), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fcmple
 </UL>
 
-<P><STRONG><a name="[5f]"></a>__aeabi_fcmplt</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, fcmp.o(i._fls))
+<P><STRONG><a name="[60]"></a>__aeabi_fcmplt</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, fcmp.o(i._fls))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_fcmplt
 </UL>
 <BR>[Called By]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TPM2_IRQHandler
+<LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[7d]"></a>_fls</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, fcmp.o(i._fls), UNUSED)
@@ -810,7 +818,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PORTD_IRQHandler
 <LI><a href="#[24]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PORTA_IRQHandler
-<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getNextPidv2
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getNextPidv2
 </UL>
 
 <P><STRONG><a name="[7e]"></a>_fadd</STRONG> (Thumb, 134 bytes, Stack size 16 bytes, faddsub.o(x$fpl$fadd), UNUSED)
@@ -846,17 +854,17 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PORTD_IRQHandler
 <LI><a href="#[24]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PORTA_IRQHandler
-<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getNextPidv2
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getNextPidv2
 <LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TPM2_IRQHandler
-<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializarePIDv2
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializarePIDv2
 </UL>
 
 <P><STRONG><a name="[bb]"></a>_fmul</STRONG> (Thumb, 172 bytes, Stack size 16 bytes, fmul.o(x$fpl$fmul), UNUSED)
 
-<P><STRONG><a name="[5a]"></a>__aeabi_fsub</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, faddsub.o(x$fpl$fsub))
+<P><STRONG><a name="[5b]"></a>__aeabi_fsub</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, faddsub.o(x$fpl$fsub))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_fsub
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getNextPidv2
+<BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getNextPidv2
 <LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TPM2_IRQHandler
 </UL>
 

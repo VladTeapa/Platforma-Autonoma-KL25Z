@@ -13,9 +13,9 @@ void PORTA_IRQHandler(void)
 	{
 		
 		//Se calculeaza distanta fata de senzor
-		distantaC = FACTORMULDISTANTA * value;
+		distantaC = FACTOR_MUL_DISTANTA * value;
 		PORTA_ISFR |= 1<<PortSenzorDistantaCPin;
-		distantaC -= DISTANTAEROARE;
+		distantaC -= DISTANTA_EROARE;
 	}
 	if(SENZOR_DISTANTA_DEBUG_C == 1)
 		trimiteDate(distantaC);
@@ -29,9 +29,9 @@ void PORTD_IRQHandler(void)
 	{
 		
 		//Se calculeaza distanta fata de senzor
-		distantaS = FACTORMULDISTANTA * value;
+		distantaS = FACTOR_MUL_DISTANTA * value;
 		PORTD_ISFR |= 1<<PortSenzorDistantaSPin;
-		distantaS -= DISTANTAEROARE;
+		distantaS -= DISTANTA_EROARE;
 		if(SENZOR_DISTANTA_DEBUG_S == 1)
 			trimiteDate(distantaS);
 	}
@@ -39,9 +39,9 @@ void PORTD_IRQHandler(void)
 	{
 		
 		//Se calculeaza distanta fata de senzor
-		distantaD = FACTORMULDISTANTA * value;
+		distantaD = FACTOR_MUL_DISTANTA * value;
 		PORTD_ISFR |= 1<<PortSenzorDistantaDPin;
-		distantaD -= DISTANTAEROARE;
+		distantaD -= DISTANTA_EROARE;
 		if(SENZOR_DISTANTA_DEBUG_D == 1)
 			trimiteDate(distantaD);
 	}

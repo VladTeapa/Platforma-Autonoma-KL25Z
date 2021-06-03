@@ -22,3 +22,22 @@ inline float decideVitezaDrumSimplu(uint8_t linie)
 		return MOTOARE_VITEZA_MAX_MS;
 	}
 }
+
+inline float decideVitezaObstacolFata(float distantaC)
+{
+	 //return ((int) (MAX_VITEZA_MULTIPLIER * (distantaC / DISTANTA_THRESHOLD))) * NRINPUTCOEFF;
+	return MOTOARE_VITEZA_OBSTACOL;
+}
+inline uint8_t decideStareDrumObstacolFata(uint8_t stare, float distantaC, float distantaD, float distantaS)
+{
+	if(distantaC >= DISTANTA_THRESHOLD)
+		if(distantaD >= DISTANTA_THRESHOLD && distantaS >= DISTANTA_THRESHOLD)
+		{
+			return STATE_DRUM_FARA_OBSTACOL;
+		}
+	if(distantaD < DISTANTA_THRESHOLD || distantaS < DISTANTA_THRESHOLD)
+	{
+		return STATE_DRUM_OBSTACOL_DIAG;
+	}
+	return stare;
+}
