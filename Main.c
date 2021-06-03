@@ -113,14 +113,29 @@ int main (void) {
 			case STATE_DRUM_OBSTACOL_FATA:
 				flagObstacol = 0;
 				viteza = MOTOARE_VITEZA_OBSTACOL;
-				if(distantaD < DISTANTA_THRESHOLD/2)
+				if(distantaD < DISTANTA_THRESHOLD && distantaS < DISTANTA_THRESHOLD)
+				{
+					if(distantaD < distantaC)
+					{
+						lastObst = 0;
+						SetareUnghi(-1);
+					}
+					else
+					{
+						lastObst = 1;
+						SetareUnghi(1);
+					}
+					flagObstacol = 1;
+					break;
+				}
+				if(distantaD < DISTANTA_THRESHOLD)
 				{
 					flagObstacol = 1;
 					lastObst = 0;
 					SetareUnghi(-1);
 					break;
 				}
-				if(distantaS < DISTANTA_THRESHOLD/2)
+				if(distantaS < DISTANTA_THRESHOLD)
 				{
 					flagObstacol = 1;
 					lastObst = 1;
@@ -135,7 +150,6 @@ int main (void) {
 						SetareUnghi(-0.05f);
 					flagObstacol = 1;
 					stare = STATE_DRUM_FARA_OBSTACOL;
-					
 					lastObst = 2;
 				}
 				
