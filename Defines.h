@@ -151,7 +151,7 @@
 #define COEFFICIENT_PIXELI_CUT		2
 #define PIXELI_CUT_LOW_VAL				20
 #define PIXELI_CUT_HIGH_VAL				40
-#define LINE_MAX_ERROR_MID				3
+#define LINE_MAX_ERROR_MID				4
 #define LINE_MAX_ERROR_FOR_SPEED	6
 
 //--------------------Motoare--------------------
@@ -172,8 +172,8 @@
 //----------------------PID----------------------
 
 #define PID_TS										COEFFICIENT_MEASURE_TIME
-#define PID_KP										0.22f
-#define PID_KI										0.0016f
+#define PID_KP										0.185f
+#define PID_KI										0.001f
 #define PID_KD										0.04f
 
 
@@ -198,6 +198,7 @@
 #define SENZOR_DISTANTA_DEBUG_D		0
 #define SENZOR_DISTANTA_DEBUG_C		0
 #define	DEZACTIVARE_PID_DEBUG			0
+#define DEZACTIVARE_MODUL_DIST		1
 
 #define CAMERA_EDGE_VAL						0xFF
 #define VITEZA_SEMNAL_TIME_DEBUG	25

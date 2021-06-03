@@ -102,6 +102,8 @@ int main (void) {
 				viteza = decideVitezaDrumSimplu(linie);
 				directie = decideDirectiaDrumSimplu(linie);
 				SetareUnghi(directie + SERVOMOTOR_STRAIGHT_ERR);
+				if(DEZACTIVARE_MODUL_DIST == 1)
+					break;
 				if(distantaC<DISTANTA_THRESHOLD || distantaD < DISTANTA_THRESHOLD || distantaS < DISTANTA_THRESHOLD)
 				{
 					stare = STATE_DRUM_OBSTACOL_FATA;

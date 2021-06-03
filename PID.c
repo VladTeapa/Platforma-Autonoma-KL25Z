@@ -43,7 +43,7 @@ float getNextPidv2(float referinta, float output)
 	float up, ud, e;
 	e = referinta - output;
 	up = e * kp;
-	integral += ki * eroare;
+	integral += ki * (e + eroare) / 2;
 	ud = kd * (e - eroare);
 	eroare = e;
 	return up + ud + integral;
