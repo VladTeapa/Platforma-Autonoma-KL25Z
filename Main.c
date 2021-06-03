@@ -12,7 +12,6 @@ extern long double vitezaCurenta;
 extern uint8_t linie;
 
 extern float volatile viteza;
-extern volatile PIDv2 pid;
 
 extern float volatile distantaS;
 extern float volatile distantaD;
@@ -69,7 +68,7 @@ int main (void) {
 	uint8_t obstDirectie = OBSTACOL_DREAPTA;
 	//Se initializeaza toate modulele si variabilele necesare
 	directie = 0;
-	initializarePID(PID_TS, PID_KP, PID_KI, PID_KD);
+	initializarePIDv2(PID_TS, PID_KP, PID_KI, PID_KD);
 	SIMSetup();
 	InitializarePiniParteMecanica();
 	initializareCamera();

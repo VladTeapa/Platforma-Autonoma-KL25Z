@@ -167,14 +167,14 @@
 #define MOTOARE_VITEZA_CURBA_MS	  NR_INPUT_COEFF * MIN_VITEZA_MULTIPLIER
 #define MOTOARE_VITEZA_OBSTACOL		NR_INPUT_COEFF * MAX_VITEZA_OBS_MULTIPLIER
 #define SERVOMOTOR_STRAIGHT_ERR		-0.07f //-0.07f
-#define SERVOMOTOR_THRESHOLD			18
+#define SERVOMOTOR_THRESHOLD			13
 
 //----------------------PID----------------------
 
 #define PID_TS										COEFFICIENT_MEASURE_TIME
-#define PID_KP										0.185f
+#define PID_KP										0.19f
 #define PID_KI										0.001f
-#define PID_KD										0.045f
+#define PID_KD										0.04f
 
 
 /**********************Pini UART**********************/

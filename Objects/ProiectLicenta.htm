@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\ProiectLicenta.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\ProiectLicenta.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6150002: Last Updated: Thu Jun  3 16:08:25 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6150002: Last Updated: Thu Jun  3 16:57:46 2021
 <BR><P>
 <H3>Maximum Stack Usage =         80 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -371,7 +371,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = __aeabi_fdiv
 </UL>
 <BR>[Called By]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TPM2_IRQHandler
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializarePID
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializarePIDv2
 </UL>
 
 <P><STRONG><a name="[3d]"></a>_fdiv</STRONG> (Thumb, 334 bytes, Stack size 20 bytes, fdiv.o(.text), UNUSED)
@@ -597,10 +597,10 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_mkl25z4.o(.text)
 </UL>
-<P><STRONG><a name="[19]"></a>TPM2_IRQHandler</STRONG> (Thumb, 372 bytes, Stack size 24 bytes, motoare.o(.text.TPM2_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = TPM2_IRQHandler &rArr; getNextPid &rArr; __aeabi_fmul
+<P><STRONG><a name="[19]"></a>TPM2_IRQHandler</STRONG> (Thumb, 368 bytes, Stack size 24 bytes, motoare.o(.text.TPM2_IRQHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = TPM2_IRQHandler &rArr; getNextPidv2 &rArr; __aeabi_fmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getNextPid
+<BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getNextPidv2
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
 <LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
@@ -628,8 +628,8 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[5e]"></a>getNextPid</STRONG> (Thumb, 88 bytes, Stack size 24 bytes, pid.o(.text.getNextPid))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = getNextPid &rArr; __aeabi_fmul
+<P><STRONG><a name="[5e]"></a>getNextPidv2</STRONG> (Thumb, 88 bytes, Stack size 24 bytes, pid.o(.text.getNextPidv2))
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = getNextPidv2 &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
@@ -638,24 +638,22 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TPM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[68]"></a>initializareCamera</STRONG> (Thumb, 272 bytes, Stack size 20 bytes, camera.o(.text.initializareCamera))
+<P><STRONG><a name="[68]"></a>initializareCamera</STRONG> (Thumb, 268 bytes, Stack size 20 bytes, camera.o(.text.initializareCamera))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = initializareCamera
 </UL>
 <BR>[Called By]<UL><LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[65]"></a>initializarePID</STRONG> (Thumb, 144 bytes, Stack size 32 bytes, pid.o(.text.initializarePID))
-<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = initializarePID &rArr; __aeabi_fdiv
+<P><STRONG><a name="[65]"></a>initializarePIDv2</STRONG> (Thumb, 68 bytes, Stack size 16 bytes, pid.o(.text.initializarePIDv2))
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = initializarePIDv2 &rArr; __aeabi_fdiv
 </UL>
 <BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
-<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[69]"></a>initializarePIT</STRONG> (Thumb, 68 bytes, Stack size 0 bytes, camera.o(.text.initializarePIT))
+<P><STRONG><a name="[69]"></a>initializarePIT</STRONG> (Thumb, 72 bytes, Stack size 0 bytes, camera.o(.text.initializarePIT))
 <BR><BR>[Called By]<UL><LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -677,7 +675,7 @@ Global Symbols
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializareSenzoriDistanta
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializareSenzorTuratie
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializarePIT
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializarePID
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializarePIDv2
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializareCamera
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;decideVitezaDrumSimplu
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;decideDirectiaDrumSimplu
@@ -814,8 +812,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PORTD_IRQHandler
 <LI><a href="#[24]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PORTA_IRQHandler
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getNextPid
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializarePID
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getNextPidv2
 </UL>
 
 <P><STRONG><a name="[7e]"></a>_fadd</STRONG> (Thumb, 134 bytes, Stack size 16 bytes, faddsub.o(x$fpl$fadd), UNUSED)
@@ -851,9 +848,9 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PORTD_IRQHandler
 <LI><a href="#[24]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PORTA_IRQHandler
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getNextPid
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getNextPidv2
 <LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TPM2_IRQHandler
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializarePID
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializarePIDv2
 </UL>
 
 <P><STRONG><a name="[bb]"></a>_fmul</STRONG> (Thumb, 172 bytes, Stack size 16 bytes, fmul.o(x$fpl$fmul), UNUSED)
@@ -861,9 +858,8 @@ Global Symbols
 <P><STRONG><a name="[5b]"></a>__aeabi_fsub</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, faddsub.o(x$fpl$fsub))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_fsub
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getNextPid
+<BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getNextPidv2
 <LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TPM2_IRQHandler
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializarePID
 </UL>
 
 <P><STRONG><a name="[80]"></a>_fsub</STRONG> (Thumb, 204 bytes, Stack size 16 bytes, faddsub.o(x$fpl$fsub), UNUSED)

@@ -2,7 +2,7 @@
 #include "Uart.h"
 #include "PID.h"
 
-volatile PIDv2 pid;
+
 
 float volatile vitezaCurenta = 0;
 float volatile viteza=0;
@@ -41,13 +41,13 @@ void TPM2_IRQHandler(void)
 			//Daca PID-ul nu este dezactivat calculam semnalul urmator
 			if(DEZACTIVARE_PID_DEBUG == 0)
 			{
-					if(abs(viteza - vitezaCurenta)>NR_INPUT_COEFF/10)
+					if(abs(viteza - vitezaCurenta)>NR_INPUT_COEFF/5)
 					{
 						//Daca masina trebuie sa se opreasca si viteza ajunge la 0 semnalul trebuie sa ramana pe 0
 						if(viteza == 0 && vitezaCurenta == 0)
 							semnal = 0;
 						else
-							semnal = getNextPid(viteza, vitezaCurenta, semnal);
+							semnal = getNextPidv2(viteza, vitezaCurenta);
 						
 						//PID-ul ne poate da valori mai mari decat 1 sau mai mici decat -1 si nu dorim acest lucru 
 						if(semnal > 1)
