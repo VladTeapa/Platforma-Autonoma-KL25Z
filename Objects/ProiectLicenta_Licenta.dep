@@ -1,6 +1,6 @@
 Dependencies for Project 'ProiectLicenta', Target 'Licenta': (DO NOT MODIFY !)
 CompilerVersion: 6150000::V6.15::ARMCLANG
-F (.\Main.c)(0x60BDE85D)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O2 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I./RTE/Device/MKL25Z128xxx4-I./RTE/_Licenta-IC:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include-IP:/Keil/ARM/CMSIS/Include-D__UVISION_VERSION="533" -D_RTE_ -DMKL25Z128xxx4 -D_RTE_-o ./objects/main.o -MD)
+F (.\Main.c)(0x60BE2C18)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O2 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I./RTE/Device/MKL25Z128xxx4-I./RTE/_Licenta-IC:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include-IP:/Keil/ARM/CMSIS/Include-D__UVISION_VERSION="533" -D_RTE_ -DMKL25Z128xxx4 -D_RTE_-o ./objects/main.o -MD)
 I (C:\Users\VladTeapa\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h)(0x585BD06A)
 I (P:\Keil\ARM\ARMCLANG\include\stdint.h)(0x5F372508)
 I (P:\Keil\ARM\CMSIS\Include\core_cm0plus.h)(0x559D3FFA)
@@ -8,7 +8,7 @@ I (P:\Keil\ARM\CMSIS\Include\core_cmInstr.h)(0x559D3FFA)
 I (P:\Keil\ARM\CMSIS\Include\core_cmFunc.h)(0x559D3FFA)
 I (RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h)(0x60A37CE8)
 I (Motoare.h)(0x607F420B)
-I (Defines.h)(0x60BDEDDC)
+I (Defines.h)(0x60BE2C10)
 I (PortsSetup.h)(0x607F420F)
 I (Camera.h)(0x607F4218)
 I (SistemDecizional.h)(0x60B68E15)
@@ -24,7 +24,7 @@ I (P:\Keil\ARM\CMSIS\Include\core_cm0plus.h)(0x559D3FFA)
 I (P:\Keil\ARM\CMSIS\Include\core_cmInstr.h)(0x559D3FFA)
 I (P:\Keil\ARM\CMSIS\Include\core_cmFunc.h)(0x559D3FFA)
 I (RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h)(0x60A37CE8)
-I (Defines.h)(0x60BDEDDC)
+I (Defines.h)(0x60BE2C10)
 I (Uart.h)(0x6083C09A)
 I (PID.h)(0x60B8D82C)
 F (.\PortsSetup.c)(0x607F4449)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O2 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I./RTE/Device/MKL25Z128xxx4-I./RTE/_Licenta-IC:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include-IP:/Keil/ARM/CMSIS/Include-D__UVISION_VERSION="533" -D_RTE_ -DMKL25Z128xxx4 -D_RTE_-o ./objects/portssetup.o -MD)
@@ -35,7 +35,7 @@ I (P:\Keil\ARM\CMSIS\Include\core_cmInstr.h)(0x559D3FFA)
 I (P:\Keil\ARM\CMSIS\Include\core_cmFunc.h)(0x559D3FFA)
 I (RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h)(0x60A37CE8)
 I (PortsSetup.h)(0x607F420F)
-I (Defines.h)(0x60BDEDDC)
+I (Defines.h)(0x60BE2C10)
 F (.\Camera.c)(0x60B8D994)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O2 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I./RTE/Device/MKL25Z128xxx4-I./RTE/_Licenta-IC:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include-IP:/Keil/ARM/CMSIS/Include-D__UVISION_VERSION="533" -D_RTE_ -DMKL25Z128xxx4 -D_RTE_-o ./objects/camera.o -MD)
 I (Camera.h)(0x607F4218)
 I (C:\Users\VladTeapa\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h)(0x585BD06A)
@@ -44,7 +44,7 @@ I (P:\Keil\ARM\CMSIS\Include\core_cm0plus.h)(0x559D3FFA)
 I (P:\Keil\ARM\CMSIS\Include\core_cmInstr.h)(0x559D3FFA)
 I (P:\Keil\ARM\CMSIS\Include\core_cmFunc.h)(0x559D3FFA)
 I (RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h)(0x60A37CE8)
-I (Defines.h)(0x60BDEDDC)
+I (Defines.h)(0x60BE2C10)
 I (Uart.h)(0x6083C09A)
 I (SistemDecizional.h)(0x60B68E15)
 I (Motoare.h)(0x607F420B)
@@ -56,11 +56,11 @@ I (P:\Keil\ARM\CMSIS\Include\core_cm0plus.h)(0x559D3FFA)
 I (P:\Keil\ARM\CMSIS\Include\core_cmInstr.h)(0x559D3FFA)
 I (P:\Keil\ARM\CMSIS\Include\core_cmFunc.h)(0x559D3FFA)
 I (RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h)(0x60A37CE8)
-I (Defines.h)(0x60BDEDDC)
+I (Defines.h)(0x60BE2C10)
 I (Motoare.h)(0x607F420B)
 F (.\Uart.c)(0x60A426B7)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O2 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I./RTE/Device/MKL25Z128xxx4-I./RTE/_Licenta-IC:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include-IP:/Keil/ARM/CMSIS/Include-D__UVISION_VERSION="533" -D_RTE_ -DMKL25Z128xxx4 -D_RTE_-o ./objects/uart.o -MD)
 I (Uart.h)(0x6083C09A)
-I (Defines.h)(0x60BDEDDC)
+I (Defines.h)(0x60BE2C10)
 I (C:\Users\VladTeapa\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h)(0x585BD06A)
 I (P:\Keil\ARM\ARMCLANG\include\stdint.h)(0x5F372508)
 I (P:\Keil\ARM\CMSIS\Include\core_cm0plus.h)(0x559D3FFA)
@@ -69,7 +69,7 @@ I (P:\Keil\ARM\CMSIS\Include\core_cmFunc.h)(0x559D3FFA)
 I (RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h)(0x60A37CE8)
 F (.\PID.c)(0x60B922F1)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O2 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I./RTE/Device/MKL25Z128xxx4-I./RTE/_Licenta-IC:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include-IP:/Keil/ARM/CMSIS/Include-D__UVISION_VERSION="533" -D_RTE_ -DMKL25Z128xxx4 -D_RTE_-o ./objects/pid.o -MD)
 I (PID.h)(0x60B8D82C)
-I (Defines.h)(0x60BDEDDC)
+I (Defines.h)(0x60BE2C10)
 I (C:\Users\VladTeapa\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h)(0x585BD06A)
 I (P:\Keil\ARM\ARMCLANG\include\stdint.h)(0x5F372508)
 I (P:\Keil\ARM\CMSIS\Include\core_cm0plus.h)(0x559D3FFA)
@@ -79,7 +79,7 @@ I (RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h)(0x60A37CE8)
 I (Uart.h)(0x6083C09A)
 F (.\SenzoriDistanta.c)(0x60B680AD)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O2 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I./RTE/Device/MKL25Z128xxx4-I./RTE/_Licenta-IC:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include-IP:/Keil/ARM/CMSIS/Include-D__UVISION_VERSION="533" -D_RTE_ -DMKL25Z128xxx4 -D_RTE_-o ./objects/senzoridistanta.o -MD)
 I (SenzoriDistanta.h)(0x607F422F)
-I (Defines.h)(0x60BDEDDC)
+I (Defines.h)(0x60BE2C10)
 I (C:\Users\VladTeapa\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h)(0x585BD06A)
 I (P:\Keil\ARM\ARMCLANG\include\stdint.h)(0x5F372508)
 I (P:\Keil\ARM\CMSIS\Include\core_cm0plus.h)(0x559D3FFA)
@@ -88,7 +88,7 @@ I (P:\Keil\ARM\CMSIS\Include\core_cmFunc.h)(0x559D3FFA)
 I (RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h)(0x60A37CE8)
 I (Uart.h)(0x6083C09A)
 F (.\Motoare.h)(0x607F420B)()
-F (.\Defines.h)(0x60BDEDDC)()
+F (.\Defines.h)(0x60BE2C10)()
 F (.\PortsSetup.h)(0x607F420F)()
 F (.\Camera.h)(0x607F4218)()
 F (.\SistemDecizional.h)(0x60B68E15)()

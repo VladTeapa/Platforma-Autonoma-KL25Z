@@ -21,6 +21,7 @@
 #define	FACTOR_MUL_DISTANTA				0.01133f //cm/percount
 #define DISTANTA_EROARE						8.1f //cm
 #define DISTANTA_THRESHOLD				35 //cm
+#define DISTANTA_THRESHOLD_MIJLOC	45 //cm
 #define DISTANTA_THREHOLD_LAT_MAX	15 //cm
 #define DISTANTA_THREHOLD_LAT_MIN 10 //cm
 #define OBSTACOL_STANGA						1
@@ -152,7 +153,7 @@
 #define PIXELI_CUT_LOW_VAL				20
 #define PIXELI_CUT_HIGH_VAL				40
 #define LINE_MAX_ERROR_MID				3
-#define LINE_MAX_ERROR_FOR_SPEED	6
+#define LINE_MAX_ERROR_FOR_SPEED	5
 
 //--------------------Motoare--------------------
 
@@ -160,9 +161,9 @@
 #define SERVOMOTOR_MAXIM_SIG			0.4L
 #define MOTOARE_SENS_INAITE				1
 #define MOTOARE_SENS_SPATE				-1
-#define MAX_VITEZA_MULTIPLIER			7
-#define MIN_VITEZA_MULTIPLIER			4
-#define MAX_VITEZA_OBS_MULTIPLIER	2
+#define MAX_VITEZA_MULTIPLIER			6
+#define MIN_VITEZA_MULTIPLIER			3
+#define MAX_VITEZA_OBS_MULTIPLIER	1
 #define MOTOARE_VITEZA_MAX_MS			NR_INPUT_COEFF * MAX_VITEZA_MULTIPLIER
 #define MOTOARE_VITEZA_CURBA_MS	  NR_INPUT_COEFF * MIN_VITEZA_MULTIPLIER
 #define MOTOARE_VITEZA_OBSTACOL		NR_INPUT_COEFF * MAX_VITEZA_OBS_MULTIPLIER
@@ -172,9 +173,9 @@
 //----------------------PID----------------------
 
 #define PID_TS										COEFFICIENT_MEASURE_TIME
-#define PID_KP										0.5f
-#define PID_KI										0.075f
-#define PID_KD										0.075f
+#define PID_KP										0.29f
+#define PID_KI										0.027f
+#define PID_KD										0.0125f
 
 
 /**********************Pini UART**********************/
@@ -193,7 +194,7 @@
 #define CAMERA_DEBUG_LINE_SCAN		0
 #define SERVO_DEBUG_ANGLE					0
 #define VITEZA_DEBUG_VITEZA_CUR		0
-#define SENZOR_TUR_SEMNAL_DEBUG		1
+#define SENZOR_TUR_SEMNAL_DEBUG		0
 #define SENZOR_DISTANTA_DEBUG_S		0
 #define SENZOR_DISTANTA_DEBUG_D		0
 #define SENZOR_DISTANTA_DEBUG_C		0
