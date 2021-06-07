@@ -7,7 +7,6 @@ xlim([0 128])
 ylim([0 256])
 xlabel('Index')
 ylabel('Value')
-
 p.XDataSource = 'x2';
 p.YDataSource = 'y2';
 while(true)

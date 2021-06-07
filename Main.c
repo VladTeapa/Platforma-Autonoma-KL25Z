@@ -107,15 +107,15 @@ int main (void) {
 					break;
 				if(distantaC<DISTANTA_THRESHOLD_MIJLOC || distantaD < DISTANTA_THRESHOLD || distantaS < DISTANTA_THRESHOLD)
 				{
-					stare = STATE_DRUM_OBSTACOL_FATA;
-					viteza = MOTOARE_VITEZA_OBSTACOL;
+					stare = STATE_DRUM_OBSTACOL;
+					viteza = 0;
 				}
 				break;
-			case STATE_DRUM_OBSTACOL_FATA:
+			case STATE_DRUM_OBSTACOL:
 				viteza = MOTOARE_VITEZA_OBSTACOL;
 				if(distantaD < DISTANTA_THRESHOLD || distantaS < DISTANTA_THRESHOLD)
 				{
-					if(distantaD < distantaC)
+					if(distantaD < distantaS)
 					{
 						lastObst = 0;
 						SetareUnghi(-1);
