@@ -41,20 +41,22 @@ void TPM2_IRQHandler(void)
 			//Daca PID-ul nu este dezactivat calculam semnalul urmator
 			if(DEZACTIVARE_PID_DEBUG == 0)
 			{
-					if(abs(viteza - vitezaCurenta)>NR_INPUT_COEFF/5)
+					if(abs(viteza - vitezaCurenta)<NR_INPUT_COEFF/5)
 					{
+						vitezaCurenta = viteza;
+					}					
 						//Daca masina trebuie sa se opreasca si viteza ajunge la 0 semnalul trebuie sa ramana pe 0
-						if(viteza == 0 && vitezaCurenta == 0)
-							semnal = 0;
-						else
-							semnal = getNextPidv2(viteza, vitezaCurenta);
-						
-						//PID-ul ne poate da valori mai mari decat 1 sau mai mici decat -1 si nu dorim acest lucru 
-						if(semnal > 1)
-							semnal = 1;
-						if(semnal < -1)
-							semnal = -1;
-					}
+					if(viteza == 0 && vitezaCurenta == 0)
+						semnal = 0;
+					else
+						semnal = getNextPidv2(viteza, vitezaCurenta);
+					
+					//PID-ul ne poate da valori mai mari decat 1 sau mai mici decat -1 si nu dorim acest lucru 
+					if(semnal > 1)
+						semnal = 1;
+					if(semnal < -1)
+						semnal = -1;
+				
 					//In functie de semnul variabilei semnal schimbam sensul motoarelor
 					if(semnal < 0)
 					{
@@ -77,7 +79,7 @@ void TPM2_IRQHandler(void)
 			//Pentru a face debug pe semnal trimitem prin XBEE valoarea
 			if(SENZOR_TUR_SEMNAL_DEBUG == 1)
 			{
-				trimiteDate(50+semnal*50);
+				trimiteDate(nrInput);
 			}
 	
 			

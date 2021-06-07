@@ -8,6 +8,5 @@ while(1)
     if(aux == -1)
         continue
     end
-    aux = aux/100;
     speed = [speed aux];
 end
