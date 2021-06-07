@@ -92,6 +92,7 @@ int main (void) {
 	for(int i=0;i<10000000;i++){
 		viteza = 0;
 	}
+	
 	while(1){
 		
 		
@@ -102,38 +103,37 @@ int main (void) {
 				viteza = decideVitezaDrumSimplu(linie);
 				directie = decideDirectiaDrumSimplu(linie);
 				SetareUnghi(directie + SERVOMOTOR_STRAIGHT_ERR);
-				if(distantaC<DISTANTA_THRESHOLD || distantaD < DISTANTA_THRESHOLD || distantaS < DISTANTA_THRESHOLD)
+				if(DEZACTIVARE_MODUL_DIST == 1)
+					break;
+				if(distantaC<DISTANTA_THRESHOLD_MIJLOC || distantaD < DISTANTA_THRESHOLD || distantaS < DISTANTA_THRESHOLD)
 				{
-					stare = STATE_DRUM_OBSTACOL_FATA;
-					viteza = MOTOARE_VITEZA_OBSTACOL;
+					stare = STATE_DRUM_OBSTACOL;
+					viteza = 0;
 				}
 				break;
-			case STATE_DRUM_OBSTACOL_FATA:
-				flagObstacol = 0;
+			case STATE_DRUM_OBSTACOL:
 				viteza = MOTOARE_VITEZA_OBSTACOL;
-				if(distantaD < DISTANTA_THRESHOLD/2)
+				if(distantaD < DISTANTA_THRESHOLD || distantaS < DISTANTA_THRESHOLD)
 				{
-					flagObstacol = 1;
-					lastObst = 0;
-					SetareUnghi(-1);
+					if(distantaD < distantaS)
+					{
+						lastObst = 0;
+						SetareUnghi(-1);
+					}
+					else
+					{
+						lastObst = 1;
+						SetareUnghi(1);
+					}
 					break;
 				}
-				if(distantaS < DISTANTA_THRESHOLD/2)
-				{
-					flagObstacol = 1;
-					lastObst = 1;
-					SetareUnghi(1);
-					break;
-				}
-				if(distantaC > DISTANTA_THRESHOLD)
+				if(distantaC > DISTANTA_THRESHOLD_MIJLOC)
 				{
 					if(lastObst == 0)
-						SetareUnghi(0.05f);
+						SetareUnghi(0.1f);
 					if(lastObst == 1)
-						SetareUnghi(-0.05f);
-					flagObstacol = 1;
+						SetareUnghi(-0.1f);
 					stare = STATE_DRUM_FARA_OBSTACOL;
-					
 					lastObst = 2;
 				}
 				

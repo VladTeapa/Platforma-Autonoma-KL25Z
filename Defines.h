@@ -18,9 +18,10 @@
 /*****************Valori Senzor Distanta***************/
 
 #define SENZOR_DISTANTA_PWM				0xF
-#define	FACTOR_MUL_DISTANTA				0.01122f //cm/percount
+#define	FACTOR_MUL_DISTANTA				0.01133f //cm/percount
 #define DISTANTA_EROARE						8.1f //cm
 #define DISTANTA_THRESHOLD				35 //cm
+#define DISTANTA_THRESHOLD_MIJLOC	60 //cm
 #define DISTANTA_THREHOLD_LAT_MAX	15 //cm
 #define DISTANTA_THREHOLD_LAT_MIN 10 //cm
 #define OBSTACOL_STANGA						1
@@ -152,29 +153,29 @@
 #define PIXELI_CUT_LOW_VAL				20
 #define PIXELI_CUT_HIGH_VAL				40
 #define LINE_MAX_ERROR_MID				3
-#define LINE_MAX_ERROR_FOR_SPEED	6
+#define LINE_MAX_ERROR_FOR_SPEED	5
 
 //--------------------Motoare--------------------
 
-#define MOTOARE_VITEZA_MAXIM_SIG  0.8f
+#define MOTOARE_VITEZA_MAXIM_SIG  0.85f
 #define SERVOMOTOR_MAXIM_SIG			0.4L
 #define MOTOARE_SENS_INAITE				1
 #define MOTOARE_SENS_SPATE				-1
-#define MAX_VITEZA_MULTIPLIER			8
-#define MIN_VITEZA_MULTIPLIER			5
-#define MAX_VITEZA_OBS_MULTIPLIER	3
+#define MAX_VITEZA_MULTIPLIER			6
+#define MIN_VITEZA_MULTIPLIER			4
+#define MAX_VITEZA_OBS_MULTIPLIER	2
 #define MOTOARE_VITEZA_MAX_MS			NR_INPUT_COEFF * MAX_VITEZA_MULTIPLIER
 #define MOTOARE_VITEZA_CURBA_MS	  NR_INPUT_COEFF * MIN_VITEZA_MULTIPLIER
 #define MOTOARE_VITEZA_OBSTACOL		NR_INPUT_COEFF * MAX_VITEZA_OBS_MULTIPLIER
 #define SERVOMOTOR_STRAIGHT_ERR		-0.07f //-0.07f
-#define SERVOMOTOR_THRESHOLD			13
+#define SERVOMOTOR_THRESHOLD			12
 
 //----------------------PID----------------------
 
 #define PID_TS										COEFFICIENT_MEASURE_TIME
-#define PID_KP										0.22f
-#define PID_KI										0.0016f
-#define PID_KD										0.04f
+#define PID_KP										0.35f//0.34f
+#define PID_KI										0.01f
+#define PID_KD										0.0065f
 
 
 /**********************Pini UART**********************/
@@ -196,8 +197,9 @@
 #define SENZOR_TUR_SEMNAL_DEBUG		0
 #define SENZOR_DISTANTA_DEBUG_S		0
 #define SENZOR_DISTANTA_DEBUG_D		0
-#define SENZOR_DISTANTA_DEBUG_C		0
+#define SENZOR_DISTANTA_DEBUG_C		1
 #define	DEZACTIVARE_PID_DEBUG			0
+#define DEZACTIVARE_MODUL_DIST		0
 
 #define CAMERA_EDGE_VAL						0xFF
 #define VITEZA_SEMNAL_TIME_DEBUG	25
@@ -205,6 +207,7 @@
 /***********************Stari************************/
 
 #define STATE_DRUM_FARA_OBSTACOL	0
-#define STATE_DRUM_OBSTACOL_FATA	1
-#define STATE_DRUM_OBSTACOL_LAT		2
-#define STATE_DRUM_OBSTACOL_DIAG	3
+#define STATE_DRUM_OBSTACOL				1
+#define STATE_DRUM_OBSTACOL_FATA	2
+#define STATE_DRUM_OBSTACOL_LAT		3
+#define STATE_DRUM_OBSTACOL_DIAG	4
