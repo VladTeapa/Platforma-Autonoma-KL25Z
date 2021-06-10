@@ -13,6 +13,7 @@ inline long double decideDirectiaDrumSimplu(uint8_t linie) //Se va modifica pent
 
 inline float decideVitezaDrumSimplu(uint8_t linie)
 {
+	//In functie de pozitia liniei, platforma se va deplasa mai repede sau mai incet
 	if(linie>=63 + LINE_MAX_ERROR_FOR_SPEED || linie<=64 - LINE_MAX_ERROR_FOR_SPEED)
 	{
 		return MOTOARE_VITEZA_CURBA_MS;
@@ -23,21 +24,3 @@ inline float decideVitezaDrumSimplu(uint8_t linie)
 	}
 }
 
-inline float decideVitezaObstacolFata(float distantaC)
-{
-	 //return ((int) (MAX_VITEZA_MULTIPLIER * (distantaC / DISTANTA_THRESHOLD))) * NRINPUTCOEFF;
-	return MOTOARE_VITEZA_OBSTACOL;
-}
-inline uint8_t decideStareDrumObstacolFata(uint8_t stare, float distantaC, float distantaD, float distantaS)
-{
-	if(distantaC >= DISTANTA_THRESHOLD)
-		if(distantaD >= DISTANTA_THRESHOLD && distantaS >= DISTANTA_THRESHOLD)
-		{
-			return STATE_DRUM_FARA_OBSTACOL;
-		}
-	if(distantaD < DISTANTA_THRESHOLD || distantaS < DISTANTA_THRESHOLD)
-	{
-		return STATE_DRUM_OBSTACOL_DIAG;
-	}
-	return stare;
-}

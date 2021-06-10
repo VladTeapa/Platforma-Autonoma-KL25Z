@@ -21,7 +21,6 @@ void uartInit(uint32_t baud){
 	PORTA->PCR[1] = PORT_PCR_ISF_MASK | PORT_PCR_MUX(2);
 	PORTA->PCR[2] = PORT_PCR_ISF_MASK | PORT_PCR_MUX(2);
 	
-	
 	sbr = (uint16_t)((BUS_CLOCK)/(baud * (osr+1)));
 	temp = UART0->BDH & ~(UART0_BDH_SBR(0x1F));
 	UART0->BDH = temp | UART_BDH_SBR(((sbr & 0x1F00) >> 8));
