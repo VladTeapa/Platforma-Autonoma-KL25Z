@@ -20,7 +20,7 @@
 #define SENZOR_DISTANTA_PWM				0xF
 #define	FACTOR_MUL_DISTANTA				0.01133f //cm/percount
 #define DISTANTA_EROARE						8.1f //cm
-#define DISTANTA_THRESHOLD				35 //cm
+#define DISTANTA_THRESHOLD				30 //cm
 #define DISTANTA_THRESHOLD_MIJLOC	60 //cm
 
 /*****************Pini Senzor Turatie*****************/
@@ -79,7 +79,7 @@
 #define MOTOARE_SENS_INAITE				1
 #define MOTOARE_SENS_SPATE				-1
 #define MAX_VITEZA_MULTIPLIER			5
-#define MIN_VITEZA_MULTIPLIER			3
+#define MIN_VITEZA_MULTIPLIER			2
 #define MAX_VITEZA_OBS_MULTIPLIER	1
 #define MOTOARE_VITEZA_MAX_MS			NR_INPUT_COEFF * MAX_VITEZA_MULTIPLIER
 #define MOTOARE_VITEZA_CURBA_MS	  NR_INPUT_COEFF * MIN_VITEZA_MULTIPLIER
@@ -143,7 +143,7 @@
 #define CAMERA_CLEAR_SI						2
 #define CAMERA_FINAL							3
 #define CAMERA_IGNORE_EDGE_VAL		12
-#define LINE_MAX_ERROR_FOR_SPEED	5
+#define LINE_MAX_ERROR_FOR_SPEED	3
 
 /*********************Pini ADC************************/
 
