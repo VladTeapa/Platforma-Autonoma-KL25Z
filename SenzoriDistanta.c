@@ -17,8 +17,9 @@ void PORTA_IRQHandler(void)
 		PORTA_ISFR |= 1<<PortSenzorDistantaCPin;
 		distantaC -= DISTANTA_EROARE;
 	}
-	if(SENZOR_DISTANTA_DEBUG_C == 1)
+	#if (SENZOR_DISTANTA_DEBUG_C == 1)
 		trimiteDate(distantaC);
+	#endif
 }
 
 void PORTD_IRQHandler(void)
@@ -32,8 +33,9 @@ void PORTD_IRQHandler(void)
 		distantaS = FACTOR_MUL_DISTANTA * value;
 		PORTD_ISFR |= 1<<PortSenzorDistantaSPin;
 		distantaS -= DISTANTA_EROARE;
-		if(SENZOR_DISTANTA_DEBUG_S == 1)
+		#if (SENZOR_DISTANTA_DEBUG_S == 1)
 			trimiteDate(distantaS);
+		#endif
 	}
 	if(PORTD_ISFR & 1<<PortSenzorDistantaDPin)
 	{
@@ -42,8 +44,9 @@ void PORTD_IRQHandler(void)
 		distantaD = FACTOR_MUL_DISTANTA * value;
 		PORTD_ISFR |= 1<<PortSenzorDistantaDPin;
 		distantaD -= DISTANTA_EROARE;
-		if(SENZOR_DISTANTA_DEBUG_D == 1)
+		#if (SENZOR_DISTANTA_DEBUG_D == 1)
 			trimiteDate(distantaD);
+		#endif
 	}
 }
 

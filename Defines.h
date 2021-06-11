@@ -2,7 +2,7 @@
 
 /****************Pini Senzori Distanta****************/
 
-#define PortSenzorDistantaTrig		PORTD->PCR[4] //FTM0_CH4
+#define PortSenzorDistantaTrig		PORTD->PCR[4] //TPM0_CH4
 #define PortSenzorDistantaTrigMux	4
 #define PortSenzorDistantaEchoS		PORTD->PCR[6]
 #define PortSenzorDistantaSPin		6
@@ -20,16 +20,12 @@
 #define SENZOR_DISTANTA_PWM				0xF
 #define	FACTOR_MUL_DISTANTA				0.01133f //cm/percount
 #define DISTANTA_EROARE						8.1f //cm
-#define DISTANTA_THRESHOLD				35 //cm
+#define DISTANTA_THRESHOLD				30 //cm
 #define DISTANTA_THRESHOLD_MIJLOC	60 //cm
-#define DISTANTA_THREHOLD_LAT_MAX	15 //cm
-#define DISTANTA_THREHOLD_LAT_MIN 10 //cm
-#define OBSTACOL_STANGA						1
-#define OBSTACOL_DREAPTA					0
 
 /*****************Pini Senzor Turatie*****************/
 
-#define PortSenzorTuratie					PORTB->PCR[3] //FTM2_CH1
+#define PortSenzorTuratie					PORTB->PCR[3] //TPM2_CH1
 #define	PortSenzorTuratieMux			3
 #define SenzorTuratieMOD					0xB71B
 
@@ -43,8 +39,8 @@
 
 /********************Pini Motor***********************/
 
-#define PortMotorStanga						PORTA->PCR[5] //FTM0_CH2
-#define PortMotorDreapta					PORTD->PCR[1] //FTM0_CH1
+#define PortMotorStanga						PORTA->PCR[5] //TPM0_CH2
+#define PortMotorDreapta					PORTD->PCR[1] //TPM0_CH1
 
 #define PortMotorActivareDreapta	PORTD->PCR[2]
 #define PortMotorActivareStanga		PORTD->PCR[3]
@@ -75,9 +71,23 @@
 
 #define MotorMaxCount							0x8CA0
 
+/********************Valori Motor*********************/
+
+
+#define MOTOARE_VITEZA_MAXIM_SIG  0.85f
+#define SERVOMOTOR_MAXIM_SIG			0.4L
+#define MOTOARE_SENS_INAITE				1
+#define MOTOARE_SENS_SPATE				-1
+#define MAX_VITEZA_MULTIPLIER			5
+#define MIN_VITEZA_MULTIPLIER			2
+#define MAX_VITEZA_OBS_MULTIPLIER	1
+#define MOTOARE_VITEZA_MAX_MS			NR_INPUT_COEFF * MAX_VITEZA_MULTIPLIER
+#define MOTOARE_VITEZA_CURBA_MS	  NR_INPUT_COEFF * MIN_VITEZA_MULTIPLIER
+#define MOTOARE_VITEZA_OBSTACOL		NR_INPUT_COEFF * MAX_VITEZA_OBS_MULTIPLIER
+
 /********************Pini ServoMotor******************/
 
-#define PortServoMotor						PORTA->PCR[12] //FTM1_CH0
+#define PortServoMotor						PORTA->PCR[12] //TPM1_CH0
 
 #define PortServoMux							3
 
@@ -85,11 +95,17 @@
 #define	ServoMinVal								0x5DC
 #define	ServoMaxVal								0x1D4C
 
+/********************Valori Servomotor****************/
+
+#define SERVOMOTOR_STRAIGHT_ERR		-0.07f //-0.07f
+#define SERVOMOTOR_MAX_SIGNAL			0.4L
+#define SERVOMOTOR_THRESHOLD			12
+
 /*********************Valori TPM**********************/
 
-#define TPMDIVIDERSERVO						4
-#define TPMDIVIDERTURATIE					7
-#define TPMDIVIDERMOTOARE					5
+#define TPM_DIVIDER_SERVO					4
+#define TPM_DIVIDER_TURATIE				7
+#define TPM_DIVIDER_MOTOARE				5
 #define TPMClockSource						1
 #define TPMPLLFLLSELValue					0
 
@@ -116,6 +132,19 @@
 
 #define GPIOTCLKCamera						GPIOC_PTOR
 
+/******************Valori pentru camera***************/
+
+#define NUMBER_OF_CLOCKS					256
+#define PIT_HALF_CLOCK						0x8FF
+#define PIT_QUARTER_CLOCK					PIT_HALF_CLOCK/2
+#define PIT_SI_CLOCK							PIT_HALF_CLOCK*(256+8)
+#define CAMERA_START							0
+#define	CAMERA_SET_CLK						1
+#define CAMERA_CLEAR_SI						2
+#define CAMERA_FINAL							3
+#define CAMERA_IGNORE_EDGE_VAL		12
+#define LINE_MAX_ERROR_FOR_SPEED	3
+
 /*********************Pini ADC************************/
 
 #define ADCCameraResult						ADC0_RA
@@ -129,54 +158,12 @@
 #define ADCCameraSC2							ADC0_SC2
 #define ADCCameraSC3							ADC0_SC3
 
-/******************Valori pentru camera***************/
-
-#define CAMERA_TERMINAT						1
-#define CAMERA_PROCESARE					0
-#define NumberOfClocks						256
-#define PITHalfClock							0x8FF
-#define PITQuarterClock						PITHalfClock/2
-#define PITSIClock								PITHalfClock*(256+8)
-#define CAMERA_START							0
-#define	CAMERA_SET_CLK						1
-#define CAMERA_CLEAR_SI						2
-#define CAMERA_FINAL							3
-#define CAMERA_FIRST_IMAGE_TRUE		1
-#define CAMERA_FIRST_IMAGE_FALSE	1
-#define CAMERA_IGNORE_EDGE_VAL		12
-
-/**********************Matematica*********************/
-
-//--------------------Camera---------------------
-
-#define COEFFICIENT_PIXELI_CUT		2
-#define PIXELI_CUT_LOW_VAL				20
-#define PIXELI_CUT_HIGH_VAL				40
-#define LINE_MAX_ERROR_MID				3
-#define LINE_MAX_ERROR_FOR_SPEED	5
-
-//--------------------Motoare--------------------
-
-#define MOTOARE_VITEZA_MAXIM_SIG  0.85f
-#define SERVOMOTOR_MAXIM_SIG			0.4L
-#define MOTOARE_SENS_INAITE				1
-#define MOTOARE_SENS_SPATE				-1
-#define MAX_VITEZA_MULTIPLIER			6
-#define MIN_VITEZA_MULTIPLIER			4
-#define MAX_VITEZA_OBS_MULTIPLIER	2
-#define MOTOARE_VITEZA_MAX_MS			NR_INPUT_COEFF * MAX_VITEZA_MULTIPLIER
-#define MOTOARE_VITEZA_CURBA_MS	  NR_INPUT_COEFF * MIN_VITEZA_MULTIPLIER
-#define MOTOARE_VITEZA_OBSTACOL		NR_INPUT_COEFF * MAX_VITEZA_OBS_MULTIPLIER
-#define SERVOMOTOR_STRAIGHT_ERR		-0.07f //-0.07f
-#define SERVOMOTOR_THRESHOLD			12
-
-//----------------------PID----------------------
+/************************PID**************************/
 
 #define PID_TS										COEFFICIENT_MEASURE_TIME
 #define PID_KP										0.35f//0.34f
 #define PID_KI										0.01f
 #define PID_KD										0.0065f
-
 
 /**********************Pini UART**********************/
 
@@ -192,22 +179,17 @@
 /***********************Debug*************************/
 
 #define CAMERA_DEBUG_LINE_SCAN		0
-#define SERVO_DEBUG_ANGLE					0
-#define VITEZA_DEBUG_VITEZA_CUR		0
 #define SENZOR_TUR_SEMNAL_DEBUG		0
 #define SENZOR_DISTANTA_DEBUG_S		0
 #define SENZOR_DISTANTA_DEBUG_D		0
-#define SENZOR_DISTANTA_DEBUG_C		1
+#define SENZOR_DISTANTA_DEBUG_C		0
 #define	DEZACTIVARE_PID_DEBUG			0
 #define DEZACTIVARE_MODUL_DIST		0
 
 #define CAMERA_EDGE_VAL						0xFF
-#define VITEZA_SEMNAL_TIME_DEBUG	25
 
 /***********************Stari************************/
 
 #define STATE_DRUM_FARA_OBSTACOL	0
 #define STATE_DRUM_OBSTACOL				1
-#define STATE_DRUM_OBSTACOL_FATA	2
-#define STATE_DRUM_OBSTACOL_LAT		3
-#define STATE_DRUM_OBSTACOL_DIAG	4
+

@@ -6,32 +6,33 @@
 static volatile uint8_t cameraState=0;
 static volatile uint32_t clockCycles=0;
 
-static volatile uint8_t tempPixels[128];
 static volatile uint8_t min;
 static volatile uint8_t linieStatus = 63;
 
 volatile uint8_t linie=63;
 
-/*
+#if (CAMERA_DEBUG_LINE_SCAN == 1)
+static volatile uint8_t tempPixels[128];
 static void debugLineScanCamera(void)
 {
 	
 	//Functie de debug pentru camera, se foloseste cu scriptul din Matlab
 	register uint8_t i=0;
-	
-	if(CAMERA_DEBUG_LINE_SCAN == 1)
-	{
-		tempPixels[0] = CAMERA_EDGE_VAL;
-		tempPixels[127] = CAMERA_EDGE_VAL;
-		tempPixels[CAMERA_IGNORE_EDGE_VAL] = CAMERA_EDGE_VAL-0x10;
-		tempPixels[127-CAMERA_IGNORE_EDGE_VAL] = CAMERA_EDGE_VAL-0x10;
-	
-		for(i=0;i<128;i++)
-			trimiteDate(tempPixels[i]);
-	}
 
+	tempPixels[0] = CAMERA_EDGE_VAL;
+	tempPixels[127] = CAMERA_EDGE_VAL;
+	tempPixels[CAMERA_IGNORE_EDGE_VAL] = CAMERA_EDGE_VAL-0x10;
+	tempPixels[127-CAMERA_IGNORE_EDGE_VAL] = CAMERA_EDGE_VAL-0x10;
+
+	for(i=0;i<128;i++)
+		trimiteDate(tempPixels[i]);
 }
-*/
+#else
+static void debugLineScanCamera(void)
+{
+	return;
+}
+#endif
 
 void ADC0_IRQHandler(void)
 {
@@ -40,9 +41,11 @@ void ADC0_IRQHandler(void)
 	value =(uint8_t)ADCCameraResult;
 	
 	//Nu ne intereseaza marginea drumului intrucat ar putea sa fie din afara traseului si sa introduca erori
-	if(clockCycles < NumberOfClocks && clockCycles/2>CAMERA_IGNORE_EDGE_VAL && clockCycles/2<127-CAMERA_IGNORE_EDGE_VAL)
+	if(clockCycles < NUMBER_OF_CLOCKS && clockCycles/2>CAMERA_IGNORE_EDGE_VAL && clockCycles/2<127-CAMERA_IGNORE_EDGE_VAL)
 	{	
-	//	tempPixels[clockCycles/2] = (uint8_t)value;
+		#if (CAMERA_DEBUG_LINE_SCAN == 1)
+			tempPixels[clockCycles/2] = (uint8_t)value;
+		#endif
 		if(min<(uint8_t)value)
 		{
 			linieStatus = clockCycles/2;
@@ -64,12 +67,12 @@ void PIT_IRQHandler(void)
 		{
 			case CAMERA_START:
 				GPIOCCLKCamera = 1<<GPIOPinCLKCamera;
-			//	debugLineScanCamera();
+				debugLineScanCamera();
 				linie = linieStatus;
 				GPIOSSICamera = 1<<GPIOPinSICamera;
 				clockCycles = 1;
 				cameraState = CAMERA_SET_CLK;
-				PIT->CHANNEL[0].LDVAL = PITQuarterClock;
+				PIT->CHANNEL[0].LDVAL = PIT_QUARTER_CLOCK;
 				min = 0x0;
 				break;
 			case CAMERA_SET_CLK:
@@ -82,7 +85,7 @@ void PIT_IRQHandler(void)
 				break;
 			case CAMERA_FINAL:
 				GPIOCCLKCamera |= 1<<GPIOPinCLKCamera;
-				PIT->CHANNEL[0].LDVAL = PITSIClock;
+				PIT->CHANNEL[0].LDVAL = PIT_SI_CLOCK;
 				ADCCameraSC1A = ADC_SC1_ADCH(8) | ADC_SC1_AIEN_MASK;
 				PIT->CHANNEL[1].TCTRL = PIT_TCTRL_TEN_MASK | PIT_TCTRL_TIE_MASK;
 				cameraState = CAMERA_START;
@@ -108,8 +111,8 @@ void startCamera(void)
 	
 	//Se porneste modulul PIT pentru camera
 	PIT_MCR &= ~(PIT_MCR_MDIS_MASK);				
-	PIT_LDVAL0 = PITQuarterClock;		
-	PIT_LDVAL1 = PITHalfClock;		
+	PIT_LDVAL0 = PIT_QUARTER_CLOCK;		
+	PIT_LDVAL1 = PIT_HALF_CLOCK;		
 	PIT_TCTRL0 = PIT_TCTRL_TEN_MASK | PIT_TCTRL_TIE_MASK;
 	PIT_MCR = 1;		
 	cameraState = CAMERA_START;
@@ -122,7 +125,7 @@ void initializarePIT(void)
 	PIT->MCR &= ~PIT_MCR_MDIS_MASK;
 	
 	//Se configureaza canalul 0
-	PIT->CHANNEL[0].LDVAL = PIT_LDVAL_TSV(PITHalfClock);
+	PIT->CHANNEL[0].LDVAL = PIT_LDVAL_TSV(PIT_HALF_CLOCK);
 	
 	PIT->CHANNEL[0].TCTRL &= PIT_TCTRL_CHN_MASK;
 	PIT->CHANNEL[0].TCTRL |= PIT_TCTRL_TIE_MASK;

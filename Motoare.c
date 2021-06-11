@@ -2,8 +2,6 @@
 #include "Uart.h"
 #include "PID.h"
 
-
-
 float volatile vitezaCurenta = 0;
 float volatile viteza=0;
 float volatile semnal=0;
@@ -49,7 +47,7 @@ void TPM2_IRQHandler(void)
 					if(viteza == 0 && vitezaCurenta == 0)
 						semnal = 0;
 					else
-						semnal = getNextPidv2(viteza, vitezaCurenta);
+						semnal = getNextPid(viteza, vitezaCurenta);
 					
 					//PID-ul ne poate da valori mai mari decat 1 sau mai mici decat -1 si nu dorim acest lucru 
 					if(semnal > 1)
@@ -77,13 +75,9 @@ void TPM2_IRQHandler(void)
 			}
 			
 			//Pentru a face debug pe semnal trimitem prin XBEE valoarea
-			if(SENZOR_TUR_SEMNAL_DEBUG == 1)
-			{
+			#if (SENZOR_TUR_SEMNAL_DEBUG == 1)
 				trimiteDate(nrInput);
-			}
-	
-			
-			
+			#endif
 			
 			//Resetam numarul de inputuri
 			nrInput = 0;
@@ -117,8 +111,8 @@ void InitializarePiniParteMecanica(void){
 	GPIOCSensMotor |= 1<<GPIOPinSensMotor;
 	
 	//Setare divizor frecventa
-	TPM0->SC |= TPM_SC_PS(TPMDIVIDERMOTOARE);
-	TPM1->SC |= TPM_SC_PS(TPMDIVIDERSERVO);
+	TPM0->SC |= TPM_SC_PS(TPM_DIVIDER_MOTOARE);
+	TPM1->SC |= TPM_SC_PS(TPM_DIVIDER_SERVO);
 	
 	//Setare mod de numarare
 	TPM0->SC &= ~TPM_SC_CPWMS_MASK;
@@ -130,12 +124,10 @@ void InitializarePiniParteMecanica(void){
 	TPM1->CNT = 0;
 	TPM1->MOD = ServoMaxCount;
 	
-	
 	//Setare mod Edge-Aligned PMW
 	TPM1->CONTROLS[0].CnSC = TPM_CnSC_MSB_MASK | TPM_CnSC_ELSB_MASK;
 	TPM0->CONTROLS[2].CnSC = TPM_CnSC_MSB_MASK | TPM_CnSC_ELSB_MASK;
 	TPM0->CONTROLS[1].CnSC = TPM_CnSC_MSB_MASK | TPM_CnSC_ELSB_MASK;
-	
 	
 	//Setare mod trigger
 	TPM0->CONF |= TPM_CONF_TRGSEL(0x8);
@@ -157,7 +149,7 @@ void initializareSenzorTuratie(void)
 	PortSenzorTuratie |= PORT_PCR_PE(1) & (~PORT_PCR_PS(1));
 	
 	//Setare divizor frecventa
-	TPM2->SC |= TPM_SC_PS(TPMDIVIDERTURATIE);
+	TPM2->SC |= TPM_SC_PS(TPM_DIVIDER_TURATIE);
 	
 	//Setare mod de numarare
 	TPM2->SC &= ~TPM_SC_CPWMS_MASK;
@@ -173,7 +165,6 @@ void initializareSenzorTuratie(void)
 	
 	//Setare mod input capture
 	TPM2->CONTROLS[1].CnSC = TPM_CnSC_ELSB_MASK | TPM_CnSC_CHIE_MASK;
-
 	
 	//Activare intrerupere
 	NVIC_SetPriority(TPM2_IRQn, 128);
@@ -209,7 +200,6 @@ void SetareViteza(float vitezaMotor)
 	TPM0->CONTROLS[1].CnV = MotorMaxCount*vitezaMotor;
 }
 
-
 void SetareUnghi(long double unghi)
 {
 	//Intrucat la valoarea 0 platforma nu va mentine rotile fix drepte ne folosim de un factor de eroare
@@ -220,13 +210,13 @@ void SetareUnghi(long double unghi)
 	}
 	
 	//Se limiteaza valorile posibile intrucat platforma nu poate vira la valori foarte mari sau mici
-	if(unghi<-0.4L) 
+	if(unghi<-SERVOMOTOR_MAX_SIGNAL) 
 	{
-		unghi = -0.4L;
+		unghi = -SERVOMOTOR_MAX_SIGNAL;
 	}
-	if (unghi > 0.4L)
+	if (unghi > SERVOMOTOR_MAX_SIGNAL)
 	{
-		unghi = 0.4L;
+		unghi = SERVOMOTOR_MAX_SIGNAL;
 	}
 
 	//Se calculeaza un procent
