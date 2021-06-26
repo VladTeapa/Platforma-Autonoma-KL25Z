@@ -1,5 +1,5 @@
 clear all
-device = serialport("COM7", 9600);
+device = serialport("COM4", 9600);
 speed = [];
 i=0;
 while(1)

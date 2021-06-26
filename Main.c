@@ -80,6 +80,9 @@ int main (void) {
 						}
 						break;
 					}
+					directie = decideDirectiaDrumSimplu(linie);
+					SetareUnghi(directie + SERVOMOTOR_STRAIGHT_ERR);
+					
 					//Daca nu avem niciun obstacol pe nicio directie se revine la detectarea liniei si mentinerea drumului
 					if(distantaC > DISTANTA_THRESHOLD_MIJLOC)
 					{

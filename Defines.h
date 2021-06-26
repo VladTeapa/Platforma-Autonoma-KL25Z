@@ -78,9 +78,9 @@
 #define SERVOMOTOR_MAXIM_SIG			0.4L
 #define MOTOARE_SENS_INAITE				1
 #define MOTOARE_SENS_SPATE				-1
-#define MAX_VITEZA_MULTIPLIER			5
-#define MIN_VITEZA_MULTIPLIER			2
-#define MAX_VITEZA_OBS_MULTIPLIER	1
+#define MAX_VITEZA_MULTIPLIER			5.5f
+#define MIN_VITEZA_MULTIPLIER			2.5f
+#define MAX_VITEZA_OBS_MULTIPLIER	1.25f
 #define MOTOARE_VITEZA_MAX_MS			NR_INPUT_COEFF * MAX_VITEZA_MULTIPLIER
 #define MOTOARE_VITEZA_CURBA_MS	  NR_INPUT_COEFF * MIN_VITEZA_MULTIPLIER
 #define MOTOARE_VITEZA_OBSTACOL		NR_INPUT_COEFF * MAX_VITEZA_OBS_MULTIPLIER
@@ -143,7 +143,7 @@
 #define CAMERA_CLEAR_SI						2
 #define CAMERA_FINAL							3
 #define CAMERA_IGNORE_EDGE_VAL		12
-#define LINE_MAX_ERROR_FOR_SPEED	3
+#define LINE_MAX_ERROR_FOR_SPEED	4
 
 /*********************Pini ADC************************/
 
@@ -161,9 +161,9 @@
 /************************PID**************************/
 
 #define PID_TS										COEFFICIENT_MEASURE_TIME
-#define PID_KP										0.35f//0.34f
-#define PID_KI										0.01f
-#define PID_KD										0.0065f
+#define PID_KP										0.67f//0.66f
+#define PID_KI										0.0025f//0.0025f
+#define PID_KD										0.0067f//0.0065f
 
 /**********************Pini UART**********************/
 
