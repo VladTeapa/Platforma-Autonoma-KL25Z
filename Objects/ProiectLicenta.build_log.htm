@@ -61,13 +61,15 @@ PID.c(30): warning: no newline at end of file [-Wnewline-eof]
  ^
 7 warnings generated.
 compiling PID.c...
-Main.c(1): warning: In file included from...
+Camera.c(1): warning: In file included from...
+./Camera.h(1): warning: In file included from...
 C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
 P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(147): warning: In file included from...
 P:/Keil/ARM/CMSIS/Include\core_cmInstr.h(435): warning: implicit conversion changes signedness: 'uint32_t' (aka 'unsigned int') to 'int32_t' (aka 'int') [-Wsign-conversion]
   return(result);
   ~~~~~~ ^~~~~~
-Main.c(1): warning: In file included from...
+Camera.c(1): warning: In file included from...
+./Camera.h(1): warning: In file included from...
 C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
 P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(716): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
     SCB->SHP[_SHP_IDX(IRQn)] = (SCB->SHP[_SHP_IDX(IRQn)] & ~(0xFF << _BIT_SHIFT(IRQn))) |
@@ -78,57 +80,24 @@ P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(719): warning: implicit conversion chan
 P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(750): warning: function 'NVIC_SystemReset' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
 {
 ^
-Main.c(6): warning: In file included from...
-./SenzoriDistanta.h(4): warning: no newline at end of file [-Wnewline-eof]
-void PORTD_IRQHandler(void); //Intrerupere pentru port D
-                                                        ^
-Main.c(7): warning: In file included from...
+Camera.c(2): warning: In file included from...
 ./Uart.h(5): warning: no newline at end of file [-Wnewline-eof]
 void uartInit(uint32_t baud); //Initializare modul UART
                                                        ^
-Main.c(8): warning: In file included from...
-./PID.h(3): warning: no newline at end of file [-Wnewline-eof]
-float getNextPid(float referinta, float output); //Functie care calculeaza urmatorul semnal cu ajutorul la PID
-                                                                                                              ^
-Main.c(18): warning: no previous extern declaration for non-static variable 'lastObst' [-Wmissing-variable-declarations]
-uint8_t lastObst = 2;
-        ^
-Main.c(18): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint8_t lastObst = 2;
-^
-Main.c(41): warning: implicit conversion increases floating-point precision: 'float' to 'long double' [-Wdouble-promotion]
-        SetareUnghi(SERVOMOTOR_STRAIGHT_ERR); 
-        ~~~~~~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~
-./Defines.h(100): note: expanded from macro 'SERVOMOTOR_STRAIGHT_ERR'
-#define SERVOMOTOR_STRAIGHT_ERR         -0.07f //-0.07f
-                                        ^~~~~~
-Main.c(53): warning: implicit conversion increases floating-point precision: 'float' to 'long double' [-Wdouble-promotion]
-                                SetareUnghi(directie + SERVOMOTOR_STRAIGHT_ERR);
-                                                     ~ ^~~~~~~~~~~~~~~~~~~~~~~
-./Defines.h(100): note: expanded from macro 'SERVOMOTOR_STRAIGHT_ERR'
-#define SERVOMOTOR_STRAIGHT_ERR         -0.07f //-0.07f
-                                        ^~~~~~
-Main.c(84): warning: implicit conversion increases floating-point precision: 'float' to 'long double' [-Wdouble-promotion]
-                                        SetareUnghi(directie + SERVOMOTOR_STRAIGHT_ERR);
-                                                             ~ ^~~~~~~~~~~~~~~~~~~~~~~
-./Defines.h(100): note: expanded from macro 'SERVOMOTOR_STRAIGHT_ERR'
-#define SERVOMOTOR_STRAIGHT_ERR         -0.07f //-0.07f
-                                        ^~~~~~
-Main.c(90): warning: implicit conversion increases floating-point precision: 'float' to 'long double' [-Wdouble-promotion]
-                                                        SetareUnghi(0.1f);
-                                                        ~~~~~~~~~~~ ^~~~
-Main.c(92): warning: implicit conversion increases floating-point precision: 'float' to 'long double' [-Wdouble-promotion]
-                                                        SetareUnghi(-0.1f);
-                                                        ~~~~~~~~~~~ ^~~~~
-Main.c(4): warning: In file included from...
-./Camera.h(8): warning: unused function 'debugLineScanCamera' [-Wunused-function]
-static void debugLineScanCamera(void); //Copiere din vector temporar in vectorul care va fi folosit pentru decizie
-            ^
-./Camera.h(9): warning: unused function 'calibrareADC' [-Wunused-function]
-static int calibrareADC(void); //Initializare modul ADC
-           ^
-15 warnings generated.
-compiling Main.c...
+Camera.c(12): warning: no previous extern declaration for non-static variable 'linie' [-Wmissing-variable-declarations]
+volatile uint8_t linie=63;
+                 ^
+Camera.c(12): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile uint8_t linie=63;
+         ^
+Camera.c(51): warning: implicit conversion loses integer precision: 'unsigned int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+                        linieStatus = clockCycles/2;
+                                    ~ ~~~~~~~~~~~^~
+Camera.c(219): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+8 warnings generated.
+compiling Camera.c...
 PortsSetup.c(1): warning: In file included from...
 C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
 P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(147): warning: In file included from...
@@ -320,15 +289,13 @@ uint8_t temp;
 ^
 8 warnings generated.
 compiling Uart.c...
-Camera.c(1): warning: In file included from...
-./Camera.h(1): warning: In file included from...
+Main.c(1): warning: In file included from...
 C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
 P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(147): warning: In file included from...
 P:/Keil/ARM/CMSIS/Include\core_cmInstr.h(435): warning: implicit conversion changes signedness: 'uint32_t' (aka 'unsigned int') to 'int32_t' (aka 'int') [-Wsign-conversion]
   return(result);
   ~~~~~~ ^~~~~~
-Camera.c(1): warning: In file included from...
-./Camera.h(1): warning: In file included from...
+Main.c(1): warning: In file included from...
 C:/Users/VladTeapa/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.0/Device/Include\MKL25Z4.h(198): warning: In file included from...
 P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(716): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
     SCB->SHP[_SHP_IDX(IRQn)] = (SCB->SHP[_SHP_IDX(IRQn)] & ~(0xFF << _BIT_SHIFT(IRQn))) |
@@ -339,24 +306,57 @@ P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(719): warning: implicit conversion chan
 P:/Keil/ARM/CMSIS/Include\core_cm0plus.h(750): warning: function 'NVIC_SystemReset' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
 {
 ^
-Camera.c(2): warning: In file included from...
+Main.c(6): warning: In file included from...
+./SenzoriDistanta.h(4): warning: no newline at end of file [-Wnewline-eof]
+void PORTD_IRQHandler(void); //Intrerupere pentru port D
+                                                        ^
+Main.c(7): warning: In file included from...
 ./Uart.h(5): warning: no newline at end of file [-Wnewline-eof]
 void uartInit(uint32_t baud); //Initializare modul UART
                                                        ^
-Camera.c(12): warning: no previous extern declaration for non-static variable 'linie' [-Wmissing-variable-declarations]
-volatile uint8_t linie=63;
-                 ^
-Camera.c(12): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-volatile uint8_t linie=63;
-         ^
-Camera.c(51): warning: implicit conversion loses integer precision: 'unsigned int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
-                        linieStatus = clockCycles/2;
-                                    ~ ~~~~~~~~~~~^~
-Camera.c(219): warning: no newline at end of file [-Wnewline-eof]
-}
- ^
-8 warnings generated.
-compiling Camera.c...
+Main.c(8): warning: In file included from...
+./PID.h(3): warning: no newline at end of file [-Wnewline-eof]
+float getNextPid(float referinta, float output); //Functie care calculeaza urmatorul semnal cu ajutorul la PID
+                                                                                                              ^
+Main.c(18): warning: no previous extern declaration for non-static variable 'lastObst' [-Wmissing-variable-declarations]
+uint8_t lastObst = 2;
+        ^
+Main.c(18): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t lastObst = 2;
+^
+Main.c(41): warning: implicit conversion increases floating-point precision: 'float' to 'long double' [-Wdouble-promotion]
+        SetareUnghi(SERVOMOTOR_STRAIGHT_ERR); 
+        ~~~~~~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~
+./Defines.h(100): note: expanded from macro 'SERVOMOTOR_STRAIGHT_ERR'
+#define SERVOMOTOR_STRAIGHT_ERR         -0.07f //-0.07f
+                                        ^~~~~~
+Main.c(53): warning: implicit conversion increases floating-point precision: 'float' to 'long double' [-Wdouble-promotion]
+                                SetareUnghi(directie + SERVOMOTOR_STRAIGHT_ERR);
+                                                     ~ ^~~~~~~~~~~~~~~~~~~~~~~
+./Defines.h(100): note: expanded from macro 'SERVOMOTOR_STRAIGHT_ERR'
+#define SERVOMOTOR_STRAIGHT_ERR         -0.07f //-0.07f
+                                        ^~~~~~
+Main.c(84): warning: implicit conversion increases floating-point precision: 'float' to 'long double' [-Wdouble-promotion]
+                                        SetareUnghi(directie + SERVOMOTOR_STRAIGHT_ERR);
+                                                             ~ ^~~~~~~~~~~~~~~~~~~~~~~
+./Defines.h(100): note: expanded from macro 'SERVOMOTOR_STRAIGHT_ERR'
+#define SERVOMOTOR_STRAIGHT_ERR         -0.07f //-0.07f
+                                        ^~~~~~
+Main.c(90): warning: implicit conversion increases floating-point precision: 'float' to 'long double' [-Wdouble-promotion]
+                                                        SetareUnghi(0.1f);
+                                                        ~~~~~~~~~~~ ^~~~
+Main.c(92): warning: implicit conversion increases floating-point precision: 'float' to 'long double' [-Wdouble-promotion]
+                                                        SetareUnghi(-0.1f);
+                                                        ~~~~~~~~~~~ ^~~~~
+Main.c(4): warning: In file included from...
+./Camera.h(8): warning: unused function 'debugLineScanCamera' [-Wunused-function]
+static void debugLineScanCamera(void); //Copiere din vector temporar in vectorul care va fi folosit pentru decizie
+            ^
+./Camera.h(9): warning: unused function 'calibrareADC' [-Wunused-function]
+static int calibrareADC(void); //Initializare modul ADC
+           ^
+15 warnings generated.
+compiling Main.c...
 SenzoriDistanta.c(1): warning: In file included from...
 ./SenzoriDistanta.h(1): warning: In file included from...
 ./Defines.h(1): warning: In file included from...
@@ -484,9 +484,9 @@ Package Vendor: Keil
       Source file:   Source\retarget_io.c
 
    * Component: Keil::Device:Startup:2.5.0
-      Source file:   Device\Source\system_MKL25Z4.c
-      Source file:   Device\Source\ARM\startup_MKL25Z4.s
       Include file:  Device\Source\system_MKL25Z4.h
+      Source file:   Device\Source\ARM\startup_MKL25Z4.s
+      Source file:   Device\Source\system_MKL25Z4.c
 Build Time Elapsed:  00:00:04
 </pre>
 </body>
